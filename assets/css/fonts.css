@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Anodina";
+    src: url("@/assets/fonts/Anodina-Light.otf") format("opentype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Anodina";
+    src: url("@/assets/fonts/Anodina-Regular.otf") format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Anodina";
+    src: url("@/assets/fonts/Anodina-ExtraBold.otf") format("opentype");
+    font-weight: 800;
+}
