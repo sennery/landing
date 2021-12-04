@@ -3,7 +3,7 @@
         <template
             v-for="link in links"
         >
-            <NavigationLInk 
+            <NavigationLink 
                 :name="link"
                 :key="link"
             />
