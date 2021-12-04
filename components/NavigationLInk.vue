@@ -44,7 +44,7 @@ export default {
         bottom: 0;
         left: -100%;
         width: 100%;
-        height: 3px;
+        height: 2px;
         background: $color-underscore;
         transition: $transition-second;
     }
@@ -60,7 +60,7 @@ export default {
         bottom: 0;
         left: calc(100% + 1px);
         width: 0.5em;
-        height: 3px;
+        height: 2px;
         background: #3c3cde;
         transition: $transition-first;
         transform-origin: left;
