@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/css/main.scss";
+@import "@/assets/css/theme.scss";
 
 .link-container {
     $animation-duration: 0.2s;
