@@ -45,15 +45,17 @@ export default {
 header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     width: 100vw;
-    height: 15vh;
+    height: 10vh;
 
     position: absolute;
     top: 0;
     left: 0;
+
+    font-weight: 300;
 
     .link {
         display: flex;

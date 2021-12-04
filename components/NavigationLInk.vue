@@ -73,7 +73,7 @@ export default {
 
     .link {
         display: block;
-        transition: $transition-first;
+        transition: $transition-second;
     }
 
     &:hover .link {
