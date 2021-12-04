@@ -14,7 +14,9 @@
   },
   "devDependencies": {
     "fibers": "^5.0.0",
+    "nuxt-svg-loader": "^1.2.0",
     "sass": "^1.44.0",
-    "sass-loader": "10"
+    "sass-loader": "10",
+    "vue-svg-loader": "^0.16.0"
   }
 }

@@ -1,0 +1,42 @@
+<svg 
+    id="SLetter"
+    viewBox="0 0 41 20" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"    
+>
+    <defs>
+        <linearGradient  id="Gradient1" spreadMethod="reflect" x1="-0.5" y1="1.5" x2="1.5" y2="-0.5">
+            <stop offset="0" stop-color="#F41D62"/>
+            <stop offset="0.6" stop-color="#383de1">
+                <animate
+                    attributeName="offset"
+                    values="0.6;1;0.6"
+                    repeatCount="indefinite"
+                    dur="2.5"
+                    begin="0"
+                    keySplines="0.65, 0, 0.35, 1;
+                                0.61, 1, 0.88, 1;"
+                />
+            </stop>
+        </linearGradient >
+    </defs>
+
+    <path
+        d="M1 2L17 18L24 2L40 18" 
+        stroke="url(#Gradient1)" 
+        stroke-width="3" 
+        stroke-dashoffset="32" 
+        stroke-dasharray="32 0"
+        style="pointer-events: none;" 
+    >
+        <animate
+            attributeName="stroke-dasharray"             
+            begin="SLetter.mouseover"
+            values="0 32;64 0;"
+            dur="5" 
+            repeatCount="1"
+            keySplines="0, 1, 0.18, 1;"
+            calcMode="spline"
+        />
+    </path>
+</svg>
