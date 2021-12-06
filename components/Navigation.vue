@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <nav>
         <NuxtLink 
             to="/" 
             class="link"
@@ -17,7 +17,7 @@
                 :key="link"
             />
         </template>
-    </header>
+    </nav>
 </template>
 
 <script>
@@ -42,18 +42,19 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/css/theme.scss";
 
-header {
+nav {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 
-    width: 100vw;
+    max-width: 100vw;
     height: 10vh;
 
     position: absolute;
     top: 0;
     left: 0;
+    padding: 0.75em;
 
     font-weight: 300;
 
@@ -63,14 +64,14 @@ header {
         align-items: center;
         
         height: 100%;
-        margin: 0.75em;
+        margin-right: 1em;
     }
 
     .home-icon {
         height: 25%;
         padding: 0.75em;
 
-        transition: 1s $easing-primary;
+        transition: 1s $timing-primary;
         transform: rotateZ(-90deg);
 
         cursor: pointer; 

@@ -27,16 +27,16 @@ export default {
     $animation-duration: 0.2s;
 
     display: inline-block;
-    margin: 0.5em;
     padding: 0.5em;
+    margin: 0.5em;
     width: auto;
     position: relative;
     overflow: hidden;
 
     font-size: 1.5em;
     
-    $transition-first: transform $animation-duration $easing-primary;
-    $transition-second: transform $animation-duration $animation-duration $easing-primary;     
+    $transition-first: transform $animation-duration $timing-primary;
+    $transition-second: transform $animation-duration $animation-duration $timing-primary;     
 
     &::after {        
         content: "";
@@ -78,7 +78,7 @@ export default {
 
     &:hover .link {
         transform: translateX(-10%);
-        color: white;
+        color: $color-text-active;
     }
 }
 </style>

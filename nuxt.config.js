@@ -37,6 +37,7 @@ export default {
     svgLoader: {
         svgoConfig: {
             plugins: [
+                { cleanupIDs: false },
                 { prefixIds: false } // Disables prefixing for SVG IDs
             ]
         }
