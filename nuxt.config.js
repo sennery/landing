@@ -1,3 +1,5 @@
+import webpack from 'webpack';
+
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
@@ -24,7 +26,11 @@ export default {
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
-    ],
+        { src: '~/plugins/events.js', mode: 'client' },
+        { src: '~/plugins/viewport.js', mode: 'client' },
+        { src: '~/plugins/mouse.js', mode: 'client' },
+        { src: '~/plugins/webgl.js', mode: 'client' },
+      ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
@@ -49,5 +55,15 @@ export default {
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
+        extend(config, ctx) {
+            config.plugins.push(new webpack.ProvidePlugin({ THREE: 'three' }));
+            config.module.rules.push({
+                test: /\.(glsl|vs|fs)$/,
+                use: [
+                    require.resolve('raw-loader'),
+                    require.resolve('glslify-loader'),
+                ]
+            });
+          },
     }
 }
