@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import SLetter from '@/assets/images/letter.svg';
+import SLetter from '@/assets/svg/letter.svg';
 
 export default {
     data() {

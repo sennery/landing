@@ -16,37 +16,20 @@
 </template>
 
 <script>
-import Lines from '@/assets/images/pencil-lines.svg';
-import { gsap } from 'gsap';
+import Lines from '@/assets/svg/pencil-lines.svg';
+import gsap from 'gsap';
 
 const MAX_MOVE = 20;
 
 export default {
-    data() {
-        return {
-        }
-    },
     components: {
         Lines
     },
-    computed: {
-        windowSize() {
-            return { 
-                x: window.innerWidth,
-                y: window.innerHeight
-            }
-        },
-    },
     methods: {
-        getMovePosition({clientX, clientY}) {
-            const { x, y } = this.windowSize;
-
-            const distanceFromCenterX = clientX*(2/x) - 1;
-            const distanceFromCenterY = clientY*(2/y) - 1;
-            
+        getMovePosition() {            
             return {
-                x: MAX_MOVE * this.moveFunction(distanceFromCenterX),
-                y: MAX_MOVE * this.moveFunction(distanceFromCenterY)
+                x: MAX_MOVE * this.moveFunction(this.$mouse.normalized.x),
+                y: MAX_MOVE * this.moveFunction(this.$mouse.normalized.y)
             }
         },
         moveFunction(num) {
@@ -54,26 +37,20 @@ export default {
 
             return (1 - Math.pow(1 - Math.abs(num), 2)) * sign;
         },
-        doMove(event) {
-            const movePos = this.getMovePosition(event);
+        doMove() {
+            const movePos = this.getMovePosition();
             gsap.to('.sennery', {
                 ...movePos,
                 stagger: 0.01,
             });
-            // gsap.to('.lines', {
-            //     x: movePos.x * 0.5,
-            //     y: movePos.y * 0.5,
-            //     scale: movePos.x * 0.5
-            // });
         }
     },
     mounted() {
-        document.addEventListener('mousemove', this.doMove);
+        this.$events.$on('mouse:mousemove', this.doMove);
     },
-    destroyed() {
-        console.log('destroyed');
+    beforeDestroy() {
         gsap.killTweensOf('.sennery');
-        document.removeEventListener('mousemove', this.doMove); 
+        this.$events.$off('mouse:mousemove', this.doMove);
     }
 }
 </script>
