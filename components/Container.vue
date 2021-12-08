@@ -11,7 +11,7 @@
     width: 100%;
     max-width: $breakpoint-desktop;
     margin: auto;
-    padding: 0 $spacing * 5;
+    padding: 0 $spacing * 10;
     box-sizing: border-box;    
 }
 </style>

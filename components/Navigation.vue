@@ -12,9 +12,11 @@
         <template
             v-for="link in links"
         >
-            <NavigationLink 
-                :name="link"
-                :key="link"
+            <NavigationLink
+                class="menu" 
+                :name="link.name"
+                :link="link.link"
+                :key="link.name"
             />
         </template>
     </nav>
@@ -27,9 +29,18 @@ export default {
     data() {
         return {
             links: [
-                'works',
-                'about',
-                'contacts'
+                {
+                    name: 'works',
+                    link: '/works'
+                },
+                {
+                    name: 'about',
+                    link: '/about'
+                },
+                {
+                    name: 'contacts',
+                    link: '/contacts'
+                },
             ]
         }
     },
@@ -81,6 +92,10 @@ nav {
         &:hover {
            transform: rotateZ(-90deg) scale(1.1); 
         }
+    }
+
+    .menu {
+        margin-left: 1em;
     }
 }
 </style>

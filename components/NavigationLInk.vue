@@ -1,7 +1,7 @@
 <template>
     <div class="link-container">
         <NuxtLink 
-            :to="'/' + name"
+            :to="link"
             class="link"
         > 
             {{name}} 
@@ -15,6 +15,10 @@ export default {
         name: {
             type: String,
             required: true
+        },
+        link: {
+            type: String,
+            required: true          
         }
     }
 }
@@ -28,12 +32,11 @@ export default {
 
     display: inline-block;
     padding: 0.5em;
-    margin: 0.5em;
     width: auto;
     position: relative;
     overflow: hidden;
 
-    font-size: 1.5em;
+    font-size: 1.5rem;
     
     $transition-first: transform $animation-duration $timing-primary;
     $transition-second: transform $animation-duration $animation-duration $timing-primary;     
@@ -77,7 +80,7 @@ export default {
     }
 
     &:hover .link {
-        transform: translateX(-10%);
+        transform: translateX(-0.5em);
         color: $color-text-active;
     }
 }
