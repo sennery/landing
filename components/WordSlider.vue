@@ -48,7 +48,7 @@ export default {
                 skewX: 0,
                 skewY: mouse * MAX_SKEW_Y
             })
-            requestAnimationFrame(this.onTick);
+            this.reqFrame = requestAnimationFrame(this.onTick);
         }
     },
     mounted() {
@@ -63,6 +63,11 @@ export default {
         });
 
         requestAnimationFrame(this.onTick);
+    },
+    beforeDestroy() {
+        gsap.killTweensOf('.slider-elem');
+        gsap.killTweensOf('.slider');
+        cancelAnimationFrame(this.reqFrame);
     }
 }
 </script>
