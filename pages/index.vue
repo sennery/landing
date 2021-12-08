@@ -1,7 +1,15 @@
 <template>
-    <main>        
-        <Sennery/>
-        <div class="subtitle">web developer</div>
+    <main>
+        <Container>            
+            <Sennery/>
+            <div 
+                class="subtitle"
+            >
+                <span>
+                    web developer
+                </span>
+            </div>
+        </Container>        
     </main>
 </template>
 
@@ -18,12 +26,13 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     user-select: none;
 
     .subtitle {
+        display: flex;
+        justify-content: center;
+        margin-top: 1em;
         font-size: 2em;
         font-weight: 400;
         color: $color-text-secondary;
