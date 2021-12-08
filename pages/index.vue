@@ -33,7 +33,7 @@ main {
         display: flex;
         justify-content: center;
         margin-top: 1em;
-        font-size: 2em;
+        font-size: 2.5em;
         font-weight: 400;
         color: $color-text-secondary;
     }

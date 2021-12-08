@@ -22,7 +22,7 @@
                 </p>
                 <NavigationLink
                     class="hello"
-                    :name="'->Say hello (^_^)'"
+                    :name="'Click to say hello (^_^)'"
                     :link="'/contacts'"
                 />     
             </div>
