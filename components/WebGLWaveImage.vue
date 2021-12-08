@@ -76,6 +76,18 @@ export default {
             this.positionate();
             this.resize();
         },
+        initResize() {
+            gsap.fromTo(this.mesh.scale, {
+                x: 0,
+                y: 0
+            }, {
+                x: this.webgl.viewsize.width * 0.8,
+                y: this.webgl.viewsize.height * 0.8,
+                duration: 5,
+                delay: 0.5,
+                ease: 'power3.out'
+            });
+        },
 
         updateTime(time) {
             this.material.uniforms.uTime.value = time;
@@ -97,10 +109,10 @@ export default {
         this.webgl = this.$createWebGlElem();
 
         await this.initMesh();
-        this.webgl.scene.add(this.mesh);
-
+        this.webgl.scene.add(this.mesh);   
+        
         this.positionate();
-        this.resize();
+        this.initResize();
 
         this.$events.$on('viewport:resize', this.onResize);
 
