@@ -1,13 +1,75 @@
 <template>
-    <div>about</div>
+    <main>
+        <Container>
+            <div 
+                class="info"
+            >
+                <p>
+                    Hi, whoever you are!
+                    I'm a
+                    <span>Web developer</span>
+                     based in Perm, Russia.
+                    My name is
+                    Arsenii Likhachev
+                    and I'm {{ myAge }} years old.
+                    Making stuff simple and minimalistick.
+                    Work in Nowhere.
+                </p>
+                <NavigationLink
+                    class="hello"
+                    :name="'->Say hello (^_^)'"
+                    :link="'/contacts'"
+                />     
+            </div>
+            <WordSlider/>
+        </Container>
+    </main>    
 </template>
 
 <script>
 export default {
+    computed: {
+        myAge() {
+            const born = new Date('1999-02-13T22:30:00+0500');
+            const now = new Date();
 
+            const correctiveMonth = now.getMonth() - born.getMonth() < 0;
+            const correctiveDate = now.getMonth() === born.getMonth() && now.getDate() - born.getDate() < 0;
+            const correctiveHours = now.getDate() === born.getDate() && now.getHours() - born.getHours() < 0;
+            const correctiveMinutes = now.getHours() === born.getHours() && now.getMinutes() - born.getMinutes() < 0;
+            const corrective = (correctiveMonth || correctiveDate || correctiveHours || correctiveMinutes) ? -1 : 0;
+
+            return now.getFullYear() - born.getFullYear() + corrective;
+        }
+    }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "@/assets/css/theme.scss";
 
+main {
+    display: flex;
+    min-height: 100vh;
+    font-size: 15em;
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        max-width: 35vw;    
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin-bottom: 0.25em;
+        line-height: initial;
+    }
+
+    .info span {
+        background: $color-underscore;
+    }
+
+    .hello {
+        font-size: 1em;
+        color: $color-text-secondary;
+    }
+}
 </style>
