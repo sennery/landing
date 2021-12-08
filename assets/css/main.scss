@@ -5,7 +5,8 @@
     color: $color-text-primary;
     font-family: "Anodina", sans-serif;
     font-weight: 800;
-    font-size: 14px
+    font-size: 14px;
+    overflow: hidden;
 }
 
 ::selection {
