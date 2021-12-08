@@ -1,5 +1,5 @@
 <template>
-    <div class="container">        
+    <div class="wrapper">        
         <!-- <div class="part">
             <Lines class="lines"/>    
         </div> -->
@@ -56,11 +56,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.wrapper {
     position: relative;
-    height: 15%;
+    height: 1em;
     font-size: 15em;
-    margin-top: 10vh;
 
     .part {
         display: flex;
@@ -70,7 +69,6 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        transform: translateY(-50%);
     }
 
     .part:nth-child(2) {

@@ -31,22 +31,41 @@ class WebGL {
     
         // renderer
         this.renderer = new THREE.WebGLRenderer({
-            alpha: true
+            alpha: true,
+            premultipliedAlpha: false,
+            antialias: true,
+            powerPreference: 'high-performance'
         });
         this.renderer.setSize(viewport.width, viewport.height);
-        this.renderer.setPixelRatio(1)
+        this.renderer.setPixelRatio(1);
     
         // events
-        events.$on('viewport:resize', this.onWindowResize)
+        events.$on('viewport:resize', this.onWindowResize);
     
         requestAnimationFrame(this.loop);
     }
     
     loop = () => {
-        this.renderer.setSize(viewport.width, viewport.height);
         this.renderer.render(this.scene, this.camera);
         this.renderer.renderLists.dispose();
-        requestAnimationFrame(this.loop);
+        this.reqFrame = requestAnimationFrame(this.loop);
+    }
+
+    onWindowResize = () => {
+        if (this.camera.type === 'PerspectiveCamera') {
+            this.camera.aspect = viewport.ratio;        
+        } else if (this.camera.type === 'OrthographicCamera') {
+            this.camera.left = viewport.width / -2;
+            this.camera.right = viewport.width / 2;
+            this.camera.top = viewport.height / 2;
+            this.camera.bottom = viewport.height / -2;
+        }
+        this.camera.updateProjectionMatrix();        
+        this.renderer.setSize(viewport.width, viewport.height);
+    }
+    
+    appendToDom(container) {
+        container.appendChild(this.renderer.domElement);
     }
     
     get viewsize() {
@@ -55,7 +74,7 @@ class WebGL {
             const distance = this.camera.position.z;
             const vFov = (this.camera.fov * Math.PI) / 180;
             height = 2 * Math.tan(vFov / 2) * distance;
-            width = height * viewport.ratio;
+            width = height * this.camera.aspect;
         } else if (this.camera.type === 'OrthographicCamera') {
             width = viewport.width;
             height = viewport.height;
@@ -64,18 +83,9 @@ class WebGL {
         return { width, height };
     }
     
-    onWindowResize = () => {
-        if (this.camera.type === 'OrthographicCamera') {
-            this.camera.left = viewport.width / -2;
-            this.camera.right = viewport.width / 2;
-            this.camera.top = viewport.height / 2;
-            this.camera.bottom = viewport.height / -2;
-        }
-        this.camera.updateProjectionMatrix();
-    }
-    
-    appendToDom(container) {
-        container.appendChild(this.renderer.domElement);
+    destroy() {
+        events.$off('viewport:resize', this.onWindowResize);
+        cancelAnimationFrame(this.reqFrame);
     }
 }
     

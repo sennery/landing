@@ -8,16 +8,16 @@ const mouse = new Vue({
         return {
             hasMoved: false,
             position: {
-                x: -1000, 
-                y: -1000
+                x: 0, 
+                y: 0
             },
             lerpedPosition: {
-                x: -1000, 
-                y: -1000
+                x: 0, 
+                y: 0
             },
             lastLerpedPosition: {
-                x: -1000, 
-                y: -1000
+                x: 0, 
+                y: 0
             }
         }
     },
@@ -31,7 +31,7 @@ const mouse = new Vue({
         lerpedNormalized() {
             return {
                 x: (this.lerpedPosition.x / viewport.width) * 2 - 1,
-                y: -(this.lerpedPosition.y / viewport.height) * 2 + 1
+                y: (this.lerpedPosition.y / viewport.height) * 2 - 1
             }
         },
         lerpedVelocity() {
@@ -77,7 +77,7 @@ const mouse = new Vue({
         
             this.tween?.kill();
             this.tween = gsap.to(this.lerpedPosition, {
-                duration: 1,
+                duration: 3,
                 x,
                 y,
                 ease: 'expo.out'

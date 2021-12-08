@@ -58,6 +58,8 @@ nav {
 
     font-weight: 300;
 
+    z-index: 999;
+
     .link {
         display: flex;
         justify-content: center;
