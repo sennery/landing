@@ -10,8 +10,13 @@
   },
   "dependencies": {
     "core-js": "^3.15.1",
+    "glsl-noise": "^0.0.0",
+    "glslify": "^7.1.1",
+    "glslify-loader": "^2.0.0",
     "gsap": "^3.8.0",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "raw-loader": "^4.0.2",
+    "three": "^0.135.0"
   },
   "devDependencies": {
     "fibers": "^5.0.0",
