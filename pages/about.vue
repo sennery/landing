@@ -1,6 +1,11 @@
 <template>
     <main>
         <Container>
+            <div
+                class="title"
+            >
+                about
+            </div>
             <div 
                 class="info"
             >
@@ -52,6 +57,11 @@ main {
     display: flex;
     min-height: 100vh;
     font-size: 15em;
+    
+    .title {
+        font-size: 10rem;
+        margin-bottom: 0.5em;
+    }
 
     .info {
         display: flex;
@@ -60,16 +70,17 @@ main {
         font-size: 2.5rem;
         font-weight: 400;
         margin-bottom: 0.25em;
-        line-height: initial;
+        line-height: initial;        
+        color: $color-text-secondary;
     }
 
     .info span {
+        color: $color-text-primary;
         background: $color-underscore;
     }
 
-    .hello {
+    .hello {        
         font-size: 1em;
-        color: $color-text-secondary;
     }
 }
 </style>

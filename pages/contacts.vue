@@ -80,7 +80,6 @@ export default {
     .title {
         font-size: 10em;
         transform: translate(-10%, -20%);
-
     }
 
     .contact {
