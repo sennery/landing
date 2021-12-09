@@ -10,19 +10,17 @@
                 class="info"
             >
                 <p>
-                    Hi, whoever you are!
-                    I'm a
+                    Hi, whoever you are! I'm a
                     <span>Web developer</span>
-                     based in Perm, Russia.
-                    My name is
-                    Arsenii Likhachev
+                    based in Perm, Russia.
+                    My name is Arsenii Likhachev
                     and I'm {{ myAge }} years old.
                     Making stuff simple and minimalistick.
                     Work in Nowhere.
                 </p>
                 <NavigationLink
                     class="hello"
-                    :name="'Click to say hello (^_^)'"
+                    :name="'Contact with me!'"
                     :link="'/contacts'"
                 />     
             </div>
@@ -69,18 +67,31 @@ main {
         max-width: 35vw;    
         font-size: 2.5rem;
         font-weight: 400;
-        margin-bottom: 0.25em;
         line-height: initial;        
         color: $color-text-secondary;
-    }
 
-    .info span {
-        color: $color-text-primary;
-        background: $color-underscore;
-    }
+        span {
+            color: $color-text-primary;
+        }
+
+        p {
+            margin-bottom: 0.5em;
+        }
+    }    
 
     .hello {        
+        color: $color-text-primary;        
         font-size: 1em;
+        width: 50%;
+    }
+
+    .back {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 30vw;
+        background: $color-underscore;
     }
 }
 </style>

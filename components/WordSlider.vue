@@ -2,20 +2,9 @@
     <div
         class="slider"
         :style="{
-            'border-radius': borderRadius.first + '%' + borderRadius.second + '%' 
+            'border-radius': borderRadius.second + '%' + '0px 0px ' + borderRadius.second + '%'
         }"
-    >
-        <div
-            class="elem-wrapper"
-        >
-            <span
-                class="slider-elem"
-                v-for="i in 2"
-                :key="i"
-            >
-                about me
-            </span>
-        </div>                
+    >              
     </div>
 </template>
 
@@ -23,7 +12,7 @@
 import gsap from 'gsap';
 
 const MAX_BORDER_RADIUS = 50;
-const MAX_SKEW_Y = 10;
+const MAX_SKEW = 10;
 
 export default {
     data() {
@@ -38,30 +27,15 @@ export default {
     methods: {
         onTick() {            
             const mouse = this.$mouse.lerpedNormalized.x;
-
-            this.borderRadius.first = mouse > 0 ? mouse * MAX_BORDER_RADIUS : 0;
-            this.borderRadius.second = mouse < 0 ? Math.abs(mouse * MAX_BORDER_RADIUS) : 0;
-
             this.tween?.kill();
             this.tween = gsap.to('.slider', {
                 duration: this.duration / 5,
-                skewX: 0,
-                skewY: mouse * MAX_SKEW_Y
-            })
+                skewX: (1 - mouse) / 2 * MAX_SKEW,
+            });
             this.reqFrame = requestAnimationFrame(this.onTick);
         }
     },
     mounted() {
-        gsap.from('.slider-elem', {
-            x: this.$viewport.height * 2,
-            duration: this.duration,
-            stagger: {
-                each: this.duration / 2,
-                repeat: -1
-            },
-            ease: 'linear'
-        });
-
         requestAnimationFrame(this.onTick);
     },
     beforeDestroy() {
@@ -78,26 +52,17 @@ export default {
 .slider {
     position: absolute;
     top: 0;
-    left: 90%;
+    left: 70%;
+    z-index: -1;
+    overflow: hidden;
 
-    min-width: 100vh;
-    min-height: 1.2em;
+    min-height: 100vh;
+    min-width: 40vw;
 
-    transform: rotateZ(90deg);
-    transform-origin: 0 0;
-
-    border: solid $color-text-secondary;
-    border-width: 2px 0;
-    border-radius: 50% 0;
-}
-
-.elem-wrapper {
-    position: relative;
-
-    .slider-elem {
-        color: $color-text-secondary;
-        position: absolute;
-        left: -100%;
-    }
+    transform-origin: 50% 50%;
+    background: $color-underscore;
+    box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 25%), 
+        0px 3px 4px 0px rgb(0 0 0 / 20%), 
+        0px 1px 8px 0px rgb(0 0 0 / 18%);
 }
 </style>
