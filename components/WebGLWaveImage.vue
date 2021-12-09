@@ -96,7 +96,7 @@ export default {
             this.material.uniforms.uMouse.value = [
                 mouse.x,
                 mouse.y
-            ]
+            ];
         },
         onTick() {
             const elapsed = this.webgl.clock.getElapsedTime();
@@ -106,17 +106,15 @@ export default {
         }
     },
     async mounted() {
-        this.webgl = this.$createWebGlElem();
+        await this.initMesh();       
 
-        await this.initMesh();
+        this.webgl = this.$createWebGlElem();
         this.webgl.scene.add(this.mesh);   
-        
+        this.webgl.appendToDom(this.$refs.container);
+
         this.positionate();
         this.initResize();
-
         this.$events.$on('viewport:resize', this.onResize);
-
-        this.webgl.appendToDom(this.$refs.container);
 
         requestAnimationFrame(this.onTick);
     },
