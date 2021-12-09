@@ -66,10 +66,9 @@ nav {
     top: 0;
     left: 0;
     padding: 0.75em;
-
-    font-weight: 300;
-
     z-index: 999;
+
+    font-weight: 300;    
 
     .link {
         display: flex;

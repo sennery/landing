@@ -31,10 +31,9 @@ export default {
     $animation-duration: 0.2s;
 
     display: inline-block;
-    padding: 0.5em;
-    width: auto;
     position: relative;
     overflow: hidden;
+    min-width: 5em;
 
     font-size: 1.5rem;
     
@@ -76,11 +75,11 @@ export default {
 
     .link {
         display: block;
-        transition: $transition-second;
+        transition: $transition-second;        
+        min-height: 1.5em;
     }
 
     &:hover .link {
-        transform: translateX(-0.5em);
         color: $color-text-active;
     }
 }
