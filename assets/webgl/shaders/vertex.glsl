@@ -9,7 +9,7 @@ uniform vec2 uMouse;
 void main() {
   vec3 pos = position;  
   
-  pos.z += noise(vec3(pos.x * 5. + uTime * 0.5, pos.y * 5. + uTime * .5, 0.)) / 5.;
+  pos.z += noise(vec3(pos.x * 5. + uTime * 0.5, pos.y * 5. + uTime * 0.5, 0.)) / 5.;
   wave = pos.z;
   pos.z *= 30. + 20. * (2. - abs(uMouse.x) - abs(uMouse.y));
 

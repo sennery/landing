@@ -9,6 +9,10 @@
                     web developer
                 </span>
             </div>
+            
+            <WebGLCircle 
+                src="/images/texture-for-wave.png"
+            />
         </Container>        
     </main>
 </template>
@@ -36,6 +40,8 @@ main {
         font-size: 2.5em;
         font-weight: 400;
         color: $color-text-secondary;
+        position: relative;        
+        z-index: 1;
     }
 }
 </style>

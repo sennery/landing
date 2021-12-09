@@ -60,6 +60,7 @@ export default {
     position: relative;
     height: 1em;
     font-size: 15em;
+    z-index: 1;
 
     .part {
         display: flex;
