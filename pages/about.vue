@@ -64,7 +64,8 @@ main {
     .info {
         display: flex;
         flex-direction: column;
-        max-width: 35vw;    
+        max-width: 35vw;
+        padding-left: 2.5em;    
         font-size: 2.5rem;
         font-weight: 400;
         line-height: initial;        
@@ -83,6 +84,7 @@ main {
         color: $color-text-primary;        
         font-size: 1em;
         width: 50%;
+        margin-left: 80%
     }
 
     .back {
