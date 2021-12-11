@@ -12,11 +12,11 @@ void main() {
   vec3 texturePrep;
 
   float w = wave;
-  float r = texture2D(uTexture, dUv + vec2(0., 0.) + w * 1.).r;
+  float r = texture2D(uTexture, dUv + vec2(0., 0.) + w * 0.0).r;
   float g = texture2D(uTexture, dUv + vec2(0., 0.) + w * 0.0).g;
-  float b = texture2D(uTexture, dUv + vec2(0., 0.) + w * -1.).b;
+  float b = texture2D(uTexture, dUv + vec2(0., 0.) + w * 0.0).b;
   texturePrep = vec3(r, g, b);    
   
   
-  gl_FragColor = vec4(texturePrep, 0.8);
+  gl_FragColor = vec4(texturePrep, 1.);
 }

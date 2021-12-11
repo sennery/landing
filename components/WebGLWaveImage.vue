@@ -43,6 +43,7 @@ export default {
             this.material.uniforms.uTexture.value = texture;
 
             this.mesh = new THREE.Mesh(this.geometry, this.material);
+            this.webgl.scene.add(this.mesh);
         },        
         loadTexture(src) {
             const loader = new THREE.TextureLoader();
@@ -84,7 +85,7 @@ export default {
                 x: this.webgl.viewsize.width * 0.8,
                 y: this.webgl.viewsize.height * 0.8,
                 duration: 5,
-                delay: 0.5,
+                delay: 0.75,
                 ease: 'power3.out'
             });
         },
@@ -106,14 +107,14 @@ export default {
         }
     },
     async mounted() {
-        await this.initMesh();       
-
         this.webgl = this.$createWebGlElem();
-        this.webgl.scene.add(this.mesh);   
-        this.webgl.appendToDom(this.$refs.container);
 
+        await this.initMesh();
         this.positionate();
         this.initResize();
+
+        this.webgl.appendToDom(this.$refs.container);
+        
         this.$events.$on('viewport:resize', this.onResize);
 
         requestAnimationFrame(this.onTick);

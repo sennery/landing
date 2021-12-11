@@ -2,7 +2,7 @@
     <main>
         <Container>
             <WebGLWaveImage 
-                src="/images/texture-for-wave.png"
+                src="/images/wave-image-texture.jpg"
             />
             <div 
                 class="side"
