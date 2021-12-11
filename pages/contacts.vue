@@ -7,24 +7,30 @@
             <div 
                 class="side"
             >
-                <span 
-                    class="title"
-                >
-                    contacts
-                </span>
+                <div>
+                    <div 
+                        class="title"
+                    >
+                        <TextRaiseTransition>
+                            <div>
+                                contacts
+                            </div>
+                        </TextRaiseTransition> 
+                    </div>
 
-                <template
-                    v-for="contact in contacts"
-
-                >
-                    <ContactLink
-                        class="contact"
+                    <TextRaiseTransition
+                        v-for="(contact, i) in contacts"
                         :key="contact.name"
-                        :name="contact.name"
-                        :link="contact.link"
-                        :color="contact.color"
-                    />
-                </template>
+                        :delay="i * 0.025"
+                    >
+                        <ContactLink
+                            class="contact"
+                            :name="contact.name"
+                            :link="contact.link"
+                            :color="contact.color"
+                        />
+                    </TextRaiseTransition>
+                </div>                
             </div>
         </Container>        
     </main>
@@ -86,6 +92,7 @@ export default {
     }
 
     .contact {
+        display: block;
         width: 50%;
         font-size: 2.5em;
         margin: 0.5em 0 0 1em;

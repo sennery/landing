@@ -51,6 +51,6 @@ export default {
 
 .text-raising-enter.text-raising-wrapper > *,
 .text-raising-leave.text-raising-wrapper > * {
-    transform: translate(5%,100%);
+    transform: translate(5%,100%) !important;
 }
 </style>
