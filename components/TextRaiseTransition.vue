@@ -7,7 +7,8 @@
             class="text-raising-wrapper"
             :style="{
                 '--text-raising-duration': duration + 's',
-                '--text-raising-delay': delay + 's'
+                '--text-raising-delay': delay + 's',
+                display: mode
             }"
         >
             <slot></slot>
@@ -24,7 +25,11 @@ export default {
         },
         delay: {
             type: Number,
-            default: 2
+            default: 0
+        },
+        mode: {
+            type: String,
+            default: 'block'
         }
     }
 }
@@ -46,6 +51,6 @@ export default {
 
 .text-raising-enter.text-raising-wrapper > *,
 .text-raising-leave.text-raising-wrapper > * {
-    transform: translateY(100%);
+    transform: translate(5%,100%);
 }
 </style>

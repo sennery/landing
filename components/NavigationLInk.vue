@@ -34,8 +34,6 @@ export default {
     position: relative;
     overflow: hidden;
     min-width: 5em;
-
-    font-size: 1.5rem;
     
     $transition-first: transform $animation-duration $timing-primary;
     $transition-second: transform $animation-duration $animation-duration $timing-primary;     

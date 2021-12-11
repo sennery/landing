@@ -4,26 +4,45 @@
             <div
                 class="title"
             >
-                about
+                <TextRaiseTransition
+                    :duration="0.75"
+                >
+                    <div>
+                        about
+                    </div>
+                </TextRaiseTransition>
             </div>
+            
             <div 
                 class="info"
             >
-                <p>
-                    Hi, whoever you are! I'm a
-                    <span>Web developer</span>
-                    based in Perm, Russia.
-                    My name is Arsenii Likhachev
-                    and I'm {{ myAge }} years old.
-                    Making stuff simple and minimalistick.
-                    Work in Nowhere.
-                </p>
-                <NavigationLink
-                    class="hello"
-                    :name="'Contact with me!'"
-                    :link="'/contacts'"
-                />     
+                <TextRaiseTransition
+                    v-for="(word, i) in description"
+                    :key="i"
+                    :delay="i * 0.025"
+                    :duration="0.75"
+                    :mode="'inline-block'"
+                >
+                    <span>
+                        {{ word + ' ' }}
+                    </span>
+                </TextRaiseTransition>                           
             </div>
+
+            <div                
+                class="hello"
+            >
+                <TextRaiseTransition
+                    :duration="0.75"
+                    :delay="description.length * 0.025"
+                >
+                    <NavigationLink
+                        :name="'Contact with me!'"
+                        :link="'/contacts'"
+                    />   
+                </TextRaiseTransition>       
+            </div>
+
             <WordSlider/>
         </Container>
     </main>    
@@ -31,6 +50,11 @@
 
 <script>
 export default {
+    data() {
+        return {
+            mounted: false
+        }
+    },
     computed: {
         myAge() {
             const born = new Date('1999-02-13T22:30:00+0500');
@@ -43,6 +67,11 @@ export default {
             const corrective = (correctiveMonth || correctiveDate || correctiveHours || correctiveMinutes) ? -1 : 0;
 
             return now.getFullYear() - born.getFullYear() + corrective;
+        },
+        description() {
+            const text = `Hi, whoever you are! I'm a Web developer based in Perm, Russia. My name is Arsenii Likhachev and I'm ${ this.myAge } years old. Making stuff simple and minimalistick. Work in Nowhere.`;
+
+            return text.split(' ');
         }
     }
 }
@@ -58,32 +87,28 @@ main {
     .title {
         font-size: 10em;
         margin-bottom: 0.5em;
+        max-width: 50%;
     }
 
     .info {
-        display: flex;
-        flex-direction: column;
-        max-width: 35vw;
-        padding-left: 2.5em;    
+        max-width: 35vw;        
+        padding-left: 2.5em;
+        margin-bottom: 0.5em;        
         font-size: 2.5em;
         font-weight: 400;
-        line-height: initial;        
+        line-height: normal;        
         color: $color-text-secondary;
 
         span {
-            color: $color-text-primary;
-        }
-
-        p {
-            margin-bottom: 0.5em;
+            display: inline-block;
+            padding-right: 0.25em;
         }
     }    
 
     .hello {        
-        color: $color-text-primary;        
-        font-size: 1em;
-        width: 50%;
-        margin-left: 80%
+        color: $color-text-primary;
+        margin-left: 40%;        
+        font-size: 2.5em;
     }
 
     .back {
