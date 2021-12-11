@@ -41,6 +41,10 @@ export default {
             this.$webgl.scene.add(this.mesh);
         },        
         loadTexture(src) {
+            if (this.$webgl.textures[src]) {
+                return this.$webgl.textures[src];
+            }
+
             const loader = new THREE.TextureLoader();
             return new Promise((resolve, reject) => {
                 loader.load(
@@ -48,6 +52,7 @@ export default {
                     (texture) => {
                         texture.minFilter = THREE.LinearFilter;
                         texture.generateMipmaps = false;
+                        this.$webgl.textures[src] = texture;
                         resolve(texture)
                     },
                     undefined,

@@ -37,13 +37,14 @@ class WebGL {
         });
         this.renderer.setSize(viewport.width, viewport.height);
         this.renderer.setPixelRatio(1);
+
+        this.textures = {};
     
         // events
         events.$on('viewport:resize', this.onWindowResize);
     }
     
     loop = () => {
-        console.log(this.scene.children.length)
         this.renderer.render(this.scene, this.camera);
         this.reqFrame = requestAnimationFrame(this.loop);
     }
@@ -84,8 +85,6 @@ class WebGL {
     clearScene() {
         cancelAnimationFrame(this.reqFrame);
         this.scene.children = [];
-
-        console.log(this);
     }
 }
 
