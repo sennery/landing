@@ -13,4 +13,15 @@
     background-color: $color-selection;
 }
 
-// $color-contacts-1: rgba(187 - 32 * #{$color-underscore}, 38 + 6 * #{$color-underscore}, 138 + 20 * #{$color-underscore}, 1);
+.page-enter-active,
+.page-leave-active {
+    transition: opacity 0.5s $timing-primary,
+                transform 0.5s $timing-primary;
+}
+.page-enter {
+    //transform: scale(2);
+}
+.page-enter,
+.page-leave-to {
+    opacity: 0;
+}
