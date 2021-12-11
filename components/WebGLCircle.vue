@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import gsap from 'gsap';
 export default {
     props: {
         src: {
@@ -72,7 +73,9 @@ export default {
                 radius: 0.1,
                 textureColor: 0xffffff,
                 position: {
-                    z: 1.5
+                    x: 0,
+                    y: 0,
+                    z: 1.75
                 }
             });
 
