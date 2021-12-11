@@ -1,24 +1,14 @@
 <template>
     <nav>
-        <NuxtLink 
-            to="/" 
-            class="link"
-        >
-            <SLetter 
-                class="home-icon" 
-            />
-        </NuxtLink>        
-        
-        <template
-            v-for="link in links"
-        >
-            <NavigationLink
-                class="menu" 
-                :name="link.name"
-                :link="link.link"
-                :key="link.name"
-            />
-        </template>
+        <SLetter 
+            class="home-icon"
+            @click="showSidenav=!showSidenav"             
+        />  
+          
+        <SideNavigation
+            :enabled="showSidenav"
+            @disable="showSidenav=false"  
+        />
     </nav>
 </template>
 
@@ -28,20 +18,7 @@ import SLetter from '@/assets/svg/letter.svg';
 export default {
     data() {
         return {
-            links: [
-                {
-                    name: 'works',
-                    link: '/works'
-                },
-                {
-                    name: 'about',
-                    link: '/about'
-                },
-                {
-                    name: 'contacts',
-                    link: '/contacts'
-                },
-            ]
+            showSidenav: false,
         }
     },
     components: {
@@ -56,16 +33,16 @@ export default {
 nav {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
 
-    max-width: 100vw;
-    height: 10vh;
+    max-width: 5em;
+    //height: 100vh;
 
     position: absolute;
     top: 0;
     left: 0;
-    padding: 0.75em;
+    padding: 1em;
     z-index: 999;
 
     font-weight: 300;    
@@ -80,8 +57,11 @@ nav {
     }
 
     .home-icon {
-        height: 25%;
+        width: 100%;
+        //min-width: 5em;
         padding: 0.75em;
+        margin-top: 2em;
+        z-index: 3;
 
         transition: 1s $timing-primary;
         transform: rotateZ(-90deg);
