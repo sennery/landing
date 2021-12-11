@@ -43,6 +43,21 @@ class WebGL {
         // events
         events.$on('viewport:resize', this.onWindowResize);
     }
+
+    get viewsize() {
+        let width, height
+        if (this.camera.type === 'PerspectiveCamera') {
+            const distance = this.camera.position.z;
+            const vFov = (this.camera.fov * Math.PI) / 180;
+            height = 2 * Math.tan(vFov / 2) * distance;
+            width = height * this.camera.aspect;
+        } else if (this.camera.type === 'OrthographicCamera') {
+            width = viewport.width;
+            height = viewport.height;
+        }
+    
+        return { width, height };
+    }
     
     loop = () => {
         this.renderer.render(this.scene, this.camera);
@@ -65,22 +80,7 @@ class WebGL {
     appendToDom(container) {
         container.appendChild(this.renderer.domElement);
         requestAnimationFrame(this.loop);
-    }
-    
-    get viewsize() {
-        let width, height
-        if (this.camera.type === 'PerspectiveCamera') {
-            const distance = this.camera.position.z;
-            const vFov = (this.camera.fov * Math.PI) / 180;
-            height = 2 * Math.tan(vFov / 2) * distance;
-            width = height * this.camera.aspect;
-        } else if (this.camera.type === 'OrthographicCamera') {
-            width = viewport.width;
-            height = viewport.height;
-        }
-    
-        return { width, height };
-    }
+    }   
     
     clearScene() {
         cancelAnimationFrame(this.reqFrame);
