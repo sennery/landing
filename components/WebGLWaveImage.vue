@@ -20,11 +20,6 @@ export default {
             required: true
         }
     },
-    data() {
-        return {
-            webgl: null
-        }
-    },
     methods: {
         async initMesh() {
             this.geometry = new THREE.PlaneBufferGeometry(1, 1, 1000, 1000);
@@ -43,7 +38,7 @@ export default {
             this.material.uniforms.uTexture.value = texture;
 
             this.mesh = new THREE.Mesh(this.geometry, this.material);
-            this.webgl.scene.add(this.mesh);
+            this.$webgl.scene.add(this.mesh);
         },        
         loadTexture(src) {
             const loader = new THREE.TextureLoader();
@@ -68,8 +63,8 @@ export default {
         },
         resize() {
             this.mesh.scale.set(
-                this.webgl.viewsize.width * 0.8,
-                this.webgl.viewsize.height * 0.8,
+                this.$webgl.viewsize.width * 0.8,
+                this.$webgl.viewsize.height * 0.8,
                 1
             );
         },
@@ -82,8 +77,8 @@ export default {
                 x: 0,
                 y: 0
             }, {
-                x: this.webgl.viewsize.width * 0.8,
-                y: this.webgl.viewsize.height * 0.8,
+                x: this.$webgl.viewsize.width * 0.8,
+                y: this.$webgl.viewsize.height * 0.8,
                 duration: 5,
                 delay: 0.75,
                 ease: 'power3.out'
@@ -100,29 +95,28 @@ export default {
             ];
         },
         onTick() {
-            const elapsed = this.webgl.clock.getElapsedTime();
+            const elapsed = this.$webgl.clock.getElapsedTime();
             this.updateTime(elapsed);
             this.updateMouse(this.$mouse.lerpedNormalized);
             this.reqFrame = requestAnimationFrame(this.onTick);
         }
     },
     async mounted() {
-        this.webgl = this.$createWebGlElem();
-
         await this.initMesh();
         this.positionate();
         this.initResize();
 
-        this.webgl.appendToDom(this.$refs.container);
-        
+        this.$webgl.appendToDom(this.$refs.container);
         this.$events.$on('viewport:resize', this.onResize);
-
         requestAnimationFrame(this.onTick);
     },
+    async created() {
+        
+    },
     beforeDestroy() {
+        cancelAnimationFrame(this.reqFrame);        
+        this.$webgl.clearScene();
         this.$events.$off('viewport:resize', this.onResize);
-        cancelAnimationFrame(this.reqFrame);
-        this.webgl.destroy();
     }
 }
 </script>

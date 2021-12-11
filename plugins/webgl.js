@@ -1,6 +1,5 @@
-import Vue from 'vue';
-import events from './events';
-import viewport from './viewport';
+import { events } from './events';
+import { viewport } from './viewport';
 
 class WebGL {
     constructor() {
@@ -41,13 +40,11 @@ class WebGL {
     
         // events
         events.$on('viewport:resize', this.onWindowResize);
-    
-        requestAnimationFrame(this.loop);
     }
     
     loop = () => {
+        console.log(this.scene.children.length)
         this.renderer.render(this.scene, this.camera);
-        this.renderer.renderLists.dispose();
         this.reqFrame = requestAnimationFrame(this.loop);
     }
 
@@ -66,6 +63,7 @@ class WebGL {
     
     appendToDom(container) {
         container.appendChild(this.renderer.domElement);
+        requestAnimationFrame(this.loop);
     }
     
     get viewsize() {
@@ -83,13 +81,16 @@ class WebGL {
         return { width, height };
     }
     
-    destroy() {
-        events.$off('viewport:resize', this.onWindowResize);
+    clearScene() {
         cancelAnimationFrame(this.reqFrame);
+        this.scene.children = [];
+
+        console.log(this);
     }
 }
-    
-Vue.prototype.$createWebGlElem = (opts) => {
-    return new WebGL(opts);   
+
+export default (context, inject) => {
+    inject('webgl', new WebGL());
 }
+
     

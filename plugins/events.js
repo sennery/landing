@@ -2,6 +2,8 @@ import Vue from 'vue';
 
 const events = new Vue();
 
-Vue.prototype.$events = events;
+export { events };
 
-export default events;
+export default (context, inject) => {
+    inject('events', events);
+};

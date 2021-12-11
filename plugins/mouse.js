@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import events from './events';
-import viewport from './viewport';
 import gsap from 'gsap';
+import { events } from './events';
+import { viewport } from './viewport';
 
 const mouse = new Vue({
     data() {
@@ -86,6 +86,8 @@ const mouse = new Vue({
     }
 });
 
-Vue.prototype.$mouse = mouse;
+export { mouse };
 
-export default mouse;
+export default (context, inject) => {
+    inject('mouse', mouse);
+};
