@@ -12,7 +12,7 @@
                     :key="link.name"
                     :delay="0.75 + 0.1 * i"  
                 >                    
-                    <NavigationLink                    
+                    <NavigationRouteLink                    
                         class="menu-item" 
                         :name="link.name"
                         :link="link.link"

@@ -36,7 +36,7 @@
                     :duration="0.75"
                     :delay="description.length * 0.025"
                 >
-                    <NavigationLink
+                    <NavigationRouteLink
                         :name="'Contact with me!'"
                         :link="'/contacts'"
                     />   
