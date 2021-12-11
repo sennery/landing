@@ -5,9 +5,7 @@
             <div 
                 class="subtitle"
             >
-                <span>
-                    web developer
-                </span>
+                web developer
             </div>
             
             <WebGLCircle 

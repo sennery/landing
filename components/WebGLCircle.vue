@@ -15,11 +15,6 @@ export default {
             required: true
         }
     },
-    data() {
-        return {
-            webgl: null
-        }
-    },
     methods: {
         initLight() {
             this.light1 = this.createSpotLight({
@@ -43,7 +38,7 @@ export default {
                 castShadow: true
             });
             
-            this.webgl.scene.add(this.light1, this.light2);
+            this.$webgl.scene.add(this.light1, this.light2);
         },
         createSpotLight({color, intensity, position, castShadow}) {
             const light = new THREE.SpotLight(color, intensity);
@@ -80,7 +75,7 @@ export default {
             });
 
             this.meshGroup.add(this.mesh1, this.mesh2);
-            this.webgl.scene.add(this.meshGroup);
+            this.$webgl.scene.add(this.meshGroup);
         },
         createSphereMesh({radius, textureColor, position = { x:0, y:0, z:0 }}) {
             const geometry = new THREE.SphereGeometry(radius, 100, 100);
@@ -115,18 +110,16 @@ export default {
         }
     },
     mounted() {
-        this.webgl = this.$createWebGlElem();
-        
-        this.initLight(); 
+        this.initLight();
         this.initMesh();
 
-        this.webgl.appendToDom(this.$refs.container);
+        this.$webgl.appendToDom(this.$refs.container);
 
         requestAnimationFrame(this.onTick);
     },
     beforeDestroy() {
         cancelAnimationFrame(this.reqFrame);
-        this.webgl.destroy();
+        this.$webgl.clearScene();
     }
 }
 </script>

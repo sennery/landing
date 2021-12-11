@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import events from './events';
+import { events } from './events';
 
 const viewport = new Vue({
     data() {
@@ -33,8 +33,10 @@ const viewport = new Vue({
     beforeDestroy() {
         removeEventListener('resize', this.onWindowResize);
     }
-  });
+});
   
-  Vue.prototype.$viewport = viewport;
-  
-  export default viewport;
+export { viewport };
+
+export default (context, inject) => {
+    inject('viewport', viewport);
+};
