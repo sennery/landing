@@ -54,10 +54,9 @@ export default {
 main {
     display: flex;
     min-height: 100vh;
-    font-size: 15em;
     
     .title {
-        font-size: 10rem;
+        font-size: 10em;
         margin-bottom: 0.5em;
     }
 
@@ -66,7 +65,7 @@ main {
         flex-direction: column;
         max-width: 35vw;
         padding-left: 2.5em;    
-        font-size: 2.5rem;
+        font-size: 2.5em;
         font-weight: 400;
         line-height: initial;        
         color: $color-text-secondary;

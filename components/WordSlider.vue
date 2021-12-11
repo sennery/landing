@@ -27,8 +27,7 @@ export default {
     methods: {
         onTick() {            
             const mouse = this.$mouse.lerpedNormalized.x;
-            this.tween?.kill();
-            this.tween = gsap.to('.slider', {
+            gsap.to('.slider', {
                 duration: this.duration / 5,
                 skewX: (1 - mouse) / 2 * MAX_SKEW,
             });
@@ -39,7 +38,6 @@ export default {
         requestAnimationFrame(this.onTick);
     },
     beforeDestroy() {
-        gsap.killTweensOf('.slider-elem');
         gsap.killTweensOf('.slider');
         cancelAnimationFrame(this.reqFrame);
     }
