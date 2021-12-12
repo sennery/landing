@@ -3,7 +3,7 @@
         name="text-raising"
         appear
     >
-        <div
+        <span
             class="text-raising-wrapper"
             :style="{
                 '--text-raising-duration': duration + 's',
@@ -12,7 +12,7 @@
             }"
         >
             <slot></slot>
-        </div>        
+        </span>        
     </transition>
 </template>
 

@@ -30,6 +30,7 @@ export default {
         { src: '~/plugins/viewport.js', mode: 'client' },
         { src: '~/plugins/mouse.js', mode: 'client' },
         { src: '~/plugins/webgl.js', mode: 'client' },
+        { src: '~/plugins/scroll.js', mode: 'client' },
       ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
@@ -65,5 +66,9 @@ export default {
                 ]
             });
           },
+    },
+
+    transition: {
+        mode: ''
     }
 }

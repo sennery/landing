@@ -12,9 +12,9 @@
                         class="title"
                     >
                         <TextRaiseTransition>
-                            <div>
+                            <h1>
                                 contacts
-                            </div>
+                            </h1>
                         </TextRaiseTransition> 
                     </div>
 
@@ -69,6 +69,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/css/theme.scss";
+
+main {
+    width: 100vw;
+    height: 100vh;
+}
 
 .side {
     display: flex;

@@ -15,7 +15,7 @@
                     <NavigationRouteLink                    
                         class="menu-item" 
                         :name="link.name"
-                        :link="link.link"
+                        :link="link.path"
                         @click.native="$emit('disable')"
                     />
                 </TextRaiseTransition>
@@ -30,29 +30,10 @@ export default {
         enabled: {
             type: Boolean,
             required: true
-        }
-    },
-    data() {
-        return {
-            text: true,
-            links: [
-                {
-                    name: 'sennery',
-                    link: '/'
-                },
-                {
-                    name: 'about',
-                    link: '/about'
-                },
-                {
-                    name: 'works',
-                    link: '/works'
-                },
-                {
-                    name: 'contacts',
-                    link: '/contacts'
-                },
-            ]
+        },
+        links: {
+            type: Array,
+            required: true
         }
     }
 }

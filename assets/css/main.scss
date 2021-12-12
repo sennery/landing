@@ -15,13 +15,18 @@
 
 .page-enter-active,
 .page-leave-active {
-    transition: opacity 0.5s $timing-primary,
-                transform 0.5s $timing-primary;
+    transition: opacity 0.75s $timing-primary,
+                transform 0.75s $timing-primary;
 }
 .page-enter {
-    //transform: scale(2);
+    opacity: 0;
 }
-.page-enter,
+
+.page-enter-to {
+    transform: translateY(-100vh);
+}
+
 .page-leave-to {
+    transform: translateY(-100vh);
     opacity: 0;
 }

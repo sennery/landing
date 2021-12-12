@@ -10,7 +10,7 @@
             <span class="sennery">SENNERY</span>
         </div>
         <div class="part">
-            <span class="sennery">SENNERY</span>
+            <h1 class="sennery">SENNERY</h1>
         </div>
     </div>
 </template>

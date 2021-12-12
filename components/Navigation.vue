@@ -3,10 +3,23 @@
         <SLetter 
             class="home-icon"
             @click="showSidenav=!showSidenav"             
-        />  
+        />
+
+        <div
+            class="scroll-title"
+        >
+            <span>click</span>
+            <span>or</span>
+            <span>scroll</span>
+        </div>
+
+        <ScrollBar
+            :link="nextLink"
+        />
           
         <SideNavigation
             :enabled="showSidenav"
+            :links="links"
             @disable="showSidenav=false"  
         />
     </nav>
@@ -19,6 +32,32 @@ export default {
     data() {
         return {
             showSidenav: false,
+
+            links: [
+                {
+                    name: 'sennery',
+                    path: '/'
+                },
+                {
+                    name: 'works',
+                    path: '/works'
+                },
+                {
+                    name: 'about',
+                    path: '/about'
+                },
+                {
+                    name: 'contacts',
+                    path: '/contacts'
+                },
+            ]
+        }
+    },
+    computed: {
+        nextLink() {
+            const currentLink = this.links.findIndex( it => it.path == this.$nuxt.$route.path);
+
+             return this.links[currentLink + 1] ?? this.links[0];
         }
     },
     components: {
@@ -32,9 +71,10 @@ export default {
 
 nav {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    box-sizing: border-box;
 
     max-width: 5em;
     //height: 100vh;
@@ -73,8 +113,15 @@ nav {
         }
     }
 
-    .menu {
-        margin-left: 1em;
+    .scroll-title {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 0;
+        color: $color-text-secondary;
+
+        & > * {
+            margin: auto;
+        }
     }
 }
 </style>

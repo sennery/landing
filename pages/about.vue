@@ -7,13 +7,13 @@
                 <TextRaiseTransition
                     :duration="0.75"
                 >
-                    <div>
+                    <h1>
                         about
-                    </div>
+                    </h1>
                 </TextRaiseTransition>
             </div>
             
-            <div 
+            <p 
                 class="info"
             >
                 <TextRaiseTransition
@@ -23,11 +23,13 @@
                     :duration="0.75"
                     :mode="'inline-block'"
                 >
-                    <span>
+                    <span
+                        class="word"
+                    >
                         {{ word + ' ' }}
                     </span>
                 </TextRaiseTransition>                           
-            </div>
+            </p>
 
             <div                
                 class="hello"
@@ -99,7 +101,7 @@ main {
         line-height: normal;        
         color: $color-text-secondary;
 
-        span {
+        .word {
             display: inline-block;
             padding-right: 0.25em;
         }

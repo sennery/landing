@@ -8,6 +8,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+div {
+    width: 100vw;
+    height: 100vh;
+}
 </style>
