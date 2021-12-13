@@ -38,10 +38,10 @@ export default {
                     name: 'sennery',
                     path: '/'
                 },
-                {
-                    name: 'works',
-                    path: '/works'
-                },
+                // {
+                //     name: 'works',
+                //     path: '/works'
+                // },
                 {
                     name: 'about',
                     path: '/about'

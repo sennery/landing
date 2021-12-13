@@ -44,7 +44,7 @@ export default {
 
 .menu-item {
     margin-right: 0.5em;
-    font-size: 10em;
+    font-size: 7.5em;
 }
 
 .sidenav,
@@ -94,5 +94,29 @@ export default {
         content: '';
         z-index: 2;
     }  
+}
+
+@media (max-width: $breakpoint-laptop) {
+    .menu-item {
+        font-size: 7em;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .menu-item {
+        font-size: 5em;
+    }
+}
+
+@media (max-height: $breakpoint-tablet) {
+    .menu-item {
+        font-size: 3.5em;
+    }
+}
+
+@media (max-height: $breakpoint-mobile) {
+    .menu-item {
+        font-size: 2.5em;
+    }
 }
 </style>

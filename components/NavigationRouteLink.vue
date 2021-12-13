@@ -35,8 +35,10 @@ export default {
     overflow: hidden;
     min-width: 5em;
     
-    $transition-first: transform $animation-duration $timing-primary;
-    $transition-second: transform $animation-duration $animation-duration $timing-primary;     
+    $transition-first: transform $animation-duration $timing-text;
+    $transition-second: transform $animation-duration $animation-duration $timing-text;
+    
+    $stroke-width: calc(1px + 0.025em);
 
     &::after {        
         content: "";
@@ -44,7 +46,7 @@ export default {
         bottom: 0;
         left: -100%;
         width: 100%;
-        height: 0.05em;
+        height: $stroke-width;
         background: $color-underscore;
         transition: $transition-second;
     }
@@ -60,7 +62,7 @@ export default {
         bottom: 0;
         left: calc(100% + 1px);
         width: 0.5em;
-        height: 0.05em;
+        height: $stroke-width;
         background: #3c3cde;
         transition: $transition-first;
         transform-origin: left;
@@ -79,6 +81,12 @@ export default {
 
     &:hover .link {
         color: $color-text-active;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .link-container {
+        min-width: auto;
     }
 }
 </style>

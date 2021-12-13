@@ -42,4 +42,11 @@ main {
         z-index: 1;
     }
 }
+
+@media (max-width: $breakpoint-mobile) {
+    main .subtitle {
+        margin-top: 0.5em;
+        justify-content: flex-start;
+    }
+}
 </style>

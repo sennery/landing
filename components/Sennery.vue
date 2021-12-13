@@ -56,6 +56,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/css/theme.scss";
+
 .wrapper {
     position: relative;
     height: 1em;
@@ -78,6 +80,22 @@ export default {
 
     .part:nth-child(1) {
         color: #0ff;
+    }
+}
+
+@media (max-width: $breakpoint-laptop) {
+    .wrapper {
+        font-size: 10em;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .wrapper {
+        font-size: 4em;
+        
+        .part {
+            justify-content: flex-start;
+        }
     }
 }
 </style>

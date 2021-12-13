@@ -14,4 +14,16 @@
     padding: 0 $spacing * 10;
     box-sizing: border-box;    
 }
+
+@media (max-width: $breakpoint-laptop) {
+    .container {
+        padding: 0 $spacing * 7;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .container {
+        padding: 0 0 0 5em;
+    }
+}
 </style>

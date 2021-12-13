@@ -1,7 +1,8 @@
 <template>
     <main>
         <Container>
-            <WebGLWaveImage 
+            <WebGLWaveImage
+                class="wave-back" 
                 src="images/wave-image-texture.jpg"
             />
             <div 
@@ -101,6 +102,49 @@ main {
         width: 50%;
         font-size: 2.5em;
         margin: 0.5em 0 0 1em;
+    }
+}
+
+@media (max-width: $breakpoint-laptop) {
+    .side {
+        .title {
+            font-size: 5em;
+            transform: translate(0, -20%);
+        }
+
+        .contact {
+            width: auto;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .side {
+        left: 0;
+        padding-left: 5em;
+
+        .title {
+            font-size: 5em;
+            transform: translate(0, -20%);
+        }
+
+        .contact {
+            width: auto;
+        }
+    }
+}
+
+@media (max-height: $breakpoint-mobile) {
+    .side {
+        .title {
+            font-size: 4em;
+            transform: translate(0, -20%);
+        }
+
+        .contact {
+            font-size: 1.5em;
+            width: auto;
+        }
     }
 }
 </style>

@@ -85,6 +85,9 @@ export default {
 main {
     display: flex;
     min-height: 100vh;
+
+    position: relative;
+    overflow: hidden;
     
     .title {
         font-size: 10em;
@@ -120,6 +123,54 @@ main {
         height: 100vh;
         width: 30vw;
         background: $color-underscore;
+    }
+}
+
+@media (max-width: $breakpoint-laptop) {
+    main {        
+        .title {
+            font-size: 7em;
+        }
+
+        .info, .hello {
+            font-size: 2em;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-tablet) {
+    main {        
+        .title {
+            font-size: 4em;
+        }
+
+        .info, .hello {
+            font-size: 1.75em;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    main {
+        .title {
+            font-size: 2.5em;
+        }
+
+        .info {
+            max-width: 65vw;
+        }
+
+        .info, .hello {
+            padding-left: 0;
+            margin-left: 0;
+            font-size: 1.5em;
+        }
+    }
+}
+
+@media (max-height: $breakpoint-mobile) {
+    main {
+        font-size: 0.5em;
     }
 }
 </style>

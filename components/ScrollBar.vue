@@ -43,10 +43,10 @@ export default {
 
         updateScroll(scroll) {
             gsap.set('.scroll-bar', {
-                y: -this.$viewport.height * (1 - scroll) * 0.65
+                y: -this.$viewport.height * (1 - scroll) * 0.45
             });
             gsap.set('.scroll-to', {
-                y: -this.$viewport.height * (1 - scroll) * 0.55,
+                y: -this.$viewport.height * (1 - scroll) * 0.45,
                 opacity: scroll
             });
         },
@@ -67,7 +67,7 @@ export default {
 
 .wrapper {
     width: 100%;
-    height: 70vh;
+    height: 50vh;
 
     .container {
         width: 100%;
