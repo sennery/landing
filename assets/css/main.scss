@@ -22,14 +22,10 @@
                 transform 0.75s $timing-primary;
 }
 .page-enter {
-    opacity: 0;
-}
-
-.page-enter-to {
-    transform: translateY(-100vh);
+    opacity: 0;    
+    transform: translateY(100vh);
 }
 
 .page-leave-to {
-    transform: translateY(-100vh);
     opacity: 0;
 }

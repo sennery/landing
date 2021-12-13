@@ -4,8 +4,8 @@ import { events } from './events';
 const viewport = new Vue({
     data() {
         return {
-            width: window.innerWidth,
-            height: window.innerHeight
+            width: document.documentElement.clientWidth || document.body.clientWidth,
+            height: Math.min(window.innerHeight, document.documentElement.clientHeight),
         }
     },
     computed: {
@@ -15,8 +15,8 @@ const viewport = new Vue({
     },
     methods: {
         onWindowResize() {
-            this.width = window.innerWidth;
-            this.height = window.innerHeight;
+            this.width = document.documentElement.clientWidth || document.body.clientWidth;
+            this.height = Math.min(window.innerHeight, document.documentElement.clientHeight);
 
             const vh = this.height * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);

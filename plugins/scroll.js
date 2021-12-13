@@ -6,6 +6,9 @@ import { viewport } from './viewport';
 const scroll = new Vue({
     data() {
         return {
+            baseScroll: 15,
+            cooldown: false,
+
             scroll: 0,
             lerpedScroll: 0,
 
@@ -35,7 +38,8 @@ const scroll = new Vue({
             requestAnimationFrame(this.loop);
         },
         onBreakpoint() {
-            events.$emit('scroll:breackpoint');
+            events.$emit('scroll:breackpoint');            
+            this.cooldown = true;
         },
         onComplete() {
             if (this.breakpoint <= this.scroll) {
@@ -44,15 +48,25 @@ const scroll = new Vue({
             this.scroll = 0;
             this.tween = gsap.to(this, {
                 duration: 1,
+                delay: this.cooldown ? 0.75 : 0,
                 lerpedScroll: this.scroll,
-                ease: 'expo.out'
+                ease: 'expo.out',
+                onComplete: () => { this.cooldown = false }
             });
         },
-        onScroll() {
-            if (this.breakpoint <= this.scroll) {
+        onScroll(e) {
+            if (this.breakpoint <= this.scroll || this.cooldown) {
                 return;
             }
-            this.scroll += 15;
+
+            if (e.changedTouches && e.changedTouches.length) {
+                const changedToucheY = e.changedTouches[0].pageY;
+                this.scroll += changedToucheY < this.baseScroll 
+                    ? changedToucheY 
+                    : this.baseScroll;
+            } else {                
+                this.scroll += this.baseScroll;
+            }               
 
             events.$emit('scroll:scroll');
 

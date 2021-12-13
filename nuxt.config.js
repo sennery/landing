@@ -71,9 +71,5 @@ export default {
                 ]
             });
           },
-    },
-
-    pageTransition: {
-        mode: ''
     }
 }
