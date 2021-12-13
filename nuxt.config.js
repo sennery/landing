@@ -71,5 +71,9 @@ export default {
                 ]
             });
           },
+    },
+
+    pageTransition: {
+        mode: ''
     }
 }

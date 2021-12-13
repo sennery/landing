@@ -7,6 +7,8 @@
 
 <style lang="scss" scoped>
 .layout {
+    position: relative;
     overflow: hidden;
+    max-height: 100vh;
 }
 </style>

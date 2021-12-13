@@ -48,7 +48,6 @@ const scroll = new Vue({
             this.scroll = 0;
             this.tween = gsap.to(this, {
                 duration: 1,
-                delay: this.cooldown ? 0.75 : 0,
                 lerpedScroll: this.scroll,
                 ease: 'expo.out',
                 onComplete: () => { this.cooldown = false }
