@@ -1,6 +1,11 @@
 import webpack from 'webpack';
 
 export default {
+    target: process.env.GH_PAGES ? 'static' : 'server',
+
+    router: {
+        base: process.env.GH_PAGES ? '/landing/' : ''
+    },
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
         title: 'landing',
@@ -14,7 +19,7 @@ export default {
             { name: 'format-detection', content: 'telephone=no' }
         ],
         link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+            { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
         ]
     },
 
@@ -68,7 +73,7 @@ export default {
           },
     },
 
-    transition: {
+    pageTransition: {
         mode: ''
     }
 }

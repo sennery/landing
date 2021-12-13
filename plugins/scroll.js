@@ -52,7 +52,7 @@ const scroll = new Vue({
             if (this.breakpoint <= this.scroll) {
                 return;
             }
-            this.scroll += 10;
+            this.scroll += 15;
 
             events.$emit('scroll:scroll');
 
