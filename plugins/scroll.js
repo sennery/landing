@@ -6,24 +6,34 @@ import { viewport } from './viewport';
 const scroll = new Vue({
     data() {
         return {
-            baseScroll: 15,
+            baseScroll: 50,
             cooldown: false,
 
             scroll: 0,
             lerpedScroll: 0,
 
-            breakpoint: 100
+            lastTouch: 0,
+
+            breakpoint: {
+                low: -100,
+                hight: 100
+            }
         }
     },
     computed: {
         normalized() {
-            return this.scroll / this.breakpoint;
+            return this.scroll / this.breakpoint.hight;
         },
         lerpedNormalized() {
-            return this.lerpedScroll / this.breakpoint;
+            return this.lerpedScroll / this.breakpoint.hight;
         }
     },
-    created() {    
+    created() {
+        this.clamper = gsap.utils.clamp(
+            -this.baseScroll,
+            this.baseScroll
+        );    
+        
         requestAnimationFrame(this.loop);
 
         addEventListener('touchmove', this.onScroll, false);
@@ -35,15 +45,18 @@ const scroll = new Vue({
     },
     methods: {
         loop() {
+            console.log(this.lerpedNormalized)
             requestAnimationFrame(this.loop);
         },
-        onBreakpoint() {
-            events.$emit('scroll:breackpoint');            
+        onBreakpoint(isNext) {
+            events.$emit('scroll:breackpoint', isNext);            
             this.cooldown = true;
         },
         onComplete() {
-            if (this.breakpoint <= this.scroll) {
-                this.onBreakpoint();
+            if (this.breakpoint.hight <= this.scroll) {
+                this.onBreakpoint(true);
+            } else if (this.breakpoint.low >= this.scroll) {
+                this.onBreakpoint(false);
             }
             this.scroll = 0;
             this.tween = gsap.to(this, {
@@ -54,17 +67,21 @@ const scroll = new Vue({
             });
         },
         onScroll(e) {
-            if (this.breakpoint <= this.scroll || this.cooldown) {
+            console.log(e)
+            if (this.breakpoint.hight <= this.scroll
+                || this.breakpoint.low >= this.scroll
+                || this.cooldown) {
                 return;
             }
 
-            if (e.changedTouches && e.changedTouches.length) {
-                const changedToucheY = e.changedTouches[0].pageY;
-                this.scroll += changedToucheY < this.baseScroll 
-                    ? changedToucheY 
-                    : this.baseScroll;
+            const touches = e.changedTouches;
+            if (touches && touches.length) {
+                const changedToucheY = touches[0].pageY - this.lastTouch;
+                this.lastTouch = touches[0].pageY;
+    
+                this.scroll -= this.clamper(changedToucheY);
             } else {                
-                this.scroll += this.baseScroll;
+                this.scroll -= this.baseScroll * Math.sign(e.wheelDeltaY);
             }               
 
             events.$emit('scroll:scroll');
