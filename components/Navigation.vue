@@ -1,21 +1,42 @@
 <template>
     <nav>
+        <Angle
+            class="angle top"
+        />
+
+        <span
+            class="prev-link"
+        >
+            {{ this.prevLink.name }}
+        </span>
+        
+
         <SLetter 
             class="home-icon"
             @click="showSidenav=!showSidenav"             
         />
 
-        <div
+        <!-- <div
             class="scroll-title"
         >
             <span>click</span>
             <span>or</span>
             <span>scroll</span>
-        </div>
+        </div> -->
 
-        <ScrollBar
-            :link="nextLink"
+        <span
+            class="next-link"
+        >
+            {{ this.nextLink.name }}
+        </span>
+
+        <Angle
+            class="angle bottom"
         />
+
+        <!-- <ScrollBar
+            :link="nextLink"
+        /> -->
           
         <SideNavigation
             :enabled="showSidenav"
@@ -27,8 +48,15 @@
 
 <script>
 import SLetter from '@/assets/svg/letter.svg';
+import Angle from '@/assets/svg/angle-up.svg';
 
-export default {
+import gsap from 'gsap';
+
+export default {    
+    components: {
+        SLetter,
+        Angle
+    },
     data() {
         return {
             showSidenav: false,
@@ -54,15 +82,47 @@ export default {
         }
     },
     computed: {
+        currentLink() {
+            return this.links.findIndex( it => it.path == this.$nuxt.$route.path);
+        },
         nextLink() {
-            const currentLink = this.links.findIndex( it => it.path == this.$nuxt.$route.path);
-
-             return this.links[currentLink + 1] ?? this.links[0];
+            return this.links[this.currentLink + 1] ?? this.links[0];
+        },
+        prevLink() {
+            return this.links[this.currentLink - 1] ?? this.links[this.links.length-1];
         }
     },
-    components: {
-        SLetter
-    }
+    methods: {
+        onBreakpoint(isNext) {
+            this.$router.push({
+                path: isNext 
+                    ? this.nextLink.path
+                    : this.prevLink.path
+            });
+        },
+
+        updateScroll(scroll) {
+            gsap.set('nav', {
+                y: this.$viewport.height * scroll * 0.3
+            });
+            gsap.set(['.angle.top', '.prev-link'], {
+                //y: -this.$viewport.height * scroll * 0.45,
+                opacity: 1 - scroll
+            });
+            gsap.set(['.angle.bottom', '.next-link'], {
+                //y: -this.$viewport.height * scroll * 0.45,
+                opacity: 1 + scroll
+            });
+        },
+        loop() {
+            this.updateScroll(this.$scroll.lerpedNormalized);
+            this.reqFrame = requestAnimationFrame(this.loop);
+        }
+    },
+    mounted() {
+        this.$events.$on('scroll:breackpoint', this.onBreakpoint);
+        requestAnimationFrame(this.loop);
+    },
 }
 </script>
 
@@ -77,7 +137,7 @@ nav {
     box-sizing: border-box;
 
     max-width: 5em;
-    //height: 100vh;
+    height: 100vh;
 
     position: absolute;
     top: 0;
@@ -100,7 +160,7 @@ nav {
         width: 100%;
         //min-width: 5em;
         padding: 0.75em;
-        margin-top: 2em;
+        margin: 1em 0;
         z-index: 3;
 
         transition: 1s $timing-primary;
@@ -121,6 +181,24 @@ nav {
 
         & > * {
             margin: auto;
+        }
+    }
+
+    .angle {
+        fill: $color-text-secondary;
+
+        &.bottom {
+            transform: rotateZ(180deg);
+        }
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    nav {
+        //justify-content: flex-start;
+    
+        .next-link, .prev-link, .angle {
+            display: none;
         }
     }
 }
