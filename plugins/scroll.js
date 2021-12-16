@@ -32,9 +32,7 @@ const scroll = new Vue({
         this.clamper = gsap.utils.clamp(
             -this.baseScroll,
             this.baseScroll
-        );    
-        
-        requestAnimationFrame(this.loop);
+        );
 
         addEventListener('touchmove', this.onScroll, false);
         addEventListener('wheel', this.onScroll, false);
@@ -44,10 +42,6 @@ const scroll = new Vue({
         removeEventListener('wheel', this.onScroll);
     },
     methods: {
-        loop() {
-            console.log(this.lerpedNormalized)
-            requestAnimationFrame(this.loop);
-        },
         onBreakpoint(isNext) {
             events.$emit('scroll:breackpoint', isNext);            
             this.cooldown = true;
