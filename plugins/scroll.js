@@ -7,7 +7,6 @@ const scroll = new Vue({
     data() {
         return {
             baseScroll: 50,
-            cooldown: false,
 
             scroll: 0,
             lerpedScroll: 0,
@@ -43,8 +42,7 @@ const scroll = new Vue({
     },
     methods: {
         onBreakpoint(isNext) {
-            events.$emit('scroll:breackpoint', isNext);            
-            this.cooldown = true;
+            events.$emit('scroll:breackpoint', isNext);
         },
         onComplete() {
             if (this.breakpoint.hight <= this.scroll) {
@@ -56,15 +54,12 @@ const scroll = new Vue({
             this.tween = gsap.to(this, {
                 duration: 1,
                 lerpedScroll: this.scroll,
-                ease: 'expo.out',
-                onComplete: () => { this.cooldown = false }
+                ease: 'expo.out'
             });
         },
         onScroll(e) {
-            console.log(e)
             if (this.breakpoint.hight <= this.scroll
-                || this.breakpoint.low >= this.scroll
-                || this.cooldown) {
+                || this.breakpoint.low >= this.scroll) {
                 return;
             }
 

@@ -20,7 +20,6 @@
                     v-for="(word, i) in description"
                     :key="i"
                     :delay="i * 0.025"
-                    :duration="0.75"
                     :mode="'inline-block'"
                 >
                     <span
@@ -35,7 +34,6 @@
                 class="hello"
             >
                 <TextRaiseTransition
-                    :duration="0.75"
                     :delay="description.length * 0.025"
                 >
                     <NavigationRouteLink
@@ -71,9 +69,11 @@ export default {
             return now.getFullYear() - born.getFullYear() + corrective;
         },
         description() {
-            const text = `Hi, whoever you are! I'm a Web developer based in Perm, Russia. My name is Arsenii Likhachev and I'm ${ this.myAge } years old. Making stuff simple and minimalistick. Work in Nowhere.`;
+            const text = `Hi, whoever you are! I'm a Web developer based in Perm, Russia.
+                My name is Arsenii Likhachev and I'm ${ this.myAge } years old.
+                Making stuff simple and minimalistick. Work in Nowhere.`;
 
-            return text.split(' ');
+            return text.split(' ').filter(it => it);
         }
     }
 }
