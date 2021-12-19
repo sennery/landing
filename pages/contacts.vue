@@ -22,7 +22,7 @@
                     <TextRaiseTransition
                         v-for="(contact, i) in contacts"
                         :key="contact.name"
-                        :delay="i * 0.15"
+                        :delay="i * 0.1"
                     >
                         <ContactLink
                             class="contact"
