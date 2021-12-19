@@ -16,17 +16,18 @@
     overflow-x: hidden;
 }
 
-.page-enter-active,
-.page-leave-active {
+.page-enter-active {
     transition: opacity 0.75s $timing-primary,
                 transform 0.75s $timing-primary;
 }
 .page-enter,
 .page-leave-to {
+    
+    transform: translateY(100vh);
     opacity: 0;  
 }
 
 .page-enter-to,
 .page-leave-to {
-    transform: translateY(-100vh);
+    //transform: translateY(-100vh);
 }
