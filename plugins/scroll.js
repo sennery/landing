@@ -53,6 +53,7 @@ const scroll = new Vue({
             this.scroll = 0;
             this.tween = gsap.to(this, {
                 duration: 1,
+                delay: 0.1,
                 lerpedScroll: this.scroll,
                 ease: 'expo.out'
             });

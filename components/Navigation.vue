@@ -1,42 +1,34 @@
 <template>
     <nav>
-        <Angle
-            class="angle top"
-        />
-
-        <span
-            class="prev-link"
+        <div
+            class="bar"
         >
-            {{ this.prevLink.name }}
-        </span>
-        
+            <Angle
+                class="angle top"
+            />
 
-        <SLetter 
-            class="home-icon"
-            @click="showSidenav=!showSidenav"             
-        />
+            <span
+                class="prev-link"
+            >
+                {{ this.prevLink.name }}
+            </span>
+            
 
-        <!-- <div
-            class="scroll-title"
-        >
-            <span>click</span>
-            <span>or</span>
-            <span>scroll</span>
-        </div> -->
+            <SLetter 
+                class="home-icon"
+                @click="showSidenav=!showSidenav"             
+            />
 
-        <span
-            class="next-link"
-        >
-            {{ this.nextLink.name }}
-        </span>
+            <span
+                class="next-link"
+            >
+                {{ this.nextLink.name }}
+            </span>
 
-        <Angle
-            class="angle bottom"
-        />
-
-        <!-- <ScrollBar
-            :link="nextLink"
-        /> -->
+            <Angle
+                class="angle bottom"
+            />
+        </div>        
           
         <SideNavigation
             :enabled="showSidenav"
@@ -102,16 +94,16 @@ export default {
         },
 
         updateScroll(scroll) {
-            gsap.set('nav', {
+            gsap.set('.home-icon', {
                 y: this.$viewport.height * scroll * 0.3
             });
             gsap.set(['.angle.top', '.prev-link'], {
-                //y: -this.$viewport.height * scroll * 0.45,
-                opacity: 1 - scroll
+                y: this.$viewport.height * scroll * 0.35,
+                opacity: 1 - scroll * 3
             });
             gsap.set(['.angle.bottom', '.next-link'], {
-                //y: -this.$viewport.height * scroll * 0.45,
-                opacity: 1 + scroll
+                y: this.$viewport.height * scroll * 0.35,
+                opacity: 1 + scroll * 3
             });
         },
         loop() {
@@ -145,7 +137,7 @@ nav {
     padding: 1em;
     z-index: 999;
 
-    font-weight: 300;    
+    font-weight: 300;
 
     .link {
         display: flex;
@@ -173,15 +165,13 @@ nav {
         }
     }
 
-    .scroll-title {
+    .bar {
         display: flex;
         flex-direction: column;
-        margin: 1em 0;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
         color: $color-text-secondary;
-
-        & > * {
-            margin: auto;
-        }
     }
 
     .angle {
