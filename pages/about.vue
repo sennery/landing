@@ -71,7 +71,7 @@ export default {
         description() {
             const text = `Hi, whoever you are! I'm a Web developer based in Perm, Russia.
                 My name is Arsenii Likhachev and I'm ${ this.myAge } years old.
-                Making stuff simple and minimalistick. Work in Nowhere.`;
+                Making stuff simple and minimalistic. Work in Nowhere.`;
 
             return text.split(' ').filter(it => it);
         }
