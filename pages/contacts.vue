@@ -45,7 +45,7 @@ export default {
                 {
                     name: 'GitHub',
                     color: '#bb268a',
-                    link: ''
+                    link: 'https://github.com/sennery'
                 },
                 {
                     name: 'LinkedIn',
@@ -55,12 +55,12 @@ export default {
                 {
                     name: 'Telegram',
                     color: '#7132bb',
-                    link: ''
+                    link: 'https://t.me/sennery'
                 },
                 {
                     name: 'Email',
                     color: '#5a38cb',
-                    link: ''
+                    link: 'mailto:mac452ares@gmail.com'
                 }
             ]
         }

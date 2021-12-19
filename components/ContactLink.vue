@@ -1,5 +1,6 @@
 <template>
-    <a 
+    <a
+        target="_blank" 
         :href="link"
         :style="{'--background-color': color }"
     >
