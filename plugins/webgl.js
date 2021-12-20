@@ -83,8 +83,8 @@ class WebGL {
     }   
     
     clearScene() {
+        this.scene.children = [];        
         cancelAnimationFrame(this.reqFrame);
-        this.scene.children = [];
     }
 }
 
