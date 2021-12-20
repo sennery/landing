@@ -86,7 +86,10 @@ export default {
                 y: this.$webgl.viewsize.height * 0.8,
                 duration: 5,
                 delay: 0.75,
-                ease: 'power3.out'
+                ease: 'power3.out',
+                onComplete: () => {                     
+                    this.$events.$on('viewport:resize', this.onResize);
+                }
             });
         },
 
@@ -112,7 +115,6 @@ export default {
         this.initResize();
 
         this.$webgl.appendToDom(this.$refs.container);
-        this.$events.$on('viewport:resize', this.onResize);
         requestAnimationFrame(this.onTick);
     },
     async created() {
@@ -122,6 +124,7 @@ export default {
         cancelAnimationFrame(this.reqFrame);        
         this.$webgl.clearScene();
         this.$events.$off('viewport:resize', this.onResize);
+        gsap.killTweensOf(this.mesh.scale);
     }
 }
 </script>
