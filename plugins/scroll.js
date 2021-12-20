@@ -51,6 +51,7 @@ const scroll = new Vue({
                 this.onBreakpoint(false);
             }
             this.scroll = 0;
+            this.tween?.kill();
             this.tween = gsap.to(this, {
                 duration: 1,
                 delay: 0.1,
@@ -69,7 +70,7 @@ const scroll = new Vue({
                 const changedToucheY = touches[0].pageY - this.lastTouch;
                 this.lastTouch = touches[0].pageY;
     
-                this.scroll -= this.clamper(changedToucheY);
+                this.scroll -= this.baseScroll * Math.sign(changedToucheY);
             } else {                
                 this.scroll -= this.baseScroll * Math.sign(e.wheelDeltaY);
             }               
