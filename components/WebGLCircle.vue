@@ -72,7 +72,7 @@ export default {
                 position: {
                     x: 0,
                     y: 0,
-                    z: 20
+                    z: 18
                 }
             });
             this.sphere3 = this.createSphereMesh({
@@ -117,6 +117,11 @@ export default {
                 50 + mouse.y * 50
             );
 
+            this.meshGroup3.position.set(
+                mouse.x * 5,
+                mouse.y
+            );
+
             // this.meshGroup2.rotation.z = -mouse.x * Math.PI / 4;
             // this.meshGroup2.rotation.x = -mouse.y * Math.PI / 4;
             
@@ -124,9 +129,9 @@ export default {
             this.meshGroup3.rotation.x = -mouse.y * Math.PI / 4;
         },
         updateAngle(time, mouse) {
-            this.meshGroup.rotation.y = time / 500;            
-            this.meshGroup2.rotation.y = time / 500;
-            this.meshGroup3.rotation.y = (time + mouse.x * 1000)  / 500;
+            this.meshGroup.rotation.y = time / 1500;            
+            this.meshGroup2.rotation.y = time / 1500;
+            this.meshGroup3.rotation.y = (time + mouse.x * 1000)  / 1500;
         },
         onTick(time) {
             this.updateMouse(this.$mouse.lerpedNormalized);
