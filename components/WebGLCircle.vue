@@ -62,11 +62,11 @@ export default {
             this.meshGroup2 = new THREE.Group();
             this.meshGroup3 = new THREE.Group();
 
-            this.mesh1 = this.createSphereMesh({
+            this.mainSphere = this.createSphereMesh({
                 radius: 15,
                 textureColor: 0xffffff
             });
-            this.mesh2 = this.createSphereMesh({
+            this.sphere2 = this.createSphereMesh({
                 radius: 2,
                 textureColor: 0xffffff,
                 position: {
@@ -75,7 +75,7 @@ export default {
                     z: 20
                 }
             });
-            this.mesh3 = this.createSphereMesh({
+            this.sphere3 = this.createSphereMesh({
                 radius: 3.5,
                 textureColor: 0xffffff,
                 position: {
@@ -84,7 +84,7 @@ export default {
                     z: 23
                 }
             });
-            this.mesh4 = this.createSphereMesh({
+            this.sphere4 = this.createSphereMesh({
                 radius: 3,
                 textureColor: 0xffffff,
                 position: {
@@ -94,9 +94,9 @@ export default {
                 }
             });
 
-            this.meshGroup.add(this.mesh1, this.mesh2);
-            this.meshGroup2.add(this.meshGroup, this.mesh3);
-            this.meshGroup3.add(this.meshGroup2, this.mesh4);
+            this.meshGroup.add(this.mainSphere, this.sphere2);
+            this.meshGroup2.add(this.meshGroup, this.sphere3);
+            this.meshGroup3.add(this.meshGroup2, this.sphere4);
             this.$webgl.scene.add(this.meshGroup3);
         },
         createSphereMesh({radius, textureColor, position = { x:0, y:0, z:0 }}) {
