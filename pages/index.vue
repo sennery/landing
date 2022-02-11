@@ -1,14 +1,19 @@
 <template>
     <main>
         <Container>            
-            <Sennery/>
+            <!-- <Sennery/> -->
+            <div
+                class="title"
+            >
+                Arsenii Likhachev
+            </div>
             <div 
                 class="subtitle"
             >
                 web developer
             </div>
             
-            <WebGLCircle 
+            <WebGLCircle
                 src="/images/texture-for-wave.png"
             />
         </Container>        
@@ -31,22 +36,35 @@ main {
     min-height: 100vh;
     user-select: none;
 
-    .subtitle {
-        display: flex;
-        justify-content: center;
+    .title, .subtitle {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .title {
+        max-width: 50%;
+        font-size: 10em;
+    }
+
+    .subtitle {        
         margin-top: 1em;
         font-size: 2.5em;
         font-weight: 400;
         color: $color-text-secondary;
-        position: relative;        
-        z-index: 1;
     }
 }
 
 @media (max-width: $breakpoint-mobile) {
-    main .subtitle {
-        margin-top: 0.5em;
-        justify-content: flex-start;
+    main {
+        .title { 
+            font-size: 3.5em;
+            max-width: 100%;
+        }
+
+        .subtitle {
+            font-size: 2em;
+            margin-top: 0.5em;
+        }
     }
 }
 </style>
