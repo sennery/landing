@@ -1,7 +1,7 @@
 <template>
     <div
         ref="container"
-        class="scene-container"
+        class="scene-container circle"
     >     
     </div>
 </template>
@@ -59,23 +59,45 @@ export default {
 
         initMesh() {
             this.meshGroup = new THREE.Group();
+            this.meshGroup2 = new THREE.Group();
+            this.meshGroup3 = new THREE.Group();
 
             this.mesh1 = this.createSphereMesh({
-                radius: 1,
+                radius: 15,
                 textureColor: 0xffffff
             });
             this.mesh2 = this.createSphereMesh({
-                radius: 0.1,
+                radius: 2,
                 textureColor: 0xffffff,
                 position: {
                     x: 0,
                     y: 0,
-                    z: 1.75
+                    z: 20
+                }
+            });
+            this.mesh3 = this.createSphereMesh({
+                radius: 3.5,
+                textureColor: 0xffffff,
+                position: {
+                    x: 0,
+                    y: 0,
+                    z: 23
+                }
+            });
+            this.mesh4 = this.createSphereMesh({
+                radius: 3,
+                textureColor: 0xffffff,
+                position: {
+                    x: 0,
+                    y: 0,
+                    z: 30
                 }
             });
 
             this.meshGroup.add(this.mesh1, this.mesh2);
-            this.$webgl.scene.add(this.meshGroup);
+            this.meshGroup2.add(this.meshGroup, this.mesh3);
+            this.meshGroup3.add(this.meshGroup2, this.mesh4);
+            this.$webgl.scene.add(this.meshGroup3);
         },
         createSphereMesh({radius, textureColor, position = { x:0, y:0, z:0 }}) {
             const geometry = new THREE.SphereGeometry(radius, 100, 100);
@@ -94,18 +116,21 @@ export default {
                 mouse.x * 50,
                 50 + mouse.y * 50
             );
-            this.meshGroup.scale.set(
-                10 * (2.5 - (Math.abs(mouse.x) + Math.abs(mouse.y))),
-                10 * (2.5 - (Math.abs(mouse.x) + Math.abs(mouse.y))),
-                10 * (2.5 - (Math.abs(mouse.x) + Math.abs(mouse.y)))
-            );
-            this.mesh2.position.set(
-                mouse.x,
-                mouse.y
-            );
+
+            // this.meshGroup2.rotation.z = -mouse.x * Math.PI / 4;
+            // this.meshGroup2.rotation.x = -mouse.y * Math.PI / 4;
+            
+            this.meshGroup3.rotation.z = -mouse.x * Math.PI / 4;
+            this.meshGroup3.rotation.x = -mouse.y * Math.PI / 4;
         },
-        onTick() {
+        updateAngle(time, mouse) {
+            this.meshGroup.rotation.y = time / 500;            
+            this.meshGroup2.rotation.y = time / 500;
+            this.meshGroup3.rotation.y = (time + mouse.x * 1000)  / 500;
+        },
+        onTick(time) {
             this.updateMouse(this.$mouse.lerpedNormalized);
+            this.updateAngle(time, this.$mouse.lerpedNormalized);
             this.reqFrame = requestAnimationFrame(this.onTick);
         }
     },
@@ -125,10 +150,22 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/css/theme.scss";
+
 canvas {
     position: fixed;
     top: 0;
     left: 0;
     pointer-events: none;
+}
+
+.circle canvas{
+    left: 25%;
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .circle canvas{
+        left: 0;
+    }
 }
 </style>
