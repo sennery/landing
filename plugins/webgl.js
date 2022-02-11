@@ -35,6 +35,8 @@ class WebGL {
             antialias: true,
             powerPreference: 'high-performance'
         });
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this.renderer.setSize(viewport.width, viewport.height);
         this.renderer.setPixelRatio(1);
 
