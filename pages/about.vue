@@ -69,9 +69,9 @@ export default {
             return now.getFullYear() - born.getFullYear() + corrective;
         },
         description() {
-            const text = `Hi, whoever you are! I'm a Web developer based in Perm, Russia.
+            const text = `Hi! I'm a Frontend developer from Perm, Russia.
                 My name is Arsenii Likhachev and I'm ${ this.myAge } years old.
-                Making stuff simple and minimalistic. Work in Nowhere.`;
+                Making stuff simple and minimalistic.`;
 
             return text.split(' ').filter(it => it);
         }
