@@ -55,22 +55,28 @@ export default {
             mounted: false
         }
     },
-    computed: {
-        myAge() {
-            const born = new Date('1999-02-13T22:30:00+0500');
+    methods: {
+        getTimeDifference(startDate) {
+            const start = new Date(startDate);
             const now = new Date();
 
-            const correctiveMonth = now.getMonth() - born.getMonth() < 0;
-            const correctiveDate = now.getMonth() === born.getMonth() && now.getDate() - born.getDate() < 0;
-            const correctiveHours = now.getDate() === born.getDate() && now.getHours() - born.getHours() < 0;
-            const correctiveMinutes = now.getHours() === born.getHours() && now.getMinutes() - born.getMinutes() < 0;
+            const correctiveMonth = now.getMonth() - start.getMonth() < 0;
+            const correctiveDate = now.getMonth() === start.getMonth() && now.getDate() - start.getDate() < 0;
+            const correctiveHours = now.getDate() === start.getDate() && now.getHours() - start.getHours() < 0;
+            const correctiveMinutes = now.getHours() === start.getHours() && now.getMinutes() - start.getMinutes() < 0;
             const corrective = (correctiveMonth || correctiveDate || correctiveHours || correctiveMinutes) ? -1 : 0;
 
-            return now.getFullYear() - born.getFullYear() + corrective;
+            return now.getFullYear() - start.getFullYear() + corrective;
         },
+    },
+    computed: {
         description() {
+            const age = this.getTimeDifference('1999-03-18T22:30:00+0500');
+            const exp = this.getTimeDifference('2020-01-01T22:30:00+0500');
+
             const text = `Hi! I'm a Frontend developer from Perm, Russia.
-                My name is Arsenii Likhachev and I'm ${ this.myAge } years old.
+                My name is Arsenii Likhachev and I'm ${ age } years old.
+                Over ${ exp } years of the industry expirience.
                 Making stuff simple and minimalistic.`;
 
             return text.split(' ').filter(it => it);
