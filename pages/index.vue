@@ -58,7 +58,7 @@ main {
     main {
         .title { 
             font-size: 3.5em;
-            max-width: 100%;
+            max-width: 75%;
         }
 
         .subtitle {

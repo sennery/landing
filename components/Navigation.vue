@@ -155,6 +155,9 @@ nav {
         margin: 1em 0;
         z-index: 3;
 
+        border-radius: 25%;
+        background-color: rgba(23, 24, 28, 0.4);
+
         transition: 1s $timing-primary;
         transform: rotateZ(-90deg);
 
