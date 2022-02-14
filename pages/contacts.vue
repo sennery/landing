@@ -122,29 +122,31 @@ main {
     .side {
         left: 0;
         padding-left: 5em;
+        padding-right: 2.5em;
 
         .title {
-            font-size: 5em;
+            font-size: 3.5em;
             transform: translate(0, -20%);
         }
 
         .contact {
             width: auto;
+            font-size: 2em;
         }
     }
 }
 
-@media (max-height: $breakpoint-mobile) {
-    .side {
-        .title {
-            font-size: 4em;
-            transform: translate(0, -20%);
-        }
+// @media (max-height: $breakpoint-mobile) {
+//     .side {
+//         .title {
+//             font-size: 4em;
+//             transform: translate(0, -20%);
+//         }
 
-        .contact {
-            font-size: 1.5em;
-            width: auto;
-        }
-    }
-}
+//         .contact {
+//             font-size: 1.5em;
+//             width: auto;
+//         }
+//     }
+// }
 </style>
