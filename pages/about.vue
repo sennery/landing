@@ -150,8 +150,8 @@ main {
             font-size: 4em;
         }
 
-        .info, .hello {
-            font-size: 1.75em;
+        .info {
+            font-size: 1.5em;
         }
     }
 }
@@ -159,7 +159,7 @@ main {
 @media (max-width: $breakpoint-mobile) {
     main {
         .title {
-            font-size: 2.5em;
+            font-size: 3.5em;
         }
 
         .info {
@@ -169,14 +169,13 @@ main {
         .info, .hello {
             padding-left: 0;
             margin-left: 0;
-            font-size: 1.5em;
         }
     }
 }
 
 @media (max-height: $breakpoint-mobile) {
     main {
-        font-size: 0.5em;
+        //font-size: 0.5em;
     }
 }
 </style>
