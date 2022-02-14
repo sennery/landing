@@ -107,8 +107,8 @@ export default {
                 transmission: 0.0,
                 roughness: 1.0,
                 metalness: 0.0,
-                clearcoat: 0.0,
-                clearcoatRoughness: 0.0,
+                clearcoat: 1.0,
+                clearcoatRoughness: 1.5,
                 color: textureColor,
                 ior: 1.2,
                 thickness: 10.0
