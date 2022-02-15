@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         async initMesh() {
-            this.geometry = new THREE.PlaneBufferGeometry(1, 1, 1000, 1000);
+            this.geometry = this.$webgl.geometries.plane;
 
             this.material = new THREE.ShaderMaterial({
                 uniforms: {

@@ -101,7 +101,7 @@ export default {
             this.$webgl.scene.add(this.meshGroup3);
         },
         createSphereMesh({radius, textureColor = new THREE.Color(0xffffff), position = { x:0, y:0, z:0 }, receiveShadow = false, castShadow = false}) {
-            const geometry = new THREE.SphereGeometry(radius, 100, 100);
+            const geometry = this.$webgl.geometries.sphere;
             const material = new THREE.MeshPhysicalMaterial({
                 reflectivity: 0.0,
                 transmission: 0.0,
@@ -118,6 +118,7 @@ export default {
             mesh.castShadow = castShadow;
             mesh.receiveShadow = receiveShadow;
             mesh.position.set(position.x, position.y, position.z);
+            mesh.scale.set(radius, radius, radius);
             
             return mesh;
         },
