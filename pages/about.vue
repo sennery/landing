@@ -6,7 +6,7 @@
             >
                 <TextRaiseTransition
                     :duration="0.75"
-                    :transform="{x: 100, y: 100}"
+                    :translate="{x: 50, y: 100}"
                 >
                     <h1>
                         about
@@ -23,7 +23,8 @@
                     :delay="i * 0.025"
                     :mode="'inline-block'"
                     :overflowHidden="false"
-                    :transform="{x: 100, y: 0}"
+                    :translate="{x: 100, y: 0}"
+                    :rotate="{x: 0, y: 90}"
                 >
                     <span
                         class="word"
@@ -38,7 +39,7 @@
             >
                 <TextRaiseTransition
                     :delay="description.length * 0.025"
-                    :transform="{x: 100, y: 100}"
+                    :translate="{x: 100, y: 100}"
                 >
                     <NavigationRouteLink
                         :name="'Contact with me!'"

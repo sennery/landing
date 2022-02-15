@@ -10,7 +10,8 @@
                 <TextRaiseTransition
                     v-for="(link, i) in links"
                     :key="link.name"
-                    :delay="0.75 + 0.1 * i"  
+                    :delay="0.75 + 0.1 * i"                    
+                    :rotate="{x: 0, y: -90}" 
                 >                    
                     <NavigationRouteLink                    
                         class="menu-item" 

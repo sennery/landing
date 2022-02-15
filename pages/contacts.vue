@@ -23,6 +23,7 @@
                         v-for="(contact, i) in contacts"
                         :key="contact.name"
                         :delay="(i + 2) * 0.1"
+                        :rotate="{x: 0, y: -90}"
                     >
                         <ContactLink
                             class="contact"
