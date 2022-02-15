@@ -8,6 +8,9 @@
             :style="{
                 '--text-raising-duration': duration + 's',
                 '--text-raising-delay': delay + 's',
+                '--text-raising-transform-x': transform.x + '%',
+                '--text-raising-transform-y': transform.y + '%',                
+                '--text-raising-overflow-hidden': overflowHidden ? 'hidden' : '',
                 display: mode
             }"
         >
@@ -30,6 +33,17 @@ export default {
         mode: {
             type: String,
             default: 'block'
+        },
+        transform: {
+            type: Object,
+            default: {
+                x: 0,
+                y: 100
+            }
+        },
+        overflowHidden: {
+            type: Boolean,
+            default: true
         }
     }
 }
@@ -39,7 +53,7 @@ export default {
 @import "@/assets/css/theme.scss";
 
 .text-raising-wrapper {
-    overflow: hidden;
+    overflow: var(--text-raising-overflow-hidden);
 }
 
 .text-raising-enter-active,
@@ -51,6 +65,6 @@ export default {
 
 .text-raising-enter.text-raising-wrapper > *,
 .text-raising-leave.text-raising-wrapper > * {
-    transform: translate(5%,100%) !important;
+    transform: translate(var(--text-raising-transform-x), var(--text-raising-transform-y)) !important;
 }
 </style>
