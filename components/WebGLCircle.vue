@@ -99,6 +99,8 @@ export default {
             this.meshGroup2.add(this.meshGroup, this.sphere3);
             this.meshGroup3.add(this.meshGroup2, this.sphere4);
             this.$webgl.scene.add(this.meshGroup3);
+            
+            return this.meshGroup3;
         },
         createSphereMesh({radius, textureColor = new THREE.Color(0xffffff), position = { x:0, y:0, z:0 }, receiveShadow = false, castShadow = false}) {
             const geometry = this.$webgl.geometries.sphere;
@@ -145,7 +147,19 @@ export default {
     },
     mounted() {
         this.initLight();
-        this.initMesh();
+
+        const mesh = this.initMesh();
+        gsap.fromTo(mesh.scale, {
+            x: 0,
+            y: 0,
+            z: 0
+        }, {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 1,
+            ease: 'power3.out'
+        });
 
         this.$webgl.appendToDom(this.$refs.container);
 
