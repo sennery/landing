@@ -102,7 +102,7 @@ main {
     
     .title {
         font-size: 10em;
-        margin-bottom: 0.5em;
+        margin-bottom: 0.25em;
         max-width: 50%;
     }
 
@@ -141,6 +141,10 @@ main {
     main {        
         .title {
             font-size: 7em;
+        }
+
+        .info {
+            max-width: 50vw;
         }
 
         .info, .hello {

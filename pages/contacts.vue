@@ -95,7 +95,8 @@ main {
 
     .title {
         font-size: 10em;
-        transform: translate(-10%, -20%);
+        transform: translate(-10%, 0);
+        margin-bottom: 0.25em
     }
 
     .contact {
