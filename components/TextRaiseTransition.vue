@@ -8,9 +8,11 @@
             :style="{
                 '--text-raising-duration': duration + 's',
                 '--text-raising-delay': delay + 's',
-                '--text-raising-transform-x': transform.x + '%',
-                '--text-raising-transform-y': transform.y + '%',                
+                '--text-raising-translate-x': translate.x + '%',
+                '--text-raising-translate-y': translate.y + '%',                
                 '--text-raising-overflow-hidden': overflowHidden ? 'hidden' : '',
+                '--text-raising-rotate-x': rotate.x + 'deg',
+                '--text-raising-rotate-y': rotate.y + 'deg', 
                 display: mode
             }"
         >
@@ -34,16 +36,27 @@ export default {
             type: String,
             default: 'block'
         },
-        transform: {
+        translate: {
             type: Object,
-            default: {
-                x: 0,
-                y: 100
+            default() {
+                return {
+                    x: 0,
+                    y: 100
+                }   
             }
         },
         overflowHidden: {
             type: Boolean,
             default: true
+        },
+        rotate: {
+            type: Object,
+            default() {
+                return {
+                    x: 0,
+                    y: 0
+                }   
+            }
         }
     }
 }
@@ -65,6 +78,8 @@ export default {
 
 .text-raising-enter.text-raising-wrapper > *,
 .text-raising-leave.text-raising-wrapper > * {
-    transform: translate(var(--text-raising-transform-x), var(--text-raising-transform-y)) !important;
+    transform: translate(var(--text-raising-translate-x), var(--text-raising-translate-y)) 
+        rotateX(var(--text-raising-rotate-x))
+        rotateY(var(--text-raising-rotate-y)) !important;
 }
 </style>
