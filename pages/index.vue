@@ -1,12 +1,11 @@
 <template>
     <main>
-        <Container>            
-            <!-- <Sennery/> -->
+        <Container>
             <div
                 class="title"
             >
                 Arsenii Likhachev
-            </div>
+            </div>     
             <div 
                 class="subtitle"
             >
