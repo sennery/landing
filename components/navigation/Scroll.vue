@@ -30,7 +30,7 @@
             />
         </div>        
           
-        <SideNavigation
+        <NavigationSide
             :enabled="showSidenav"
             :links="links"
             @disable="showSidenav=false"  

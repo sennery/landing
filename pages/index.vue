@@ -12,7 +12,7 @@
                 web developer
             </div>
             
-            <WebGLCircle
+            <WebglCircle
                 src="/images/texture-for-wave.png"
             />
         </Container>        

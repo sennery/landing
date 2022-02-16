@@ -1,7 +1,7 @@
 <template>
     <main>
         <Container>
-            <WebGLWaveImage
+            <WebglWaveImage
                 class="wave-back" 
                 src="images/wave-image-texture.jpg"
             />
