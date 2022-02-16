@@ -39,12 +39,7 @@ class WebGL {
         this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this.renderer.setSize(viewport.width, viewport.height);
         this.renderer.setPixelRatio(1);
-
-        this.textures = {};
-        this.geometries = {};
-
-        this.createGeometries();
-    
+        
         // events
         events.$on('viewport:resize', this.onWindowResize);
     }
@@ -90,13 +85,6 @@ class WebGL {
     clearScene() {
         this.scene.children = [];        
         cancelAnimationFrame(this.reqFrame);
-    }
-
-    async createGeometries() {
-        this.geometries = {
-            plane: new THREE.PlaneBufferGeometry(1, 1, 250, 250),
-            sphere: new  THREE.SphereGeometry(1, 100, 100)
-        }
     }
 }
 

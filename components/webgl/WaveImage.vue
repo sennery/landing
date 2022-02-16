@@ -8,59 +8,12 @@
 
 <script>
 import gsap from 'gsap';
-import glsl from 'glslify';
-
-import vertexShader from '@/assets/webgl/shaders/vertex.glsl';
-import fragmentShader from '@/assets/webgl/shaders/fragment.glsl';
 
 export default {
-    props: {
-        src: {
-            type: String,
-            required: true
-        }
-    },
     methods: {
-        async initMesh() {
-            this.geometry = this.$webgl.geometries.plane;
-
-            this.material = new THREE.ShaderMaterial({
-                uniforms: {
-                    uTexture: { value: 0 },
-                    uTime:    { value: 0 },
-                    uMouse:  { value: [1, 1] },
-                },
-                vertexShader: glsl(vertexShader),
-                fragmentShader: glsl(fragmentShader),
-            });
-
-            const texture = await this.loadTexture(this.src);
-            this.material.uniforms.uTexture.value = texture;
-
-            this.mesh = new THREE.Mesh(this.geometry, this.material);
+        initMesh() {
+            this.mesh = this.$webglAssets.meshes.waveImage;
             this.$webgl.scene.add(this.mesh);
-        },        
-        loadTexture(src) {
-            if (this.$webgl.textures[src]) {
-                return this.$webgl.textures[src];
-            }
-
-            const loader = new THREE.TextureLoader();
-            return new Promise((resolve, reject) => {
-                loader.load(
-                    src,
-                    (texture) => {
-                        texture.minFilter = THREE.LinearFilter;
-                        texture.generateMipmaps = false;
-                        this.$webgl.textures[src] = texture;
-                        resolve(texture)
-                    },
-                    undefined,
-                    (err) => {
-                        console.error('An error happened.', err)
-                    }
-                );
-            });
         },
 
         positionate() {
@@ -94,10 +47,10 @@ export default {
         },
 
         updateTime(time) {
-            this.material.uniforms.uTime.value = time;
+            this.mesh.material.uniforms.uTime.value = time;
         },
         updateMouse(mouse) {
-            this.material.uniforms.uMouse.value = [
+            this.mesh.material.uniforms.uMouse.value = [
                 mouse.x,
                 mouse.y
             ];
@@ -109,16 +62,13 @@ export default {
             this.reqFrame = requestAnimationFrame(this.onTick);
         }
     },
-    async mounted() {
-        await this.initMesh();
+    mounted() {
+        this.initMesh();
         this.animateMeshAppearance();
 
         this.$webgl.appendToDom(this.$refs.container);
         
         requestAnimationFrame(this.onTick);
-    },
-    async created() {
-        
     },
     beforeDestroy() {
         cancelAnimationFrame(this.reqFrame);        

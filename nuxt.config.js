@@ -46,6 +46,7 @@ export default {
         { src: '~/plugins/mouse.js', mode: 'client' },
         { src: '~/plugins/webgl.js', mode: 'client' },
         { src: '~/plugins/scroll.js', mode: 'client' },
+        { src: '~/plugins/webgl-assets.js', mode: 'client' },
       ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

@@ -3,7 +3,6 @@
         <Container>
             <WebglWaveImage
                 class="wave-back" 
-                src="images/wave-image-texture.jpg"
             />
             <div 
                 class="side"
