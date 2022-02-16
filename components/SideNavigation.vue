@@ -10,8 +10,9 @@
                 <TextRaiseTransition
                     v-for="(link, i) in links"
                     :key="link.name"
-                    :delay="0.75 + 0.1 * i"                    
-                    :rotate="{x: 0, y: -90}" 
+                    :delay="0 + 0.1 * i"                    
+                    :rotate="{x: 0, y: -90}"
+                    :translate="{x: 100, y: 0}" 
                 >                    
                     <NavigationRouteLink                    
                         class="menu-item" 
@@ -44,6 +45,7 @@ export default {
 @import "@/assets/css/theme.scss";
 
 .menu-item {
+    z-index: 3;
     margin-right: 0.5em;
     font-size: 7.5em;
 }
