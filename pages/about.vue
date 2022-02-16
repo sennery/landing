@@ -6,7 +6,8 @@
             >
                 <TextRaiseTransition
                     :duration="0.75"
-                    :translate="{x: 50, y: 100}"
+                    :translate="{x: 100, y: 0}"
+                    :rotate="{x: 0, y: 90}"
                 >
                     <h1>
                         about
@@ -39,7 +40,8 @@
             >
                 <TextRaiseTransition
                     :delay="description.length * 0.025"
-                    :translate="{x: 100, y: 100}"
+                    :translate="{x: 100, y: 0}"
+                    :rotate="{x: 0, y: 90}"
                 >
                     <NavigationRouteLink
                         :name="'Contact with me!'"
