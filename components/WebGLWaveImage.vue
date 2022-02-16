@@ -77,7 +77,7 @@ export default {
             this.positionate();
             this.resize();
         },
-        initResize() {
+        animateMeshAppearance() {
             gsap.fromTo(this.mesh.scale, {
                 x: 0,
                 y: 0
@@ -111,10 +111,10 @@ export default {
     },
     async mounted() {
         await this.initMesh();
-        this.positionate();
-        this.initResize();
+        this.animateMeshAppearance();
 
         this.$webgl.appendToDom(this.$refs.container);
+        
         requestAnimationFrame(this.onTick);
     },
     async created() {

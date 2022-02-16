@@ -30,13 +30,13 @@
                     <span
                         class="word"
                     >
-                        {{ word + ' ' }}
+                        {{ word }}
                     </span>
                 </TextRaiseTransition>                           
             </p>
 
             <div                
-                class="hello"
+                class="contact-me"
             >
                 <TextRaiseTransition
                     :delay="description.length * 0.025"
@@ -123,7 +123,7 @@ main {
         }
     }    
 
-    .hello {        
+    .contact-me {        
         color: $color-text-primary;
         margin-left: 40%;        
         font-size: 2.5em;
@@ -149,7 +149,7 @@ main {
             max-width: 50vw;
         }
 
-        .info, .hello {
+        .info, .contact-me {
             font-size: 2em;
         }
     }
@@ -177,16 +177,10 @@ main {
             max-width: 65vw;
         }
 
-        .info, .hello {
+        .info, .contact-me {
             padding-left: 0;
             margin-left: 0;
         }
-    }
-}
-
-@media (max-height: $breakpoint-mobile) {
-    main {
-        //font-size: 0.5em;
     }
 }
 </style>

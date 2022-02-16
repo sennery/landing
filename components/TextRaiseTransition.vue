@@ -36,6 +36,10 @@ export default {
             type: String,
             default: 'block'
         },
+        overflowHidden: {
+            type: Boolean,
+            default: true
+        },
         translate: {
             type: Object,
             default() {
@@ -44,10 +48,6 @@ export default {
                     y: 100
                 }   
             }
-        },
-        overflowHidden: {
-            type: Boolean,
-            default: true
         },
         rotate: {
             type: Object,

@@ -8,6 +8,7 @@
 
 <script>
 import gsap from 'gsap';
+
 export default {
     props: {
         src: {
@@ -59,10 +60,6 @@ export default {
         },
 
         initMesh() {
-            this.meshGroup = new THREE.Group();
-            this.meshGroup2 = new THREE.Group();
-            this.meshGroup3 = new THREE.Group();
-
             this.mainSphere = this.createSphereMesh({
                 radius: 15,
                 castShadow: true
@@ -95,12 +92,17 @@ export default {
                 receiveShadow: true,
             });
 
-            this.meshGroup.add(this.mainSphere, this.sphere2);
-            this.meshGroup2.add(this.meshGroup, this.sphere3);
-            this.meshGroup3.add(this.meshGroup2, this.sphere4);
-            this.$webgl.scene.add(this.meshGroup3);
             
-            return this.meshGroup3;
+            this.meshGroup = new THREE.Group();
+            this.meshGroup.add(this.mainSphere, this.sphere2);
+            
+            this.meshGroup2 = new THREE.Group();
+            this.meshGroup2.add(this.meshGroup, this.sphere3);
+
+            this.meshGroup3 = new THREE.Group();
+            this.meshGroup3.add(this.meshGroup2, this.sphere4);
+
+            this.$webgl.scene.add(this.meshGroup3);
         },
         createSphereMesh({radius, textureColor = new THREE.Color(0xffffff), position = { x:0, y:0, z:0 }, receiveShadow = false, castShadow = false}) {
             const geometry = this.$webgl.geometries.sphere;
@@ -125,6 +127,21 @@ export default {
             return mesh;
         },
 
+        animateMeshAppearance() {
+            gsap.fromTo(this.meshGroup3.scale, {
+                x: 0,
+                y: 0,
+                z: 0
+            }, {
+                x: 1,
+                y: 1,
+                z: 1,
+                delay: 0.75,
+                duration: 0.75,
+                ease: 'power3.out'
+            });
+        },
+
         updateMouse(mouse) {
             this.meshGroup3.position.set(
                 mouse.x * 5,
@@ -147,19 +164,8 @@ export default {
     },
     mounted() {
         this.initLight();
-
-        const mesh = this.initMesh();
-        gsap.fromTo(mesh.scale, {
-            x: 0,
-            y: 0,
-            z: 0
-        }, {
-            x: 1,
-            y: 1,
-            z: 1,
-            duration: 1,
-            ease: 'power3.out'
-        });
+        this.initMesh();
+        this.animateMeshAppearance();        
 
         this.$webgl.appendToDom(this.$refs.container);
 
