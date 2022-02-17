@@ -4,10 +4,11 @@ import glsl from 'glslify';
 import vertexShader from '@/assets/webgl/shaders/vertex.glsl';
 import fragmentShader from '@/assets/webgl/shaders/fragment.glsl';
 
-const geometries = {};
+const geometriesCache = {};
 
 async function initWaveImageMesh(src) {
-    const waveGeometry = geometries.wavePlane ?? (geometries.wavePlane = new THREE.PlaneBufferGeometry(1, 1, 250, 250));
+    const waveGeometry = geometriesCache.wavePlane 
+        ?? (geometriesCache.wavePlane = new THREE.PlaneBufferGeometry(1, 1, 250, 250));
     const waveMaterial = new THREE.ShaderMaterial({
         uniforms: {
             uTexture: { value: 0 },
@@ -86,7 +87,8 @@ async function initCircleMeshes() {
 }
 
 function createSphereMesh({radius, textureColor = new THREE.Color(0xffffff), position = { x:0, y:0, z:0 }, receiveShadow = false, castShadow = false}) {
-    const sphereGeometry = geometries.sphere ?? (geometries.sphere = new  THREE.SphereGeometry(1, 100, 100));;
+    const sphereGeometry = geometriesCache.sphere 
+        ?? (geometriesCache.sphere = new  THREE.SphereGeometry(1, 100, 100));;
     const sphereMaterial = new THREE.MeshPhysicalMaterial({
         reflectivity: 0.0,
         transmission: 0.0,
