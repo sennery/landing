@@ -95,14 +95,4 @@ canvas {
     left: 0;
     pointer-events: none;
 }
-
-.circle canvas{
-    // left: 25%;
-}
-
-@media (max-width: $breakpoint-mobile) {
-    .circle canvas{
-        left: 0;
-    }
-}
 </style>
