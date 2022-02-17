@@ -174,7 +174,7 @@ main {
         }
 
         .info {
-            max-width: 65vw;
+            max-width: 80vw;
         }
 
         .info, .contact-me {
