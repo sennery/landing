@@ -155,7 +155,7 @@ nav {
         margin: 1em 0;
         z-index: 3;
 
-        border-radius: 25%;
+        border-radius: 10%;
         background-color: rgba(23, 24, 28, 0.4);
 
         transition: 1s $timing-primary;
