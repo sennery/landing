@@ -21,7 +21,6 @@ export default {
 
         async initMesh() {
             const circleMeshes = await this.$webglAssets.getMesh('circles');
-            console.log(circleMeshes)
             
             this.meshGroup = new THREE.Group();
             this.meshGroup.add(circleMeshes.mainSphere, circleMeshes.sphere2);

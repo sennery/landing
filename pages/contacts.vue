@@ -42,13 +42,13 @@ export default {
     data() {
         return {
             contacts: [
+                // {
+                //     name: 'LinkedIn',
+                //     color: '#bb268a',
+                //     link: 'https://github.com/sennery'
+                // },
                 {
                     name: 'GitHub',
-                    color: '#bb268a',
-                    link: 'https://github.com/sennery'
-                },
-                {
-                    name: 'LinkedIn',
                     color: '#9b2a9f',
                     link: ''
                 },

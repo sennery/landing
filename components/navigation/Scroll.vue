@@ -185,14 +185,4 @@ nav {
         }
     }
 }
-
-@media (max-width: $breakpoint-mobile) {
-    nav {
-        //justify-content: flex-start;
-    
-        .next-link, .prev-link, .angle {
-            display: none;
-        }
-    }
-}
 </style>
