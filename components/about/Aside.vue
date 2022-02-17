@@ -66,7 +66,7 @@ export default {
 
 @media (max-width: $breakpoint-mobile) {
     .slider {
-        left: 85%
+        display: none;
     }
 }
 </style>
