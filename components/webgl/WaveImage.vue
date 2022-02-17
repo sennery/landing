@@ -11,8 +11,8 @@ import gsap from 'gsap';
 
 export default {
     methods: {
-        initMesh() {
-            this.mesh = this.$webglAssets.meshes.waveImage;
+        async initMesh() {
+            this.mesh = await this.$webglAssets.getMesh('waveImage');
             this.$webgl.scene.add(this.mesh);
         },
 
@@ -62,8 +62,8 @@ export default {
             this.reqFrame = requestAnimationFrame(this.onTick);
         }
     },
-    mounted() {
-        this.initMesh();
+    async mounted() {
+        await this.initMesh();
         this.animateMeshAppearance();
 
         this.$webgl.appendToDom(this.$refs.container);

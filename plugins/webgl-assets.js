@@ -4,11 +4,10 @@ import glsl from 'glslify';
 import vertexShader from '@/assets/webgl/shaders/vertex.glsl';
 import fragmentShader from '@/assets/webgl/shaders/fragment.glsl';
 
-const meshes = {};
-const lights = {};
+const geometries = {};
 
-function initWaveImageMesh(src) {
-    const waveGeometry = new THREE.PlaneBufferGeometry(1, 1, 250, 250);
+async function initWaveImageMesh(src) {
+    const waveGeometry = geometries.wavePlane ?? (geometries.wavePlane = new THREE.PlaneBufferGeometry(1, 1, 250, 250));
     const waveMaterial = new THREE.ShaderMaterial({
         uniforms: {
             uTexture: { value: 0 },
@@ -43,11 +42,12 @@ function loadTexture(src, material) {
 }
 
 
-function initCircleMeshes() {
+async function initCircleMeshes() { 
     const mainSphere = createSphereMesh({
         radius: 15,
         castShadow: true
     });
+
     const sphere2 = createSphereMesh({
         radius: 2,
         position: {
@@ -57,6 +57,7 @@ function initCircleMeshes() {
         },
         receiveShadow: true,
     });
+
     const sphere3 = createSphereMesh({
         radius: 3.5,
         position: {
@@ -81,11 +82,11 @@ function initCircleMeshes() {
         sphere2,
         sphere3,
         sphere4
-    }
+    };    
 }
 
 function createSphereMesh({radius, textureColor = new THREE.Color(0xffffff), position = { x:0, y:0, z:0 }, receiveShadow = false, castShadow = false}) {
-    const sphereGeometry = new  THREE.SphereGeometry(radius, 100, 100);
+    const sphereGeometry = geometries.sphere ?? (geometries.sphere = new  THREE.SphereGeometry(1, 100, 100));;
     const sphereMaterial = new THREE.MeshPhysicalMaterial({
         reflectivity: 0.0,
         transmission: 0.0,
@@ -102,18 +103,24 @@ function createSphereMesh({radius, textureColor = new THREE.Color(0xffffff), pos
     sphereMesh.castShadow = castShadow;
     sphereMesh.receiveShadow = receiveShadow;
     sphereMesh.position.set(position.x, position.y, position.z);
+    sphereMesh.scale.set(radius, radius, radius);    
     
     return sphereMesh;
 }
 
 
 function initMeshes() {
-    meshes.waveImage = initWaveImageMesh('images/wave-image-texture.jpg');
-    meshes.circles = initCircleMeshes();    
-    return meshes;
+    const meshes = {
+        waveImage: initWaveImageMesh('images/wave-image-texture.jpg'),
+        circles: initCircleMeshes()
+    };       
+    
+    return async (meshName) => {
+        return await meshes[meshName];
+    };
 }
 
-function initCirclesLight() {
+async function initCirclesLight() {
     const light1 = createSpotLight({
         color: 0xda055a,
         intensity: 0.5,
@@ -131,8 +138,7 @@ function initCirclesLight() {
             x: -25,
             y: -50,
             z: 100
-        },
-        //castShadow: true
+        }
     });
 
     return {
@@ -161,14 +167,22 @@ function createSpotLight({color, intensity, position, castShadow}) {
 }
 
 function initLights() {
-    lights.circles = initCirclesLight();
-    return lights;
+    const lights = {
+        circles: initCirclesLight()
+    };
+
+    return async (lightName) => {
+        return await lights[lightName];
+    };
 }
 
 function initAssets() {
+    const getMesh = initMeshes();
+    const getLight = initLights();
+
     return {
-        meshes: initMeshes(),
-        lights: initLights()
+        getMesh,
+        getLight
     }
 }
 
