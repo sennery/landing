@@ -4,7 +4,7 @@
             <div
                 class="title"
             >
-                <TextRaiseTransition
+                <TextTransition
                     :duration="0.75"
                     :translate="{x: 100, y: 0}"
                     :rotate="{x: 0, y: 90}"
@@ -12,13 +12,13 @@
                     <h1>
                         about
                     </h1>
-                </TextRaiseTransition>
+                </TextTransition>
             </div>
             
             <p 
                 class="info"
             >
-                <TextRaiseTransition
+                <TextTransition
                     v-for="(word, i) in description"
                     :key="i"
                     :delay="i * 0.025"
@@ -32,13 +32,13 @@
                     >
                         {{ word }}
                     </span>
-                </TextRaiseTransition>                           
+                </TextTransition>                           
             </p>
 
             <div                
                 class="contact-me"
             >
-                <TextRaiseTransition
+                <TextTransition
                     :delay="description.length * 0.025"
                     :translate="{x: 100, y: 0}"
                     :rotate="{x: 0, y: 90}"
@@ -47,10 +47,10 @@
                         :name="'Contact with me!'"
                         :link="'/contacts'"
                     />   
-                </TextRaiseTransition>       
+                </TextTransition>       
             </div>
 
-            <WordSlider/>
+            <AboutAside/>
         </Container>
     </main>    
 </template>

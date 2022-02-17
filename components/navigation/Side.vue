@@ -7,7 +7,7 @@
             class="sidenav"
         >
             <Container>  
-                <TextRaiseTransition
+                <TextTransition
                     v-for="(link, i) in links"
                     :key="link.name"
                     :delay="0 + 0.1 * i"                    
@@ -20,7 +20,7 @@
                         :link="link.path"
                         @click.native="$emit('disable')"
                     />
-                </TextRaiseTransition>
+                </TextTransition>
             </Container>
         </div>
     </transition>    

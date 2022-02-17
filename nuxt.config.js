@@ -53,7 +53,6 @@ export default {
     components: {
         dirs: [
             '~/components',
-            '~/components/elements',
             '~/components/utils'
         ]
     },
