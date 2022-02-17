@@ -52,7 +52,7 @@ export default {
 
         updateMouse(mouse) {
             this.meshGroup3.position.set(
-                mouse.x * 5,
+                mouse.x * 5 + 20,
                 mouse.y
             );
             
@@ -97,7 +97,7 @@ canvas {
 }
 
 .circle canvas{
-    left: 25%;
+    // left: 25%;
 }
 
 @media (max-width: $breakpoint-mobile) {
