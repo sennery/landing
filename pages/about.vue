@@ -95,7 +95,7 @@ export default {
 
 .page-enter,
 .page-leave-to {
-    transform: translateX(-100vh) scaleX(0);
+    transform: translateX(-100vw) scaleX(0);
     opacity: 0;  
 }
 
@@ -161,6 +161,12 @@ main {
         .info {
             font-size: 1.5em;
         }
+    }
+
+    .page-enter,
+    .page-leave-to {
+        transform: translateX(-100vw);
+        opacity: 0;  
     }
 }
 

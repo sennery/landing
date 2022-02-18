@@ -40,6 +40,14 @@
     }
 }
 
+@media (max-width: $breakpoint-tablet) {
+    .page-enter,
+    .page-leave-to {
+        transform: translateY(-100vh);  
+        opacity: 0;  
+    }
+}
+
 @media (max-width: $breakpoint-mobile) {
     :root {
         --spacing: calc(var(--spacing-init) * 0.5);
