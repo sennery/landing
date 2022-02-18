@@ -1,21 +1,19 @@
 <template>
     <main>
-        <Container>
-            <div
-                class="title"
-            >
-                Arsenii Likhachev
-            </div>     
-            <div 
-                class="subtitle"
-            >
-                web developer
-            </div>
-            
-            <WebglCircle
-                src="/images/texture-for-wave.png"
-            />
-        </Container>        
+        <div
+            class="title"
+        >
+            Arsenii Likhachev
+        </div>     
+        <div 
+            class="subtitle"
+        >
+            web developer
+        </div>
+        
+        <WebglCircle
+            src="/images/texture-for-wave.png"
+        />      
     </main>
 </template>
 
@@ -30,7 +28,7 @@ export default {
 
 main {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
     min-height: 100vh;
     user-select: none;

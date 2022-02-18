@@ -1,39 +1,37 @@
 <template>
     <main>
-        <Container>
-            <WebglWaveImage
-                class="wave-back" 
-            />
-            <div 
-                class="side"
-            >
-                <div>
-                    <div 
-                        class="title"
-                    >
-                        <TextTransition>
-                            <h1>
-                                contacts
-                            </h1>
-                        </TextTransition> 
-                    </div>
+        <WebglWaveImage
+            class="wave-back" 
+        />
+        <div 
+            class="side"
+        >
+            <div>
+                <div 
+                    class="title"
+                >
+                    <TextTransition>
+                        <h1>
+                            contacts
+                        </h1>
+                    </TextTransition> 
+                </div>
 
-                    <TextTransition
-                        v-for="(contact, i) in contacts"
-                        :key="contact.name"
-                        :delay="(i + 2) * 0.1"
-                        :rotate="{x: 0, y: -90}"
-                    >
-                        <ContactsLink
-                            class="contact"
-                            :name="contact.name"
-                            :link="contact.link"
-                            :color="contact.color"
-                        />
-                    </TextTransition>
-                </div>                
-            </div>
-        </Container>        
+                <TextTransition
+                    v-for="(contact, i) in contacts"
+                    :key="contact.name"
+                    :delay="(i + 2) * 0.1"
+                    :rotate="{x: 0, y: -90}"
+                >
+                    <ContactsLink
+                        class="contact"
+                        :name="contact.name"
+                        :link="contact.link"
+                        :color="contact.color"
+                    />
+                </TextTransition>
+            </div>                
+        </div>       
     </main>
 </template>
 

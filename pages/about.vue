@@ -1,57 +1,55 @@
 <template>
     <main>
-        <Container>
-            <div
-                class="title"
+        <div
+            class="title"
+        >
+            <TextTransition
+                :duration="0.75"
+                :translate="{x: 100, y: 0}"
+                :rotate="{x: 0, y: 90}"
             >
-                <TextTransition
-                    :duration="0.75"
-                    :translate="{x: 100, y: 0}"
-                    :rotate="{x: 0, y: 90}"
-                >
-                    <h1>
-                        about
-                    </h1>
-                </TextTransition>
-            </div>
-            
-            <p 
-                class="info"
+                <h1>
+                    about
+                </h1>
+            </TextTransition>
+        </div>
+        
+        <p 
+            class="info"
+        >
+            <TextTransition
+                v-for="(word, i) in description"
+                :key="i"
+                :delay="i * 0.025"
+                :mode="'inline-block'"
+                :overflowHidden="false"
+                :translate="{x: 100, y: 0}"
+                :rotate="{x: 0, y: 90}"
             >
-                <TextTransition
-                    v-for="(word, i) in description"
-                    :key="i"
-                    :delay="i * 0.025"
-                    :mode="'inline-block'"
-                    :overflowHidden="false"
-                    :translate="{x: 100, y: 0}"
-                    :rotate="{x: 0, y: 90}"
+                <span
+                    class="word"
                 >
-                    <span
-                        class="word"
-                    >
-                        {{ word }}
-                    </span>
-                </TextTransition>                           
-            </p>
+                    {{ word }}
+                </span>
+            </TextTransition>                           
+        </p>
 
-            <div                
-                class="contact-me"
+        <div                
+            class="contact-me"
+        >
+            <TextTransition
+                :delay="description.length * 0.025"
+                :translate="{x: 100, y: 0}"
+                :rotate="{x: 0, y: 90}"
             >
-                <TextTransition
-                    :delay="description.length * 0.025"
-                    :translate="{x: 100, y: 0}"
-                    :rotate="{x: 0, y: 90}"
-                >
-                    <NavigationRouteLink
-                        :name="'Contact with me!'"
-                        :link="'/contacts'"
-                    />   
-                </TextTransition>       
-            </div>
+                <NavigationRouteLink
+                    :name="'Contact with me!'"
+                    :link="'/contacts'"
+                />   
+            </TextTransition>       
+        </div>
 
-            <AboutAside/>
-        </Container>
+        <AboutAside/>
     </main>    
 </template>
 
@@ -97,6 +95,8 @@ export default {
 
 main {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     min-height: 100vh;
 
     position: relative;
@@ -127,15 +127,6 @@ main {
         color: $color-text-primary;
         margin-left: 40%;        
         font-size: 2.5em;
-    }
-
-    .back {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        width: 30vw;
-        background: $color-underscore;
     }
 }
 
