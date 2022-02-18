@@ -32,30 +32,12 @@ export default {
         enabled: {
             type: Boolean,
             required: true
+        },
+        links: {
+            type: Object,
+            required: true
         }
-    },
-    data() {
-        return {
-            links: [
-                {
-                    name: 'sennery',
-                    path: '/'
-                },
-                // {
-                //     name: 'works',
-                //     path: '/works'
-                // },
-                {
-                    name: 'about',
-                    path: '/about'
-                },
-                {
-                    name: 'contacts',
-                    path: '/contacts'
-                },
-            ]
-        }
-    },
+    }
 }
 </script>
 

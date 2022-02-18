@@ -2,19 +2,19 @@
     <div class="layout">
         <header
             class="links header"
-        >
+        >            
+            <NuxtLink
+                :to="prevLink.path"
+                class="link"
+            > 
+                {{prevLink.name}} 
+            </NuxtLink>
             <span
                 class="link menu"
                 @click="showSidenav=!showSidenav"
             >
                 menu
             </span>
-            <NuxtLink
-                to="/about"
-                class="link"
-            > 
-                about 
-            </NuxtLink>
         </header>
 
         <Nuxt
@@ -25,16 +25,17 @@
             class="links footer"
         >
             <NuxtLink
-                to="/contacts"
+                :to="nextLink.path"
                 class="link"
             > 
-                contacts 
+                {{nextLink.name}} 
             </NuxtLink>
         </footer>
 
         <NavigationMenu
             class="navigation"
             :enabled="showSidenav"
+            :links="links"
             @disable="showSidenav=false"  
         />
     </div>
@@ -48,9 +49,39 @@ export default {
     },
     data() {
         return {
-            showSidenav: false
+            showSidenav: false,
+
+            links: [
+                {
+                    name: 'sennery',
+                    path: '/'
+                },
+                // {
+                //     name: 'works',
+                //     path: '/works'
+                // },
+                {
+                    name: 'about',
+                    path: '/about'
+                },
+                {
+                    name: 'contacts',
+                    path: '/contacts'
+                },
+            ]
         }
     },
+    computed: {
+        currentLink() {
+            return this.links.findIndex( it => it.path == this.$nuxt.$route.path);
+        },
+        nextLink() {
+            return this.links[this.currentLink + 1] ?? this.links[0];
+        },
+        prevLink() {
+            return this.links[this.currentLink - 1] ?? this.links[this.links.length-1];
+        }
+    }
 }
 </script>
 
