@@ -59,8 +59,7 @@ export default {
 
 .layout {
     position: relative;
-    overflow: hidden;
-    max-height: 100vh;    
+    overflow: hidden;  
 }
 
 .links {
@@ -73,6 +72,10 @@ export default {
 
 .links, .navigation {
     z-index: 2;
+}
+
+.link:hover {
+    color: $color-text-primary;
 }
 
 .menu {
