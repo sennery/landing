@@ -11,7 +11,15 @@ $breakpoint-laptop: 1200px;
 $breakpoint-tablet: 800px;
 $breakpoint-mobile: 500px;
 
-$spacing: 10px; 
-
 $timing-primary: cubic-bezier(0, 1, 0.18, 1);
 $timing-text: cubic-bezier(0.25, 1, 0.5, 1);
+
+$spacing: 10px; 
+
+@media (max-width: $breakpoint-laptop) {
+    $spacing: 7px;
+}
+
+@media (max-width: $breakpoint-mobile) {
+    $spacing: 5px;
+}

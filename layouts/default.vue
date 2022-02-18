@@ -36,7 +36,7 @@
             class="navigation"
             :enabled="showSidenav"
             :links="links"
-            @disable="showSidenav=false"  
+            @disable="showSidenav=false"
         />
     </div>
 </template>
@@ -124,17 +124,5 @@ export default {
 .page, .links { 
     padding: 0 $spacing * 10;
     box-sizing: border-box; 
-}
-
-@media (max-width: $breakpoint-laptop) {
-    .page, .links {
-        padding: 0 $spacing * 7;
-    }
-}
-
-@media (max-width: $breakpoint-mobile) {
-    .page, .links {
-        padding: 0 $spacing * 5;
-    }
 }
 </style>
