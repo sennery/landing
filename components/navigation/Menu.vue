@@ -75,12 +75,13 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    padding: 0 $spacing * 10;
     background-color: $color-background;
     user-select: none;
 }
