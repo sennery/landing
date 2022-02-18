@@ -5,23 +5,28 @@
         <nav
             v-if="enabled" 
             class="sidenav"
-        >
-            <Container>  
-                <TextTransition
-                    v-for="(link, i) in links"
-                    :key="link.name"
-                    :delay="0 + 0.1 * i"                    
-                    :rotate="{x: 0, y: -90}"
-                    :translate="{x: 100, y: 0}" 
-                >                    
-                    <NavigationRouteLink                    
-                        class="menu-item" 
-                        :name="link.name"
-                        :link="link.path"
-                        @click.native="$emit('disable')"
-                    />
-                </TextTransition>
-            </Container>
+        >  
+            <TextTransition
+                v-for="(link, i) in links"
+                :key="link.name"
+                :delay="0 + 0.1 * i"                    
+                :rotate="{x: 0, y: -90}"
+                :translate="{x: 100, y: 0}" 
+            >                    
+                <NavigationRouteLink                    
+                    class="menu-item" 
+                    :name="link.name"
+                    :link="link.path"
+                    @click.native="$emit('disable')"
+                />
+            </TextTransition>
+
+            <div
+                class="close-icon"
+                @click="$emit('disable')"
+            >
+                close
+            </div>
         </nav>
     </transition>    
 </template>
@@ -34,7 +39,7 @@ export default {
             required: true
         },
         links: {
-            type: Object,
+            type: Array,
             required: true
         }
     }
@@ -51,10 +56,26 @@ export default {
     font-weight: 300;
 }
 
+.close-icon {
+    position: fixed;
+    top: 2.5em;
+    right: $spacing * 10;    
+    color: $color-text-secondary;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.close-icon:hover {  
+    color: $color-text-primary;
+}
+
 .sidenav,
 .sidenav::before,
 .sidenav::after {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 0;
     left: 0;

@@ -33,7 +33,7 @@ export default {
     display: inline-block;
     position: relative;
     overflow: hidden;
-    min-width: 5em;
+    //min-width: 5em;
     
     $transition-first: transform $animation-duration $timing-text;
     $transition-second: transform $animation-duration $animation-duration $timing-text;
