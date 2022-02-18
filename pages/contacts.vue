@@ -50,7 +50,7 @@ export default {
                 {
                     name: 'GitHub',
                     color: '#9b2a9f',
-                    link: ''
+                    link: 'https://github.com/sennery'
                 },
                 {
                     name: 'Telegram',
