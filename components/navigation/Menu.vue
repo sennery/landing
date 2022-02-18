@@ -2,7 +2,7 @@
     <transition
         name="side"
     >            
-        <div
+        <nav
             v-if="enabled" 
             class="sidenav"
         >
@@ -22,7 +22,7 @@
                     />
                 </TextTransition>
             </Container>
-        </div>
+        </nav>
     </transition>    
 </template>
 
@@ -32,12 +32,30 @@ export default {
         enabled: {
             type: Boolean,
             required: true
-        },
-        links: {
-            type: Array,
-            required: true
         }
-    }
+    },
+    data() {
+        return {
+            links: [
+                {
+                    name: 'sennery',
+                    path: '/'
+                },
+                // {
+                //     name: 'works',
+                //     path: '/works'
+                // },
+                {
+                    name: 'about',
+                    path: '/about'
+                },
+                {
+                    name: 'contacts',
+                    path: '/contacts'
+                },
+            ]
+        }
+    },
 }
 </script>
 
@@ -48,6 +66,7 @@ export default {
     z-index: 3;
     margin-right: 0.5em;
     font-size: 7.5em;
+    font-weight: 300;
 }
 
 .sidenav,
@@ -66,11 +85,11 @@ export default {
 .side-enter,
 .side-enter::before,
 .side-enter::after {       
-    transform: translateX(-100%);
+    transform: translateY(-100%);
 }
 
 .side-leave-to {      
-    transform: translateX(100%);
+    transform: translateY(-100%);
 }
 
 .side-enter-active {
