@@ -93,6 +93,12 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/css/theme.scss";
 
+.page-enter,
+.page-leave-to {
+    transform: translateX(-100vh) scaleX(0);
+    opacity: 0;  
+}
+
 main {
     display: flex;
     flex-direction: column;
