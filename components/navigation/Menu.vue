@@ -59,7 +59,7 @@ export default {
 .close-icon {
     position: fixed;
     top: 2.5em;
-    right: $spacing * 10;    
+    right: var(--spacing);    
     color: $color-text-secondary;
     z-index: 3;
     cursor: pointer;
@@ -81,7 +81,7 @@ export default {
     left: 0;
     width: 100vw;
     height: 100vh;
-    padding: 0 $spacing * 10;
+    padding: 0 var(--spacing);
     background-color: $color-background;
     user-select: none;
 }

@@ -122,7 +122,7 @@ export default {
 }
 
 .page, .links { 
-    padding: 0 $spacing * 10;
+    padding: 0 var(--spacing);
     box-sizing: border-box; 
 }
 </style>
