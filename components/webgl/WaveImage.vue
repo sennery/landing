@@ -32,13 +32,11 @@ export default {
         },
         animateMeshAppearance() {
             gsap.fromTo(this.mesh.scale, {
-                x: 0,
-                y: 0,
-                z: 0
+                x: this.$webgl.viewsize.width * 2,
+                y: this.$webgl.viewsize.width * 2,
             }, {
                 x: this.$webgl.viewsize.width * 0.8,
                 y: this.$webgl.viewsize.height * 0.8,
-                z: 1,
                 duration: 5,
                 delay: 0.75,
                 ease: 'power3.out',
