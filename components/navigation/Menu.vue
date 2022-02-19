@@ -85,6 +85,7 @@ export default {
     padding: 0 var(--spacing);
     background-color: $color-background;
     user-select: none;
+    box-sizing: border-box;
 }
 
 .side-enter,
