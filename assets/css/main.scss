@@ -28,12 +28,6 @@
     opacity: 0;  
 }
 
-.page-enter-to,
-.page-leave-to {
-    //transform: translateY(-100vh);
-}
-
-
 @media (max-width: $breakpoint-laptop) {
     :root {
         --spacing: calc(var(--spacing-init) * 0.7);
@@ -50,6 +44,6 @@
 
 @media (max-width: $breakpoint-mobile) {
     :root {
-        --spacing: calc(var(--spacing-init) * 0.5);
+        --spacing: calc(var(--spacing-init) * 0.25);
     }
 }

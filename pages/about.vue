@@ -165,7 +165,7 @@ main {
 
     .page-enter,
     .page-leave-to {
-        transform: translateX(-100vw);
+        transform: translateY(-100vh);
         opacity: 0;  
     }
 }
