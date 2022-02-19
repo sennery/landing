@@ -11,7 +11,8 @@
                 :key="link.name"
                 :delay="0 + 0.1 * i"                    
                 :rotate="{x: 0, y: -90}"
-                :translate="{x: 100, y: 0}" 
+                :translate="{x: 100, y: 0}"
+                :overflowHidden="false" 
             >                    
                 <NavigationRouteLink                    
                     class="menu-item" 
