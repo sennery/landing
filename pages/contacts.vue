@@ -135,18 +135,4 @@ main {
         }
     }
 }
-
-// @media (max-height: $breakpoint-mobile) {
-//     .side {
-//         .title {
-//             font-size: 4em;
-//             transform: translate(0, -20%);
-//         }
-
-//         .contact {
-//             font-size: 1.5em;
-//             width: auto;
-//         }
-//     }
-// }
 </style>

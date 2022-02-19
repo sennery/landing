@@ -55,11 +55,6 @@
 
 <script>
 export default {
-    data() {
-        return {
-            mounted: false
-        }
-    },
     methods: {
         getTimeDifference(startDate) {
             const start = new Date(startDate);
