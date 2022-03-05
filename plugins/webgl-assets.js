@@ -6,7 +6,7 @@ import fragmentShader from '@/assets/webgl/shaders/fragment.glsl';
 
 const geometriesCache = {};
 
-async function initWaveImageMesh(src) {
+function initWaveImageMesh(src) {
     const waveGeometry = geometriesCache.wavePlane 
         ?? (geometriesCache.wavePlane = new THREE.PlaneBufferGeometry(1, 1, 250, 250));
     const waveMaterial = new THREE.ShaderMaterial({
@@ -43,7 +43,7 @@ function loadTexture(src, material) {
 }
 
 
-async function initCircleMeshes() { 
+function initCircleMeshes() { 
     const mainSphere = createSphereMesh({
         radius: 15,
         castShadow: true
@@ -117,12 +117,12 @@ function initMeshes() {
         circles: initCircleMeshes()
     };       
     
-    return async (meshName) => {
-        return await meshes[meshName];
+    return (meshName) => {
+        return meshes[meshName];
     };
 }
 
-async function initCirclesLight() {
+function initCirclesLight() {
     const light1 = createSpotLight({
         color: 0xda055a,
         intensity: 0.5,
@@ -173,8 +173,8 @@ function initLights() {
         circles: initCirclesLight()
     };
 
-    return async (lightName) => {
-        return await lights[lightName];
+    return (lightName) => {
+        return lights[lightName];
     };
 }
 

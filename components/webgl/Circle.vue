@@ -11,16 +11,16 @@ import gsap from 'gsap';
 
 export default {
     methods: {
-        async initLight() {
-            const lights = await this.$webglAssets.getLight('circles');
+        initLight() {
+            const lights = this.$webglAssets.getLight('circles');
             this.light1 = lights.light1;
             this.light2 = lights.light2;
             
             this.$webgl.scene.add(this.light1, this.light2);
         },
 
-        async initMesh() {
-            const circleMeshes = await this.$webglAssets.getMesh('circles');
+        initMesh() {
+            const circleMeshes = this.$webglAssets.getMesh('circles');
             
             this.meshGroup = new THREE.Group();
             this.meshGroup.add(circleMeshes.mainSphere, circleMeshes.sphere2);
@@ -69,9 +69,9 @@ export default {
             this.reqFrame = requestAnimationFrame(this.onTick);
         }
     },
-    async mounted() {
-        await this.initLight();
-        await this.initMesh();       
+    mounted() {
+        this.initLight();
+        this.initMesh();       
         this.animateMeshAppearance(); 
 
         this.$webgl.appendToDom(this.$refs.container);
