@@ -42,7 +42,6 @@ function loadTexture(src, material) {
     );
 }
 
-
 function initCircleMeshes() { 
     const mainSphere = createSphereMesh({
         radius: 15,
@@ -110,8 +109,7 @@ function createSphereMesh({radius, textureColor = new THREE.Color(0xffffff), pos
     return sphereMesh;
 }
 
-
-function initMeshes() {
+function initMeshesGetter() {
     const meshes = {
         waveImage: initWaveImageMesh('images/wave-image-texture.jpg'),
         circles: initCircleMeshes()
@@ -121,6 +119,7 @@ function initMeshes() {
         return meshes[meshName];
     };
 }
+
 
 function initCirclesLight() {
     const light1 = createSpotLight({
@@ -168,7 +167,7 @@ function createSpotLight({color, intensity, position, castShadow}) {
     return light;            
 }
 
-function initLights() {
+function initLightsGetter() {
     const lights = {
         circles: initCirclesLight()
     };
@@ -178,9 +177,10 @@ function initLights() {
     };
 }
 
+
 function initAssets() {
-    const getMesh = initMeshes();
-    const getLight = initLights();
+    const getMesh = initMeshesGetter();
+    const getLight = initLightsGetter();
 
     return {
         getMesh,

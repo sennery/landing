@@ -74,7 +74,7 @@ export default {
             const age = this.getTimeDifference('1999-03-18');
             const exp = this.getTimeDifference('2020-01-01');
 
-            const text = `Hi! I'm a Frontend developer from Perm, Russia.
+            const text = `Hi! I'm a Frontend developer from Russia.
                 My name is Arsenii Likhachev and I'm ${ age } years old.
                 Over ${ exp } years of the industry expirience.
                 Making stuff simple and minimalistic.`;
