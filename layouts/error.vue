@@ -1,27 +1,23 @@
 <template>
-    <div class="wrapper">        
-        <Container>
-            <div>
-                <div 
-                    v-if="statusCode === 404"
-                    class="error"
-                >
-                    <span>404</span>
-                    <span>page not found</span>
-                </div>
-                <div
-                    v-else
-                >
-                    Oops, something went wrong...
-                </div>
+    <div class="error-page">
+        <div 
+            v-if="statusCode === 404"
+            class="error"
+        >
+            <span>404</span>
+            <span>page not found</span>
+        </div>
+        <div
+            v-else
+        >
+            Oops, something went wrong...
+        </div>
 
-                <NuxtLink 
-                    to="/"
-                >
-                    Go to home page
-                </NuxtLink>
-            </div>
-        </Container>
+        <NavigationRouteLink
+            class="home-link"
+            :name="'Go to home page'"
+            :link="'/'"
+        />
     </div>
 </template>
 
@@ -29,8 +25,8 @@
 export default {
     props: {
         error: {
-        type: Object,
-        default: null
+            type: Object,
+            default: null
         }
     },
     computed: {
@@ -58,20 +54,28 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/css/theme.scss";
 
-.wrapper {
+.error-page {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
-    font-size: 5em;
+    font-size: 2.5em;
     font-weight: 400;
     color: $color-text-secondary;
 
     .error {
+        font-size: 2em;
         color: $color-text-primary;
+        margin-bottom: 0.5em;
 
         span:first-child {
             font-weight: 800;
         }
     }    
+
+    .home-link {
+        max-width: 20%;
+    }
 }
 </style>
