@@ -3,11 +3,13 @@ import webpack from 'webpack';
 const title = 'Arsenii Likhachev';
 const description = 'Hello! My name is Arsenii Likhachev, i\'m a web developer from Russia.';
 
+const isGhPages = process.env.GH_PAGES === 'true';
+
 export default {
-    target: process.env.GH_PAGES ? 'static' : 'server',
+    target: isGhPages ? 'static' : 'server',
 
     router: {
-        base: process.env.GH_PAGES ? '/landing/' : ''
+        base: isGhPages ? '/landing/' : ''
     },
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
@@ -82,8 +84,8 @@ export default {
             config.module.rules.push({
                 test: /\.(glsl|vs|fs)$/,
                 use: [
-                    require.resolve('raw-loader'),
-                    require.resolve('glslify-loader'),
+                    'raw-loader',
+                    'glslify-loader',
                 ]
             });
           },
