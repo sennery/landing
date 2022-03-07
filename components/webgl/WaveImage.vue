@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import gsap from 'gsap';
-
 export default {
     methods: {
         initMesh() {
@@ -31,7 +29,7 @@ export default {
             this.resize();
         },
         animateMeshAppearance() {
-            gsap.fromTo(this.mesh.scale, {
+            GSAP.fromTo(this.mesh.scale, {
                 x: this.$webgl.viewsize.width * 2,
                 y: this.$webgl.viewsize.width * 2,
             }, {
@@ -79,7 +77,7 @@ export default {
         cancelAnimationFrame(this.reqFrame);        
         this.$webgl.clearScene();
         this.$events.$off('viewport:resize', this.onResize);
-        gsap.killTweensOf(this.mesh.scale);
+        GSAP.killTweensOf(this.mesh.scale);
     }
 }
 </script>

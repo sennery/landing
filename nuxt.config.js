@@ -80,7 +80,10 @@ export default {
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
         extend(config, ctx) {
-            config.plugins.push(new webpack.ProvidePlugin({ THREE: 'three' }));
+            config.plugins.push(new webpack.ProvidePlugin({ 
+                THREE: 'three',
+                GSAP: ['gsap', 'gsap']
+            }));
             config.module.rules.push({
                 test: /\.(glsl|vs|fs)$/,
                 use: [

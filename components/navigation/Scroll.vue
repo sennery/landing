@@ -42,8 +42,6 @@
 import SLetter from '@/assets/svg/letter.svg';
 import Angle from '@/assets/svg/angle-up.svg';
 
-import gsap from 'gsap';
-
 export default {    
     components: {
         SLetter,
@@ -94,14 +92,14 @@ export default {
         },
 
         updateScroll(scroll) {
-            gsap.set('.home-icon', {
+            GSAP.set('.home-icon', {
                 y: this.$viewport.height * scroll * 0.3
             });
-            gsap.set(['.angle.top', '.prev-link'], {
+            GSAP.set(['.angle.top', '.prev-link'], {
                 y: this.$viewport.height * scroll * 0.35,
                 opacity: 1 - scroll * 3
             });
-            gsap.set(['.angle.bottom', '.next-link'], {
+            GSAP.set(['.angle.bottom', '.next-link'], {
                 y: this.$viewport.height * scroll * 0.35,
                 opacity: 1 + scroll * 3
             });

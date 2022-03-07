@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import gsap from 'gsap';
-
 const MAX_BORDER_RADIUS = 50;
 const MAX_SKEW = 10;
 
@@ -27,7 +25,7 @@ export default {
     methods: {
         onTick() {            
             const mouse = this.$mouse.lerpedNormalized.x;
-            gsap.to('.slider', {
+            GSAP.to('.slider', {
                 duration: this.duration / 5,
                 skewX: (1 - mouse) / 2 * MAX_SKEW,
             });
@@ -38,7 +36,7 @@ export default {
         requestAnimationFrame(this.onTick);
     },
     beforeDestroy() {
-        gsap.killTweensOf('.slider');
+        GSAP.killTweensOf('.slider');
         cancelAnimationFrame(this.reqFrame);
     }
 }

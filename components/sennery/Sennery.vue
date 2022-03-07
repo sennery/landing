@@ -17,7 +17,6 @@
 
 <script>
 import Lines from '@/assets/svg/pencil-lines.svg';
-import gsap from 'gsap';
 
 const MAX_MOVE = 20;
 
@@ -39,7 +38,7 @@ export default {
         },
         doMove() {
             const movePos = this.getMovePosition();
-            gsap.to('.sennery', {
+            GSAP.to('.sennery', {
                 ...movePos,
                 stagger: 0.01,
             });
@@ -49,7 +48,7 @@ export default {
         this.$events.$on('mouse:mousemove', this.doMove);
     },
     beforeDestroy() {
-        gsap.killTweensOf('.sennery');
+        GSAP.killTweensOf('.sennery');
         this.$events.$off('mouse:mousemove', this.doMove);
     }
 }

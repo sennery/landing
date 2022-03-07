@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import gsap from 'gsap';
-
 export default {
     methods: {
         initLight() {
@@ -35,7 +33,8 @@ export default {
         },
 
         animateMeshAppearance() {
-            gsap.fromTo(this.meshGroup3.scale, {
+            console.log(GSAP)
+            GSAP.fromTo(this.meshGroup3.scale, {
                 x: 0,
                 y: 0,
                 z: 0
