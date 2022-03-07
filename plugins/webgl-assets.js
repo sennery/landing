@@ -1,4 +1,3 @@
-import gsap from 'gsap';
 import glsl from 'glslify';
 
 import vertexShader from '@/assets/webgl/shaders/vertex.glsl';

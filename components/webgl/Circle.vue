@@ -33,7 +33,6 @@ export default {
         },
 
         animateMeshAppearance() {
-            console.log(GSAP)
             GSAP.fromTo(this.meshGroup3.scale, {
                 x: 0,
                 y: 0,

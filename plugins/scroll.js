@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import gsap from 'gsap';
 import { events } from './events';
 import { viewport } from './viewport';
 
@@ -28,7 +27,7 @@ const scroll = new Vue({
         }
     },
     created() {
-        this.clamper = gsap.utils.clamp(
+        this.clamper = GSAP.utils.clamp(
             -this.baseScroll,
             this.baseScroll
         );
@@ -52,7 +51,7 @@ const scroll = new Vue({
             }
             this.scroll = 0;
             this.tween?.kill();
-            this.tween = gsap.to(this, {
+            this.tween = GSAP.to(this, {
                 duration: 1,
                 delay: 0.1,
                 lerpedScroll: this.scroll,
@@ -78,7 +77,7 @@ const scroll = new Vue({
             events.$emit('scroll:scroll');
 
             this.tween?.kill();
-            this.tween = gsap.to(this, {
+            this.tween = GSAP.to(this, {
                 duration: 0.5,
                 lerpedScroll: this.scroll,
                 ease: 'expo.out',

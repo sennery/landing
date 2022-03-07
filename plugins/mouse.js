@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import gsap from 'gsap';
 import { events } from './events';
 import { viewport } from './viewport';
 
@@ -76,7 +75,7 @@ const mouse = new Vue({
             events.$emit('mouse:mousemove');
         
             this.tween?.kill();
-            this.tween = gsap.to(this.lerpedPosition, {
+            this.tween = GSAP.to(this.lerpedPosition, {
                 duration: 3,
                 x,
                 y,
