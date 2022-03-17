@@ -1,6 +1,6 @@
 <template>
     <main>
-        <div
+        <h1
             class="title"
         >
             <TextTransition
@@ -8,11 +8,11 @@
                 :translate="{x: 100, y: 0}"
                 :rotate="{x: 0, y: 90}"
             >
-                <h1>
+                <div>
                     about
-                </h1>
+                </div>
             </TextTransition>
-        </div>
+        </h1>
         
         <p 
             class="info"
