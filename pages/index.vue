@@ -1,15 +1,15 @@
 <template>
     <main>
-        <div
+        <h1
             class="title"
         >
             Arsenii Likhachev
-        </div>     
-        <div 
+        </h1>     
+        <h2 
             class="subtitle"
         >
             web developer
-        </div>
+        </h2>
         
         <WebglCircle
             src="/images/texture-for-wave.png"
