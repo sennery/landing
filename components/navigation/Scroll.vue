@@ -1,15 +1,9 @@
 <template>
     <nav>
-        <div
-            class="bar"
-        >
-            <Angle
-                class="angle top"
-            />
+        <div class="bar">
+            <Angle class="angle top"/>
 
-            <span
-                class="prev-link"
-            >
+            <span class="prev-link">
                 {{ this.prevLink.name }}
             </span>
             
@@ -19,15 +13,11 @@
                 @click="showSidenav=!showSidenav"             
             />
 
-            <span
-                class="next-link"
-            >
+            <span class="next-link">
                 {{ this.nextLink.name }}
             </span>
 
-            <Angle
-                class="angle bottom"
-            />
+            <Angle class="angle bottom"/>
         </div>        
           
         <NavigationSide

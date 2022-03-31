@@ -1,19 +1,9 @@
 <template>
     <main>
-        <h1
-            class="title"
-        >
-            Arsenii Likhachev
-        </h1>     
-        <h2 
-            class="subtitle"
-        >
-            web developer
-        </h2>
+        <h1 class="title">Arsenii Likhachev</h1>     
+        <h2 class="subtitle">web developer</h2>
         
-        <WebglCircle
-            src="/images/texture-for-wave.png"
-        />      
+        <WebglCircle src="/images/texture-for-wave.png"/>      
     </main>
 </template>
 

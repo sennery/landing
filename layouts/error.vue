@@ -7,11 +7,7 @@
             <span>404</span>
             <span>page not found</span>
         </div>
-        <div
-            v-else
-        >
-            Oops, something went wrong...
-        </div>
+        <div v-else>Oops, something went wrong...</div>
 
         <NavigationRouteLink
             class="home-link"

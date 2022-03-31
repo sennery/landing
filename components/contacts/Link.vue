@@ -4,13 +4,11 @@
         :href="link"
         :style="{'--background-color': color }"
     >
-        <span>{{ name }}</span>
-        <LinkIcon
-            class="icon"
-        />
-        <div
-            class="back"
-        />
+        <span>
+            {{ name }}
+        </span>
+        <LinkIcon class="icon"/>
+        <div class="back"/>
     </a>
 </template>
 

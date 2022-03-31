@@ -1,8 +1,6 @@
 <template>
     <div class="layout">
-        <header
-            class="links header"
-        >            
+        <header class="links header">            
             <NuxtLink
                 :to="prevLink.path"
                 class="link"
@@ -17,13 +15,9 @@
             </span>
         </header>
 
-        <Nuxt
-            class="page"
-        />
+        <Nuxt class="page"/>
 
-        <footer
-            class="links footer"
-        >
+        <footer class="links footer">
             <NuxtLink
                 :to="nextLink.path"
                 class="link"

@@ -1,22 +1,16 @@
 <template>
     <main>
-        <h1
-            class="title"
-        >
+        <h1 class="title">
             <TextTransition
                 :duration="0.75"
                 :translate="{x: 100, y: 0}"
                 :rotate="{x: 0, y: 90}"
             >
-                <div>
-                    about
-                </div>
+                <div>about</div>
             </TextTransition>
         </h1>
         
-        <p 
-            class="info"
-        >
+        <p class="info">
             <TextTransition
                 v-for="(word, i) in description"
                 :key="i"
@@ -26,17 +20,13 @@
                 :translate="{x: 100, y: 0}"
                 :rotate="{x: 0, y: 90}"
             >
-                <span
-                    class="word"
-                >
+                <span class="word">
                     {{ word }}
                 </span>
             </TextTransition>                           
         </p>
 
-        <div                
-            class="contact-me"
-        >
+        <div class="contact-me">
             <TextTransition
                 :delay="description.length * 0.025"
                 :translate="{x: 100, y: 0}"

@@ -1,19 +1,11 @@
 <template>
     <main>
-        <WebglWaveImage
-            class="wave-back" 
-        />
-        <div 
-            class="side"
-        >
+        <WebglWaveImage class="wave-back"/>
+        <div class="side">
             <div>
-                <div 
-                    class="title"
-                >
+                <div class="title">
                     <TextTransition>
-                        <h1>
-                            contacts
-                        </h1>
+                        <h1>contacts</h1>
                     </TextTransition> 
                 </div>
 

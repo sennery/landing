@@ -1,7 +1,5 @@
 <template>
-    <transition
-        name="side"
-    >            
+    <transition name="side">            
         <nav
             v-if="enabled" 
             class="sidenav"
