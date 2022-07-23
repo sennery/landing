@@ -24,7 +24,7 @@ export default {
             { name: 'format-detection', content: 'telephone=no' },
             { name: 'msapplication-TileColor', content: '#17181c' },
             { name: 'theme-color', content: '#ffffff' },
-            { name="google-site-verification" content: 'tKUcIKhTFQivcqzq12afJb3cm-fINZ3QQSjZR2NrCJk' }
+            { name: "google-site-verification", content: 'tKUcIKhTFQivcqzq12afJb3cm-fINZ3QQSjZR2NrCJk' }
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' },

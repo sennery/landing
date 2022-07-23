@@ -6,7 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "SET GH_PAGES=true&& nuxt generate && gh-pages -d dist -t true"
+    "generate": "nuxt generate && gh-pages -d dist -t true"
   },
   "dependencies": {
     "core-js": "^3.21.1",
