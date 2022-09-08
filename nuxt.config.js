@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 
 const title = 'Arsenii Likhachev';
-const description = 'Hello! My name is Arsenii Likhachev, i\'m a web developer from Russia.';
+const description = 'Hello! My name is Arsenii Likhachev, I\'m a web developer creating clean and minimalistick interfaces';
 
 const isGhPages = process.env.GH_PAGES === 'true';
 
