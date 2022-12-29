@@ -1,15 +1,16 @@
 @import './reset.css';
 @import './base.css';
 
-body {
-  display: flex;
-  place-items: center;
+#app {
+  min-width: 100vw;
+  padding: 0 5rem;
+  overflow-x: hidden;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+h1 {
+  font-size: 5rem;
+}
 
-  font-weight: normal;
+h2 {
+  font-size: 2rem;
 }
