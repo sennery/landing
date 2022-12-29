@@ -20,10 +20,10 @@ aside {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  z-index: -999;
 }
 
 .logo {  
-  z-index: -999;
   transform: rotateZ(90deg) scale(10) translate(-1rem, 1rem);
   transform-origin: 0 50%;
 }
