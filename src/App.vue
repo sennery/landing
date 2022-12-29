@@ -1,16 +1,13 @@
 <script setup lang="ts">
+import Background from '@/components/BackgroundScene.vue'
+import PageTitle from '@/components/PageTitle.vue'
 </script>
 
 <template>
   <main>
-    <img       
-      src="./assets/letter.svg" 
-      alt="Vue logo" 
-      class="logo" 
-      width="125" 
-      height="125"
-    >
+    <PageTitle />
   </main>
+  <Background />
 </template>
 
 <style scoped>
