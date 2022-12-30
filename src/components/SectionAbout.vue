@@ -4,7 +4,8 @@ import { vIntersectionObserver } from '@vueuse/components'
 import { animate } from 'popmotion'
 
 const animationProgress = ref(0);
-const animationTranslate = computed(() => `${10 - animationProgress.value * 10}rem`)
+const animationTranslateParagraph = computed(() => `${animationProgress.value * 5 - 5}rem`)
+const animationTranslateTitle = computed(() => `${animationProgress.value * 10 - 10}rem`)
 
 let animation: { stop: () => void };
 
@@ -43,8 +44,12 @@ function onIntersectionObserver ([{ isIntersecting }] : Array<{ isIntersecting: 
 .section-about > * {
   transform-origin: 50% 50%;
   opacity: v-bind(animationProgress);
-  transform: translateY(v-bind(animationTranslate));
+  transform: translateY(v-bind(animationTranslateParagraph));
   max-width: 40rem;
+}
+
+.section-about > h2 {
+  transform: translateY(v-bind(animationTranslateTitle));
 }
 
 .section-about > h2 {

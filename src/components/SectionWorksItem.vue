@@ -5,6 +5,7 @@ import { animate } from 'popmotion'
 
 const animationProgress = ref(0);
 const animationTranslateParagraph = computed(() => `${animationProgress.value * 10 - 10}rem`)
+const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 5}rem`)
 
 let animation: { stop: () => void };
 
@@ -61,6 +62,10 @@ defineProps({
 .article-works p {
   transform-origin: 0% 50%;
   opacity: v-bind(animationProgress);
+  transform: translateX(v-bind(animationTranslateTitle));
+}
+
+.article-works p {
   transform: translateX(v-bind(animationTranslateParagraph));
 }
 
