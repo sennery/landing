@@ -14,5 +14,10 @@ h1 {
 }
 
 h2 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+h3, p {
   font-size: 2rem;
 }
