@@ -11,6 +11,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vueuse/components": "^9.9.0",
     "@vueuse/core": "^9.9.0",
     "@vueuse/head": "^1.0.22",
     "popmotion": "^11.0.5",
