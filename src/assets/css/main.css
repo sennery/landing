@@ -1,5 +1,6 @@
 @import './reset.css';
 @import './base.css';
+@import './fonts.css';
 
 #app {
   min-width: 100vw;
@@ -9,6 +10,7 @@
 
 h1 {
   font-size: 5rem;
+  font-weight: bold;
 }
 
 h2 {
