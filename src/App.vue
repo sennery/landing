@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import Background from '@/components/BackgroundScene.vue'
-import PageTitle from '@/components/PageTitle.vue'
+import SectionTitle from '@/components/SectionTitle.vue'
+import SectionAbout from '@/components/SectionAbout.vue'
+import SectionWorks from '@/components/SectionWorks.vue'
 </script>
 
 <template>
   <main>
-    <PageTitle />
+    <SectionTitle />
+    <SectionAbout />
+    <SectionWorks />
   </main>
-  <Background />
+  <!-- <Background /> -->
 </template>
 
 <style scoped>
