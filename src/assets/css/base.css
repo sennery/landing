@@ -15,6 +15,7 @@
   --color-background-mute: var(--vt-c-white-mute);
 
   --color-text: var(--vt-c-text-light-1);
+  --color-text-secondary: var(--vt-c-text-light-2);
 }
 
 :root {

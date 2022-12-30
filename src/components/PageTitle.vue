@@ -104,6 +104,10 @@ setTimeout(() => switchName(), 1000)
   display: flex;
 }
 
+.section-title > h3 {
+  color: var(--color-text-secondary);
+}
+
 .name-move, .spec {
   transition: all 0.6s cubic-bezier(0, 1, 0.18, 1);
 }
