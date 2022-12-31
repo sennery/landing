@@ -29,6 +29,10 @@ defineProps({
     type: String,
     required: true
   },
+  company: { 
+    type: String,
+    required: true
+  },
   description: { 
     type: String,
     required: true
@@ -43,7 +47,7 @@ defineProps({
   >
     <div>
       <h2>{{ title }}</h2>     
-      <h3>{{ years }}</h3>
+      <h3>{{ years }} at {{ company }}</h3>
     </div>
     <p>{{ description }}</p>
   </article>
