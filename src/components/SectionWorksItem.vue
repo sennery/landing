@@ -42,7 +42,7 @@ defineProps({
 
 <template>
   <article 
-    v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
+    v-intersection-observer="[onIntersectionObserver, { threshold: 1 }]"
     class="article-works"
   >
     <div>
@@ -58,6 +58,7 @@ defineProps({
   display: flex;
   flex-direction: column;
   justify-content: center;
+  scroll-snap-align: center;
   width: 50rem;
 }
 

@@ -7,12 +7,15 @@ import SectionWorks from '@/components/SectionWorks.vue'
 
 <template>
   <main>
-    <SectionTitle />
-    <SectionAbout />
+    <SectionTitle class="section-snap" />
+    <SectionAbout class="section-snap" />
     <SectionWorks />
   </main>
   <!-- <Background /> -->
 </template>
 
 <style scoped>
+.section-snap {
+  scroll-snap-align: center;
+}
 </style>
