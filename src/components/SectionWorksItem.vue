@@ -1,24 +1,12 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
-import { animate } from 'popmotion'
+import { useIntersectAnimation } from '@/composables/intersectAnimation';
 
-const animationProgress = ref(0);
+const { animationProgress, onIntersect } = useIntersectAnimation();
+
 const animationTranslateParagraph = computed(() => `${animationProgress.value * 10 - 10}rem`)
 const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 5}rem`)
-
-let animation: { stop: () => void };
-
-function onIntersectionObserver ([{ isIntersecting }] : Array<{ isIntersecting: boolean }>) {
-  animation?.stop();
-  animation = animate({
-    from: animationProgress.value,
-    to: isIntersecting ? 1 : 0,
-    type: 'spring',
-    stiffness: 100,
-    onUpdate: latest => animationProgress.value = latest
-})
-}
 
 defineProps({
   title: { 
@@ -42,7 +30,7 @@ defineProps({
 
 <template>
   <article 
-    v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
+    v-intersection-observer="[onIntersect, { threshold: 0.5 }]"
     class="article-works"
   >
     <div>

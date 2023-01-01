@@ -3,7 +3,7 @@ import PageWorksItem from '@/components/SectionWorksItem.vue'
 
 const works = [
     {
-        title: 'Frontend architect',
+        title: 'frontend architect',
         years: '2022-nowadays',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat sunt porro ad, facilis voluptas assumenda quidem rem aliquam tenetur in vitae nihil explicabo itaque quaerat tempore soluta cumque a sequi.',
         company: {
@@ -13,7 +13,7 @@ const works = [
         },
     },
     {
-        title: 'Fullstack developer',
+        title: 'fullstack developer',
         years: '2020-2022',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat sunt porro ad, facilis voluptas assumenda quidem rem aliquam tenetur in vitae nihil explicabo itaque quaerat tempore soluta cumque a sequi.',
         company: {

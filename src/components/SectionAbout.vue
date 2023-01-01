@@ -1,28 +1,17 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
-import { animate } from 'popmotion'
+import { useIntersectAnimation } from '@/composables/intersectAnimation';
 
-const animationProgress = ref(0);
+const { animationProgress, onIntersect } = useIntersectAnimation();
+
 const animationTranslateParagraph = computed(() => `${10 - animationProgress.value * 10}rem`)
 const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
-
-let animation: { stop: () => void };
-
-function onIntersectionObserver ([{ isIntersecting }] : Array<{ isIntersecting: boolean }>) {
-  animation?.stop();
-  animation = animate({
-    from: animationProgress.value,
-    to: isIntersecting ? 1 : 0,
-    type: 'spring',
-    onUpdate: latest => animationProgress.value = latest
-})
-}
 </script>
 
 <template>
   <section 
-    v-intersection-observer="[onIntersectionObserver, { threshold: 1 }]"
+    v-intersection-observer="[onIntersect, { threshold: 1 }]"
     class="section-about"
   >
     <h2>about me</h2>     
@@ -51,9 +40,6 @@ function onIntersectionObserver ([{ isIntersecting }] : Array<{ isIntersecting: 
 
 .section-about > h2 {
   transform: translateY(v-bind(animationTranslateTitle));
-}
-
-.section-about > h2 {
-    margin: 2rem 0;
+  margin: 2rem 0;
 }
 </style>
