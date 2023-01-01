@@ -8,7 +8,7 @@
 }
 
 #app, html, body {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
 }
 
 h1 {
@@ -27,4 +27,14 @@ h3, p {
 
 h3 {
   color: var(--color-text-secondary);
+}
+
+ul {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 800px) {
+  #app {
+    padding: 0 1rem;
+  }
 }
