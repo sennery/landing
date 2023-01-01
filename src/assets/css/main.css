@@ -5,11 +5,10 @@
 #app {
   min-width: 100vw;
   padding: 0 5rem;
-  /* overflow-x: hidden; */
 }
 
 #app, html, body {
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
 }
 
 h1 {
