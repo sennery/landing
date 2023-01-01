@@ -50,6 +50,7 @@ defineProps({
       <h3>
         {{ years }} at 
         <a
+          target="_blank"
           :href="company.link" 
           :style="{ color: company.color }"
         >
