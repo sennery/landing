@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
 import { useIntersectAnimation } from '@/composables/intersectAnimation';
+import IconLink from './IconLink.vue';
 
 const { animationProgress, onIntersect } = useIntersectAnimation();
 
@@ -36,8 +37,10 @@ const contacts = [
         :key="contact.name"
         :href="contact.link"
         target="_blank"
+        class="link"
       >
         {{ contact.name }}
+        <IconLink class="icon" />
       </a>
     </ul>
   </section>
@@ -64,5 +67,17 @@ const contacts = [
 .section-contacts > h2 {
   transform: translateY(v-bind(animationTranslateTitle));
   margin: 2rem 0;
+}
+
+.icon {
+    transform-origin: 50% 50%;
+    transition: all 0.6s cubic-bezier(0, 1, 0.18, 1); 
+    opacity: 1;
+    /* transform: rotateZ(90deg) translateX(0); */
+}
+
+.link:hover .icon {
+    opacity: 1;
+    transform: rotateZ(45deg) translate(1rem, -1rem);
 }
 </style>
