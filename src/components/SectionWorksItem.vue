@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
 import { useIntersectAnimation } from '@/composables/intersectAnimation';
+import IconLink from './IconLink.vue';
 
 const { animationProgress, onIntersect } = useIntersectAnimation();
 
@@ -41,8 +42,10 @@ defineProps({
           target="_blank"
           :href="company.link" 
           :style="{ color: company.color }"
+          class="link"
         >
           {{ company.name }}
+          <IconLink class="icon" />
         </a>
       </h3>
     </div>
@@ -73,5 +76,16 @@ defineProps({
 
 .article-works div {
     margin: 2rem 0;
+}
+
+.icon {
+  opacity: 0;
+  transform-origin: 50% 50%;
+  transition: transform 0.6s cubic-bezier(0, 1, 0.18, 1),
+    opacity 0.6s cubic-bezier(0, 1, 0.18, 1); 
+}
+
+.link:hover .icon {
+  opacity: 1;
 }
 </style>

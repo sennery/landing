@@ -71,12 +71,10 @@ const contacts = [
 
 .icon {
   transform-origin: 50% 50%;
-  transition: all 0.6s cubic-bezier(0, 1, 0.18, 1); 
-  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0, 1, 0.18, 1); 
 }
 
 .link:hover .icon {
-  opacity: 1;
   transform: rotateZ(45deg) translate(1rem, -1rem);
 }
 </style>
