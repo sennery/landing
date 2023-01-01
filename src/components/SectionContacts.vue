@@ -10,18 +10,18 @@ const animationTranslateParagraph = computed(() => `${10 - animationProgress.val
 const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
 
 const contacts = [
-    {
-        name: 'mac452ares@gmail.com',
-        link: 'mailto:mac452res@gmail.com'
-    },
-    {
-        name: 'github',
-        link: 'https://github.com/sennery'
-    },
-    {
-        name: 'telegram',
-        link: 'https://t.me/sennery'
-    },
+  {
+    name: 'mac452ares@gmail.com',
+    link: 'mailto:mac452res@gmail.com'
+  },
+  {
+    name: 'github',
+    link: 'https://github.com/sennery'
+  },
+  {
+    name: 'telegram',
+    link: 'https://t.me/sennery'
+  },
 ]
 </script>
 
@@ -55,7 +55,7 @@ const contacts = [
 }
 
 .section-contacts {
-    margin: 20rem 0;
+  margin: 20rem 0;
 }
 
 .section-contacts > * {
@@ -70,14 +70,13 @@ const contacts = [
 }
 
 .icon {
-    transform-origin: 50% 50%;
-    transition: all 0.6s cubic-bezier(0, 1, 0.18, 1); 
-    opacity: 1;
-    /* transform: rotateZ(90deg) translateX(0); */
+  transform-origin: 50% 50%;
+  transition: all 0.6s cubic-bezier(0, 1, 0.18, 1); 
+  opacity: 1;
 }
 
 .link:hover .icon {
-    opacity: 1;
-    transform: rotateZ(45deg) translate(1rem, -1rem);
+  opacity: 1;
+  transform: rotateZ(45deg) translate(1rem, -1rem);
 }
 </style>
