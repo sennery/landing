@@ -20,7 +20,7 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
 
 <template>
   <section 
-    v-intersection-observer="[onIntersect, { threshold: 1 }]"
+    v-intersection-observer="[onIntersect, { threshold: 0.5 }]"
     class="section-about"
   >
     <h2>about me</h2>     
@@ -70,5 +70,11 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
 .exp-time {
   cursor: pointer;
   color: #262c7a;
+}
+
+@media (max-width: 800px) {
+  .section-about {
+    margin: 10rem 0;
+  }
 }
 </style>

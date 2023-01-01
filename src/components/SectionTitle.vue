@@ -76,8 +76,8 @@ setTimeout(() => switchName(), 1000)
         v-for="(letter, index) in name"
         :key="letter.id"
         :data-index="index"
-        :style="{
-          'padding-left': letter.id === 999 ? '1.5rem' : '' 
+        :class="{
+          'surname-start': letter.id === 999 
         }"
       >
         {{ letter.letter }}
@@ -101,6 +101,10 @@ setTimeout(() => switchName(), 1000)
   display: flex;
 }
 
+.surname-start {
+  padding-left: 1.5rem;
+}
+
 .name-move, .spec {
   transition: all 0.6s cubic-bezier(0, 1, 0.18, 1);
 }
@@ -113,5 +117,11 @@ setTimeout(() => switchName(), 1000)
 .spec.active {
   opacity: 1;
   transform: translateX(0);
+}
+
+@media (max-width: 800px) {
+  .surname-start {
+    padding-left: 0.5rem;
+  }
 }
 </style>

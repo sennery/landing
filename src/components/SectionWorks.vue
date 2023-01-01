@@ -45,4 +45,11 @@ const works = [
   gap: 10rem;
   margin: 20rem 0;
 }
+
+@media (max-width: 800px) {
+  .section-works {
+    margin: 10rem 0;
+    gap: 5rem;
+  }
+}
 </style>
