@@ -44,10 +44,11 @@ const contacts = [
 </template>
 
 <style scoped>
-.section-contacts, .contacts-list {
+.contacts-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.5rem;
 }
 
 .section-contacts {
@@ -55,7 +56,6 @@ const contacts = [
 }
 
 .section-contacts > * {
-  transform-origin: 50% 50%;
   opacity: v-bind(animationProgress);
   transform: translateY(v-bind(animationTranslateParagraph));
   max-width: 40rem;
@@ -64,9 +64,5 @@ const contacts = [
 .section-contacts > h2 {
   transform: translateY(v-bind(animationTranslateTitle));
   margin: 2rem 0;
-}
-
-.contacts-list {
-    gap: 0.5rem;
 }
 </style>

@@ -25,14 +25,10 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
 
 <style scoped>
 .section-about {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   margin: 20rem 0;
 }
 
 .section-about > * {
-  transform-origin: 50% 50%;
   opacity: v-bind(animationProgress);
   transform: translateY(v-bind(animationTranslateParagraph));
   max-width: 40rem;

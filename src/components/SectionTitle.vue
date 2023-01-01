@@ -94,9 +94,6 @@ setTimeout(() => switchName(), 1000)
 
 <style scoped>
 .section-title {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   height: 100vh;
 }
 

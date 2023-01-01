@@ -17,6 +17,16 @@ import SectionContacts from '@/components/SectionContacts.vue'
 </template>
 
 <style scoped>
+main > section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main > section > * {
+  transform-origin: 50% 50%;
+}
+
 .snap-center {
   scroll-snap-align: center;
 }

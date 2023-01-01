@@ -40,8 +40,6 @@ const works = [
 
 <style scoped>
 .section-works {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   gap: 10rem;
