@@ -25,8 +25,8 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
   >
     <h2>about me</h2>     
     <p>
-      Hi, my name is Arsenii Likhachev. 
-      I'm a <span>{{ age }}</span> y.o. web developer. Making complex and clean web applications for
+      Hello, my name is Arsenii Likhachev. 
+      I am a <span>{{ age }}</span> y.o. web developer. Making complex and clean web applications for
       <span 
         v-if="onlySeconds"
         class="exp-time"
