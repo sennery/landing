@@ -12,9 +12,6 @@ const changeExpTime = () => onlySeconds.value = !onlySeconds.value
 
 const englishPluralRules = new Intl.PluralRules('en');
 
-console.log(englishPluralRules.select(0))
-console.log(englishPluralRules.select(1))
-console.log(englishPluralRules.select(2))
 const { animationProgress, onIntersect } = useIntersectAnimation();
 
 const animationTranslateParagraph = computed(() => `${10 - animationProgress.value * 10}rem`)
