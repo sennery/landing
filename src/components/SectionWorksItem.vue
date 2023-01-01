@@ -29,12 +29,12 @@ defineProps({
     type: String,
     required: true
   },
-  company: { 
+  description: { 
     type: String,
     required: true
   },
-  description: { 
-    type: String,
+  company: { 
+    type: Object,
     required: true
   }
 })
@@ -42,12 +42,20 @@ defineProps({
 
 <template>
   <article 
-    v-intersection-observer="[onIntersectionObserver, { threshold: 1 }]"
+    v-intersection-observer="[onIntersectionObserver, { threshold: 0.5 }]"
     class="article-works"
   >
     <div>
       <h2>{{ title }}</h2>     
-      <h3>{{ years }} at {{ company }}</h3>
+      <h3>
+        {{ years }} at 
+        <a
+          :href="company.link" 
+          :style="{ color: company.color }"
+        >
+          {{ company.name }}
+        </a>
+      </h3>
     </div>
     <p>{{ description }}</p>
   </article>
@@ -59,7 +67,7 @@ defineProps({
   flex-direction: column;
   justify-content: center;
   scroll-snap-align: center;
-  width: 50rem;
+  max-width: 50rem;
 }
 
 .article-works h2,

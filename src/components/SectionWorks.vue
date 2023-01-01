@@ -1,18 +1,26 @@
 <script setup lang="ts">
 import PageWorksItem from '@/components/SectionWorksItem.vue'
 
-const WORKS = [
+const works = [
     {
         title: 'Frontend architect',
         years: '2022-nowadays',
-        company: 'Freught',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat sunt porro ad, facilis voluptas assumenda quidem rem aliquam tenetur in vitae nihil explicabo itaque quaerat tempore soluta cumque a sequi.'
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat sunt porro ad, facilis voluptas assumenda quidem rem aliquam tenetur in vitae nihil explicabo itaque quaerat tempore soluta cumque a sequi.',
+        company: {
+          name: 'Freught',
+          color: '#262c7a',
+          link: 'https://freught.com/'
+        },
     },
     {
         title: 'Fullstack developer',
         years: '2020-2022',
-        company: 'Rostelekom',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat sunt porro ad, facilis voluptas assumenda quidem rem aliquam tenetur in vitae nihil explicabo itaque quaerat tempore soluta cumque a sequi.'
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat sunt porro ad, facilis voluptas assumenda quidem rem aliquam tenetur in vitae nihil explicabo itaque quaerat tempore soluta cumque a sequi.',
+        company: {
+          name: 'Rostelekom IT',
+          color: '#7700ff',
+          link: 'https://rtkit.ru/'
+        },
     }
 ]
 </script>
@@ -20,7 +28,7 @@ const WORKS = [
 <template>
   <section class="section-works">
     <PageWorksItem 
-      v-for="(work, index) in WORKS"
+      v-for="(work, index) in works"
       :key="index"
       :title="work.title"
       :years="work.years"
@@ -33,9 +41,10 @@ const WORKS = [
 <style scoped>
 .section-works {
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   gap: 10rem;
-  margin: 10rem 0;
+  margin: 20rem 0;
 }
 </style>

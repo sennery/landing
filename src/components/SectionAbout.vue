@@ -4,8 +4,8 @@ import { vIntersectionObserver } from '@vueuse/components'
 import { animate } from 'popmotion'
 
 const animationProgress = ref(0);
-const animationTranslateParagraph = computed(() => `${animationProgress.value * 5 - 5}rem`)
-const animationTranslateTitle = computed(() => `${animationProgress.value * 10 - 10}rem`)
+const animationTranslateParagraph = computed(() => `${10 - animationProgress.value * 10}rem`)
+const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
 
 let animation: { stop: () => void };
 
@@ -39,6 +39,7 @@ function onIntersectionObserver ([{ isIntersecting }] : Array<{ isIntersecting: 
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 20rem 0;
 }
 
 .section-about > * {
