@@ -69,7 +69,7 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
 
 .exp-time {
   cursor: pointer;
-  color: #262c7a;
+  color: var(--color-text-highlight);
 }
 
 @media (max-width: 800px) {
