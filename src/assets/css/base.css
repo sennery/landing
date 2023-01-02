@@ -23,9 +23,13 @@
   overflow-x: hidden;
 }
 
-::selection {
+::selection, *:focus-visible {
   background-color: var(--c-bubblegum-pink);
-  color: var(--c-indigo);
+  color: black !important;
+}
+
+*:focus-visible {
+  outline: none;
 }
 
 *,

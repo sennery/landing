@@ -103,7 +103,7 @@ const techColorsMap: { [key: string]: string } = {
     opacity 0.6s cubic-bezier(0, 1, 0.18, 1); 
 }
 
-.link:hover .icon {
+.link:hover .icon, .link:focus .icon {
   opacity: 1;
 }
 

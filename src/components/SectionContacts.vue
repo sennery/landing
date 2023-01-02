@@ -74,7 +74,7 @@ const contacts = [
   transition: transform 0.6s cubic-bezier(0, 1, 0.18, 1); 
 }
 
-.link:hover .icon {
+.link:hover .icon, .link:focus .icon {
   transform: rotateZ(45deg) translate(1rem, -1rem);
 }
 </style>
