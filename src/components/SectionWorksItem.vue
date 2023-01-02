@@ -9,24 +9,27 @@ const { animationProgress, onIntersect } = useIntersectAnimation();
 const animationTranslateParagraph = computed(() => `${animationProgress.value * 10 - 10}rem`)
 const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 5}rem`)
 
-defineProps({
-  title: { 
-    type: String,
-    required: true
+defineProps<{
+  title: string,
+  years: string,
+  description: string,
+  company: {
+    link: string,
+    name: string,
+    color: string,
   },
-  years: { 
-    type: String,
-    required: true
-  },
-  description: { 
-    type: String,
-    required: true
-  },
-  company: { 
-    type: Object,
-    required: true
-  }
-})
+  stack: string[],
+}>()
+
+const techColorsMap: { [key: string]: string } = {
+  vue: '#42b883',
+  nuxt: '#00dc82',
+  webpack: '#75aecb',
+  vuetify: '#1697f6',
+  scss: '#cf649a',
+  groovy: '#4298b8',
+  postgresql: '#336791',
+}
 </script>
 
 <template>
@@ -50,6 +53,21 @@ defineProps({
       </h3>
     </div>
     <p>{{ description }}</p>
+    <p class="stack">
+      <template      
+        v-for="tech in stack"
+        :key="tech"
+      >
+        <span
+          :style="{
+            color: techColorsMap[tech]
+          }"
+        >
+          {{ tech }}
+        </span>
+        <span>, </span>
+      </template>
+    </p>
   </article>
 </template>
 
@@ -87,5 +105,13 @@ defineProps({
 
 .link:hover .icon {
   opacity: 1;
+}
+
+.stack {
+  margin: 2rem 0;
+}
+
+.stack > span:last-child {
+  display: none;
 }
 </style>

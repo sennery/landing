@@ -11,6 +11,7 @@ const works = [
       color: '#262c7a',
       link: 'https://freught.com/'
     },
+    stack: ['vue', 'nuxt', 'vuetify', 'scss'],
   },
   {
     title: 'fullstack developer',
@@ -21,6 +22,7 @@ const works = [
       color: '#7700ff',
       link: 'https://rtkit.ru/'
     },
+    stack: ['vue', 'webpack', 'groovy', 'postgresql'],
   }
 ]
 </script>
@@ -34,6 +36,7 @@ const works = [
       :years="work.years"
       :company="work.company"
       :description="work.description"
+      :stack="work.stack"
     />
   </section>
 </template>
