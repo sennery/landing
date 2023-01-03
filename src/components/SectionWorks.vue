@@ -5,7 +5,7 @@ const works = [
   {
     title: 'frontend architect',
     years: '2022-nowadays',
-    description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat sunt porro ad, facilis voluptas assumenda quidem rem aliquam tenetur in vitae nihil explicabo itaque quaerat tempore soluta cumque a sequi.',
+    description: 'I created a frontend architecture and design from scratch for the dynamically growing startup. I was implementing them with further scaling of the app and development of new features. Established the working process in the team and mentored junior staff.',
     company: {
       name: 'Freught',
       color: '#262c7a',
@@ -16,7 +16,7 @@ const works = [
   {
     title: 'fullstack developer',
     years: '2020-2022',
-    description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat sunt porro ad, facilis voluptas assumenda quidem rem aliquam tenetur in vitae nihil explicabo itaque quaerat tempore soluta cumque a sequi.',
+    description: 'I was developing interface, components and backend for a large CRM B2B system in the telecom market leader company. Communicated and took part in making architectural decisions in a team of 40 people.',
     company: {
       name: 'Rostelekom IT',
       color: '#7700ff',

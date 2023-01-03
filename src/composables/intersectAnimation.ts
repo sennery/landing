@@ -6,7 +6,7 @@ export function useIntersectAnimation () {
 
   let animation: { stop: () => void }
     
-  function onIntersect ([{ isIntersecting }] : Array<{ isIntersecting: boolean }>) {
+  function onIntersect ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
     animation?.stop()
     animation = animate({
       from: animationProgress.value,
