@@ -97,7 +97,6 @@ function onLeave(el: any, done: () => void) {
 <style scoped>
 .section-title {
   height: 100vh;
-  justify-content: flex-start;
 }
 
 .section-title > h1 {
