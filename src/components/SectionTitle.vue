@@ -36,9 +36,9 @@ const NICKNAME = [
 
 const name = ref(NICKNAME)
 
-function switchName () {
-  name.value = isName.value ? NICKNAME : NAME
-  isName.value = !isName.value
+function switchName ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
+  isName.value = isIntersecting
+  name.value = isName.value ? NAME : NICKNAME
 }
 
 function onBeforeEnter(el: any) {
@@ -64,7 +64,7 @@ function onLeave(el: any, done: () => void) {
 
 <template>
   <section
-    v-intersection-observer="[switchName, { threshold: 1}]" 
+    v-intersection-observer="[switchName, { threshold: 0.9 }]" 
     class="section-title"
   >
     <TransitionGroup
@@ -97,10 +97,18 @@ function onLeave(el: any, done: () => void) {
 <style scoped>
 .section-title {
   height: 100vh;
+  justify-content: flex-start;
 }
 
 .section-title > h1 {
   display: flex;
+  position: sticky;
+  top: 45%;
+}
+
+.section-title > h3 {
+  position: sticky;
+  top: 55%;
 }
 
 .surname-start {
@@ -124,6 +132,10 @@ function onLeave(el: any, done: () => void) {
 @media (max-width: 800px) {
   .surname-start {
     padding-left: 0.5rem;
+  }
+
+  .section-title > h3 {
+    top: 52%;
   }
 }
 </style>
