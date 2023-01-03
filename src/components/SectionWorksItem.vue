@@ -6,6 +6,7 @@ import IconLink from './IconLink.vue'
 
 const { animationProgress, onIntersect } = useIntersectAnimation()
 
+const animationTranslateStack = computed(() => `${animationProgress.value * 15 - 15}rem`)
 const animationTranslateParagraph = computed(() => `${animationProgress.value * 10 - 10}rem`)
 const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 5}rem`)
 
@@ -93,7 +94,16 @@ const techColorsMap: { [key: string]: string } = {
 }
 
 .article-works div {
-    margin: 2rem 0;
+  margin: 2rem 0;
+}
+
+.article-works .stack {
+  margin: 2rem 0;
+  transform: translateX(v-bind(animationTranslateStack));
+}
+
+.article-works .stack > span:last-child {
+  display: none;
 }
 
 .icon {
@@ -105,13 +115,5 @@ const techColorsMap: { [key: string]: string } = {
 
 .link:hover .icon, .link:focus .icon {
   opacity: 1;
-}
-
-.stack {
-  margin: 2rem 0;
-}
-
-.stack > span:last-child {
-  display: none;
 }
 </style>
