@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { animate } from 'popmotion'
+import { vIntersectionObserver } from '@vueuse/components'
 
 let isName = ref(false)
 
@@ -59,12 +60,13 @@ function onLeave(el: any, done: () => void) {
   el.style.opacity = '0'
   done()
 }
-
-setTimeout(() => switchName(), 1000)
 </script>
 
 <template>
-  <section class="section-title">
+  <section
+    v-intersection-observer="[switchName, { threshold: 1}]" 
+    class="section-title"
+  >
     <TransitionGroup
       name="name"
       tag="h1"
