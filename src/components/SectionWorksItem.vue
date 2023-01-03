@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
-import { useIntersectAnimation } from '@/composables/intersectAnimation';
-import IconLink from './IconLink.vue';
+import { useIntersectAnimation } from '@/composables/intersectAnimation'
+import IconLink from './IconLink.vue'
 
-const { animationProgress, onIntersect } = useIntersectAnimation();
+const { animationProgress, onIntersect } = useIntersectAnimation()
 
 const animationTranslateParagraph = computed(() => `${animationProgress.value * 10 - 10}rem`)
 const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 5}rem`)

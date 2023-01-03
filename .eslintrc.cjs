@@ -10,5 +10,12 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
+  },
+  rules: {
+    semi: ['error', 'never'],
+    indent: ['error', 2],
+    'vue/script-indent': ['error', 2],
+    'vue/html-indent': ['error', 2],
+    'vue/component-name-in-template-casing': ['error', 'PascalCase']
   }
 }

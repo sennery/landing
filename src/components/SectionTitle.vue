@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { animate } from 'popmotion'
 
-let isName = ref(false);
+let isName = ref(false)
 
 const NAME = [
   { letter: 'A', id: 7 },
