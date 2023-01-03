@@ -116,4 +116,19 @@ const techColorsMap: { [key: string]: string } = {
 .link:hover .icon, .link:focus .icon {
   opacity: 1;
 }
+
+@media (max-width: 800px) {
+  .article-works h2,
+  .article-works h3 {
+    transform: translateY(v-bind(animationTranslateTitle));
+  }
+
+  .article-works p {
+    transform: translateY(v-bind(animationTranslateParagraph));
+  }
+
+  .article-works .stack {
+    transform: translateY(v-bind(animationTranslateStack));
+  }
+}
 </style>
