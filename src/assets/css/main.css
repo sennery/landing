@@ -49,4 +49,8 @@ h3 {
   h3, p, ul {
     font-size: 1.5rem;
   }
+
+  p {
+    text-align: justify;
+  }
 }
