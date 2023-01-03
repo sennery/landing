@@ -1,7 +1,6 @@
 <template>
   <aside>
     <img       
-      src="@/assets/letter.svg" 
       alt="Vue logo" 
       class="logo" 
       width="125" 
