@@ -44,7 +44,7 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
         <span>{{ `${days} ${englishPluralRules.select(days) === 'one' ? 'day' : 'days'} ` }}</span>
         <span>{{ `${hours} ${englishPluralRules.select(hours) === 'one' ? 'hour' : 'hours'} ` }}</span>
         <span>{{ `${minutes} ${englishPluralRules.select(minutes) === 'one' ? 'minute' : 'minutes'} ` }}</span>
-        <span>{{ `${seconds} ${englishPluralRules.select(seconds) === 'one' ? 'second' : 'seconds'} ` }}</span>. 
+        <span>{{ `${seconds} ${englishPluralRules.select(seconds) === 'one' ? 'second' : 'seconds'}.` }}</span>
       </span>
       Love learning and development. 
     </p>
