@@ -32,16 +32,19 @@ const contacts = [
   >
     <h2>contact me</h2>
     <ul class="contacts-list">
-      <a 
+      <li
         v-for="contact in contacts"
         :key="contact.name"
-        :href="contact.link"
-        target="_blank"
-        class="link"
       >
-        {{ contact.name }}
-        <IconLink class="icon" />
-      </a>
+        <a 
+          :href="contact.link"
+          target="_blank"
+          class="link"
+        >
+          {{ contact.name }}
+          <IconLink class="icon" />
+        </a>
+      </li>
     </ul>
   </section>
 </template>

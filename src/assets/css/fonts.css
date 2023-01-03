@@ -2,16 +2,19 @@
     font-family: "Oxygen";
     src: url("@/assets/fonts/Oxygen-Light.ttf") format("truetype");
     font-weight: 300;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Oxygen";
     src: url("@/assets/fonts/Oxygen-Regular.ttf") format("truetype");
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Oxygen";
     src: url("@/assets/fonts/Oxygen-Bold.ttf") format("truetype");
     font-weight: 700;
+    font-display: swap;
 }
