@@ -46,12 +46,11 @@ const works = [
   align-items: center;
   flex-wrap: wrap;
   gap: 10rem;
-  margin: 20rem 0;
+  margin: 10rem 0;
 }
 
 @media (max-width: 800px) {
   .section-works {
-    margin: 10rem 0;
     gap: 5rem;
   }
 }

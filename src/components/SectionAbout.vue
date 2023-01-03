@@ -53,7 +53,7 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
 
 <style scoped>
 .section-about {
-  margin: 20rem 0;
+  margin: 25rem 0 20rem 0;
 }
 
 .section-about > * {
@@ -74,7 +74,7 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
 
 @media (max-width: 800px) {
   .section-about {
-    margin: 10rem 0;
+    margin: 15rem 0 10rem 0;
   }
 }
 </style>
