@@ -67,47 +67,49 @@ function onLeave(el: any, done: () => void) {
     v-intersection-observer="[switchName, { threshold: 0.9 }]" 
     class="section-title"
   >
-    <TransitionGroup
-      name="name"
-      tag="h1"
-      @before-enter="onBeforeEnter"
-      @enter="onEnter"
-      @leave="onLeave"
-    >  
-      <span 
-        v-for="(letter, index) in name"
-        :key="letter.id"
-        :data-index="index"
-        :class="{
-          'surname-start': letter.id === 999 
-        }"
+    <div class="title">
+      <TransitionGroup
+        name="name"
+        tag="h1"
+        @before-enter="onBeforeEnter"
+        @enter="onEnter"
+        @leave="onLeave"
+      >  
+        <span 
+          v-for="(letter, index) in name"
+          :key="letter.id"
+          :data-index="index"
+          :class="{
+            'surname-start': letter.id === 999 
+          }"
+        >
+          {{ letter.letter }}
+        </span>   
+      </TransitionGroup>
+      <h3 
+        class="spec"
+        :class="{ active: isName }"
       >
-        {{ letter.letter }}
-      </span>   
-    </TransitionGroup>
-    <h3 
-      class="spec"
-      :class="{ active: isName }"
-    >
-      web developer
-    </h3>
+        web developer
+      </h3>
+    </div>
   </section>
 </template>
 
 <style scoped>
 .section-title {
+  padding-top: 45vh;
   height: 100vh;
+  justify-content: flex-start;
 }
 
-.section-title > h1 {
+.section-title > .title {
+  position: sticky;
+  top: 45vh;
+}
+
+.section-title > .title > h1 {
   display: flex;
-  position: sticky;
-  top: 45%;
-}
-
-.section-title > h3 {
-  position: sticky;
-  top: 55%;
 }
 
 .surname-start {
@@ -131,10 +133,6 @@ function onLeave(el: any, done: () => void) {
 @media (max-width: 800px) {
   .surname-start {
     padding-left: 0.5rem;
-  }
-
-  .section-title > h3 {
-    top: 52%;
   }
 }
 </style>
