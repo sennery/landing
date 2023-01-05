@@ -1,7 +1,7 @@
 
 import * as THREE from 'three'
 import Stats from 'three/examples/jsm/libs/stats.module.js'
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js'
 import snoise3 from '@/glsl/snoise-3.glsl'
 
@@ -142,7 +142,7 @@ export function useThree ({ container }: useThreeParams = {}) {
   renderer.setSize(window.innerWidth, window.innerHeight)
   container ? container.appendChild(renderer.domElement) : document.body.appendChild(renderer.domElement)
 
-  controls = new OrbitControls(camera, renderer.domElement)
+  // controls = new OrbitControls(camera, renderer.domElement)
   stats = new Stats()
   document.body.appendChild(stats.dom)
 
