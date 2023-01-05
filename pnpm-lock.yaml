@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@rushstack/eslint-patch': ^1.1.4
   '@types/node': ^18.11.12
+  '@types/three': ^0.148.0
   '@vitejs/plugin-vue': ^4.0.0
   '@vue/eslint-config-typescript': ^11.0.0
   '@vue/tsconfig': ^0.1.3
@@ -13,6 +14,7 @@ specifiers:
   eslint: ^8.22.0
   eslint-plugin-vue: ^9.3.0
   popmotion: ^11.0.5
+  three: ^0.148.0
   typescript: ~4.7.4
   vite: ^4.0.0
   vite-ssg: ^0.22.1
@@ -24,11 +26,13 @@ dependencies:
   '@vueuse/core': 9.9.0_vue@3.2.45
   '@vueuse/head': 1.0.22_vue@3.2.45
   popmotion: 11.0.5
+  three: 0.148.0
   vue: 3.2.45
 
 devDependencies:
   '@rushstack/eslint-patch': 1.2.0
   '@types/node': 18.11.18
+  '@types/three': 0.148.0
   '@vitejs/plugin-vue': 4.0.0_vite@4.0.3+vue@3.2.45
   '@vue/eslint-config-typescript': 11.0.2_adxhicpeghzj7xflzvuh26phpu
   '@vue/tsconfig': 0.1.3_@types+node@18.11.18
@@ -342,9 +346,19 @@ packages:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
     dev: true
 
+  /@types/three/0.148.0:
+    resolution: {integrity: sha512-1GiErjt1pJMadO8EhaxNrtULzdn+f3BbM3YTukiiXBVeRvvx4CXc2rpYdEuEBU/ouCX7Rc95j1HoVG9kFQXQJw==}
+    dependencies:
+      '@types/webxr': 0.5.0
+    dev: true
+
   /@types/web-bluetooth/0.0.16:
     resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
     dev: false
+
+  /@types/webxr/0.5.0:
+    resolution: {integrity: sha512-IUMDPSXnYIbEO2IereEFcgcqfDREOgmbGqtrMpVPpACTU6pltYLwHgVkrnYv0XhWEcjio9sYEfIEzgn3c7nDqA==}
+    dev: true
 
   /@typescript-eslint/eslint-plugin/5.47.1_roj7b6spvnndg4va3y4jdei7ru:
     resolution: {integrity: sha512-r4RZ2Jl9kcQN7K/dcOT+J7NAimbiis4sSM9spvWimsBvDegMhKLA5vri2jG19PmIPbDjPeWzfUPQ2hjEzA4Nmg==}
@@ -2054,6 +2068,10 @@ packages:
   /text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
+
+  /three/0.148.0:
+    resolution: {integrity: sha512-8uzVV+qhTPi0bOFs/3te3RW6hb3urL8jYEl6irjCWo/l6sr8MPNMcClFev/MMYeIxr0gmDcoXTy/8LXh/LXkfw==}
+    dev: false
 
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}

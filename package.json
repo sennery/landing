@@ -15,11 +15,13 @@
     "@vueuse/core": "^9.9.0",
     "@vueuse/head": "^1.0.22",
     "popmotion": "^11.0.5",
+    "three": "^0.148.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/node": "^18.11.12",
+    "@types/three": "^0.148.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/tsconfig": "^0.1.3",
