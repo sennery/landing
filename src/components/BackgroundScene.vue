@@ -1,29 +1,27 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { useThree } from '@/composables/three'
+
+const webgl = ref<HTMLElement | undefined>(undefined)
+
+onMounted(() => useThree({ container: webgl.value }))
+</script>
+
 <template>
-  <aside>
-    <img       
-      alt="Vue logo" 
-      class="logo" 
-      width="125" 
-      height="125"
-    >
-  </aside>
+  <div
+    ref="webgl"
+    class="webgl"
+  />
 </template>
 
-<style scoped>
-aside {
-  display: flex;
-  justify-content: flex-end;
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+<style>
+.webgl {
   z-index: -999;
 }
 
-.logo {  
-  transform: rotateZ(90deg) scale(10) translate(-1rem, 1rem);
-  transform-origin: 0 50%;
+.webgl > canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 </style>

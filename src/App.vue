@@ -13,7 +13,7 @@ import SectionContacts from '@/components/SectionContacts.vue'
     <SectionWorks />
     <SectionContacts class="snap-center" />
   </main>
-  <!-- <Background /> -->
+  <Background />
 </template>
 
 <style scoped>
