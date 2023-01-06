@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import PageWorksItem from '@/components/SectionWorksItem.vue'
+import { vIntersectionObserver } from '@vueuse/components'
+import { animateIntersectWorks } from '@/composables/three'
 
 const works = [
   {
@@ -25,10 +27,19 @@ const works = [
     stack: ['vue', 'webpack', 'groovy', 'postgresql'],
   }
 ]
+
+function onIntersection([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {  
+  if (isIntersecting) {
+    animateIntersectWorks()
+  }
+}
 </script>
 
 <template>
-  <section class="section-works">
+  <section 
+    v-intersection-observer="[onIntersection, { threshold: 0.5 }]"
+    class="section-works"
+  >
     <PageWorksItem 
       v-for="(work, index) in works"
       :key="index"

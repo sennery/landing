@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { animate } from 'popmotion'
 import { vIntersectionObserver } from '@vueuse/components'
+import { animateIntersectTitle } from '@/composables/three'
 
 let isName = ref(false)
 
@@ -36,7 +37,7 @@ const NICKNAME = [
 
 const name = ref(NICKNAME)
 
-function switchName ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
+function switchName (isIntersecting: boolean) {
   isName.value = isIntersecting
   name.value = isName.value ? NAME : NICKNAME
 }
@@ -60,11 +61,19 @@ function onLeave(el: any, done: () => void) {
   el.style.opacity = '0'
   done()
 }
+
+function onIntersection([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
+  switchName(isIntersecting)
+  
+  if (isIntersecting) {
+    animateIntersectTitle()
+  }
+}
 </script>
 
 <template>
   <section
-    v-intersection-observer="[switchName, { threshold: 0.9 }]" 
+    v-intersection-observer="[onIntersection, { threshold: 0.9 }]" 
     class="section-title"
   >
     <div class="title">

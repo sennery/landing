@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import IconLink from './IconLink.vue'
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
 import { useIntersectAnimation } from '@/composables/intersectAnimation'
-import IconLink from './IconLink.vue'
+import { animateIntersectContacts } from '@/composables/three'
 
 const { animationProgress, onIntersect } = useIntersectAnimation()
 
@@ -23,11 +24,19 @@ const contacts = [
     link: 'https://t.me/sennery'
   },
 ]
+
+function onIntersection([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {  
+  onIntersect([{ isIntersecting }])
+  
+  if (isIntersecting) {
+    animateIntersectContacts()
+  }
+}
 </script>
 
 <template>
   <section 
-    v-intersection-observer="[onIntersect, { threshold: 1 }]"
+    v-intersection-observer="[onIntersection, { threshold: 1 }]"
     class="section-contacts"
   >
     <h2>contact me</h2>
