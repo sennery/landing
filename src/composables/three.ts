@@ -160,7 +160,7 @@ export function animateIntersectTitle () {
 
 export function animateIntersectAbout () {
   animateScene({
-    planePositionX: 30,
+    planePositionX: 40,
     noiseDisplacementScale: 5,
     noiseFrequencyCoef: 5
   })
