@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useThree } from '@/composables/three'
+import { init } from '@/composables/three'
 
 const webgl = ref<HTMLElement | undefined>(undefined)
 
-onMounted(() => useThree({ container: webgl.value }))
+onMounted(() => init({ container: webgl.value }))
 </script>
 
 <template>
@@ -23,5 +23,6 @@ onMounted(() => useThree({ container: webgl.value }))
   position: fixed;
   top: 0;
   left: 0;
+  height: 100vh !important;
 }
 </style>
