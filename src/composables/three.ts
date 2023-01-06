@@ -1,28 +1,39 @@
 
 import * as THREE from 'three'
-import { animate, spring } from 'popmotion'
-// import Stats from 'three/examples/jsm/libs/stats.module.js'
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import { animate, mix } from 'popmotion'
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js'
 import snoise3 from '@/glsl/snoise-3.glsl'
 
-interface useThreeParams {
+interface initParams {
   container?: HTMLElement
 }
 
+interface animateSceneParams {
+  planeRotationY?: number,
+  planeRotationX?: number,
+  planePositionX?: number,
+  planePositionY?: number,
+  lightPositionX?: number,
+  lightPositionZ?: number,
+  noiseDisplacementScale?: number,
+  noiseFrequencyCoef?: number
+}
+
 let camera: THREE.PerspectiveCamera, 
-  scene: THREE.Scene, 
+  scene: THREE.Scene,
+  plane: THREE.Mesh, 
+  planeMaterial: THREE.MeshStandardMaterial,
+  lightCenter: THREE.PointLight,
   renderer: THREE.WebGLRenderer, 
   dispRT: THREE.WebGLRenderTarget,
   dispMat: THREE.ShaderMaterial,
   fsQuad: FullScreenQuad
-  // stats: Stats
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
 
-  renderer.setSize(window.innerWidth, window.innerHeight)
+  renderer.setSize(window.innerWidth, window.outerHeight)
 }
 
 function render(time: number) {
@@ -32,7 +43,6 @@ function render(time: number) {
   renderer.render(scene, camera)
 
   requestAnimationFrame(render)
-  // stats.update()
 }
 
 function renderDisp() {
@@ -42,7 +52,7 @@ function renderDisp() {
   renderer.setRenderTarget(null)
 }
 
-export function useThree ({ container }: useThreeParams = {}) {
+export function init ({ container }: initParams = {}) {
   fsQuad = new FullScreenQuad()
 
   camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
@@ -51,14 +61,14 @@ export function useThree ({ container }: useThreeParams = {}) {
   scene = new THREE.Scene()
   scene.background = new THREE.Color('#fff')
 
-  const plane = new THREE.PlaneGeometry(50, 50, 100, 100)
-  const material = new THREE.MeshStandardMaterial({ color: '#fff' })
+  const planeGeometry = new THREE.PlaneGeometry(50, 50, 100, 100)
+  planeMaterial = new THREE.MeshStandardMaterial({ color: '#fff' })
 
   dispRT = new THREE.WebGLRenderTarget(512, 512, { depthBuffer: false, stencilBuffer: false })
   dispMat = new THREE.ShaderMaterial({
     uniforms: {
       uTime: { value: 0 },
-      uNoiseCoef: { value: 4 }
+      uNoiseCoef: { value: 0 }
     },
     vertexShader: `
           varying vec2 vUv;
@@ -80,33 +90,95 @@ export function useThree ({ container }: useThreeParams = {}) {
         `
   })
 
-  material.displacementMap = dispRT.texture
-  material.displacementScale = 10
+  planeMaterial.displacementMap = dispRT.texture
+  planeMaterial.displacementScale = 0
 
-  const mesh = new THREE.Mesh(plane, material)
-  mesh.rotation.y = -60 * (Math.PI / 180) 
-  mesh.position.x = 20
-  
-  mesh.name = 'mesh'
-  scene.add(mesh)
+  plane = new THREE.Mesh(planeGeometry, planeMaterial)
+  plane.rotation.y = -90 * (Math.PI / 180) 
+  plane.position.x = 50  
+  plane.name = 'mesh'
+  scene.add(plane)
 
   const ambienLight = new THREE.AmbientLight(0xf7c5cc)
   scene.add(ambienLight)
 
-  const lightCenter = new THREE.PointLight('#fff', 0.5, 100)
-  lightCenter.position.set(-30, 0, -30)
+  lightCenter = new THREE.PointLight('#fff', 0.5, 100)
+  lightCenter.position.set(-30, 0, 20)
   scene.add(lightCenter)
 
   renderer = new THREE.WebGLRenderer({ antialias: true })
   renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(window.innerWidth, window.innerHeight)
   container ? container.appendChild(renderer.domElement) : document.body.appendChild(renderer.domElement)
-
-  // controls = new OrbitControls(camera, renderer.domElement)
-  // stats = new Stats()
-  // document.body.appendChild(stats.dom)
+  render(0)
 
   window.addEventListener('resize', onWindowResize)
+}
 
-  render(0)
+let animation: { stop: () => void }
+
+function animateScene (to: animateSceneParams) {
+  animation?.stop()
+
+  const planeRotationY = plane.rotation.y
+  const planeRotationX = plane.rotation.x
+  const planePositionX = plane.position.x
+  const planePositionY = plane.position.y
+  const lightPositionX = lightCenter.position.x
+  const lightPositionZ = lightCenter.position.z
+  const noiseDisplacementScale = planeMaterial.displacementScale
+  const noiseFrequencyCoef = dispMat.uniforms.uNoiseCoef.value
+
+  animate({
+    from: 0,
+    to: 1,
+    type: 'spring',
+    mass: 1,
+    damping: 15,
+    stiffness: 160,
+    onUpdate: (latest) => {
+      plane.rotation.y = mix(planeRotationY, to.planeRotationY ?? 0, latest)
+      plane.rotation.x = mix(planeRotationX, to.planeRotationX ?? 0, latest)
+      plane.position.x = mix(planePositionX, to.planePositionX ?? 0, latest)
+      plane.position.y = mix(planePositionY, to.planePositionY ?? 0, latest)
+      lightCenter.position.x = mix(lightPositionX , to.lightPositionX ?? -30, latest)
+      lightCenter.position.z = mix(lightPositionZ , to.lightPositionZ ?? -30, latest)
+      planeMaterial.displacementScale = mix(noiseDisplacementScale, to.noiseDisplacementScale ?? 0, latest)
+      dispMat.uniforms.uNoiseCoef.value = mix(noiseFrequencyCoef, to.noiseFrequencyCoef ?? 0, latest)
+    }
+  })
+}
+
+export function animateIntersectTitle () {
+  animateScene({
+    planeRotationY: -60 * (Math.PI / 180),
+    planePositionX: 20,
+    noiseDisplacementScale: 10,
+    noiseFrequencyCoef: 4
+  })
+}
+
+export function animateIntersectAbout () {
+  animateScene({
+    planePositionX: 30,
+    noiseDisplacementScale: 5,
+    noiseFrequencyCoef: 5
+  })
+}
+
+export function animateIntersectWorks () {
+  animateScene({
+    planePositionX: 50,
+    lightPositionZ: 0,
+  })
+}
+
+export function animateIntersectContacts () {
+  lightCenter.position.x = -40
+  lightCenter.position.z = 20
+  animateScene({
+    lightPositionZ: 25,
+    noiseDisplacementScale: 15,
+    noiseFrequencyCoef: 3
+  })
 }
