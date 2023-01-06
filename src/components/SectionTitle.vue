@@ -98,14 +98,7 @@ function onLeave(el: any, done: () => void) {
 
 <style scoped>
 .section-title {
-  padding-top: 45vh;
   height: 100vh;
-  justify-content: flex-start;
-}
-
-.section-title > .title {
-  position: sticky;
-  top: 45vh;
 }
 
 .section-title > .title > h1 {
