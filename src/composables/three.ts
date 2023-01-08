@@ -16,7 +16,8 @@ interface animateSceneParams {
   lightPositionX?: number,
   lightPositionZ?: number,
   noiseDisplacementScale?: number,
-  noiseFrequencyCoef?: number
+  noiseFrequencyCoef?: number,
+  noiseTimeCoef?: number
 }
 
 let camera: THREE.PerspectiveCamera, 
@@ -27,7 +28,8 @@ let camera: THREE.PerspectiveCamera,
   renderer: THREE.WebGLRenderer, 
   dispRT: THREE.WebGLRenderTarget,
   dispMat: THREE.ShaderMaterial,
-  fsQuad: FullScreenQuad
+  fsQuad: FullScreenQuad,
+  timeCoef: number
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight
@@ -37,7 +39,7 @@ function onWindowResize() {
 }
 
 function render(time: number) {
-  dispMat.uniforms.uTime.value = time / 4000
+  dispMat.uniforms.uTime.value = time * timeCoef
   renderDisp()
 
   renderer.render(scene, camera)
@@ -106,6 +108,8 @@ export function init ({ container }: initParams = {}) {
   lightCenter.position.set(-30, 0, 20)
   scene.add(lightCenter)
 
+  timeCoef = 1 / 500
+
   renderer = new THREE.WebGLRenderer({ antialias: true })
   renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(window.innerWidth, window.innerHeight)
@@ -120,31 +124,34 @@ let animation: { stop: () => void }
 function animateScene (to: animateSceneParams) {
   animation?.stop()
 
-  const planeRotationY = plane.rotation.y
-  const planeRotationX = plane.rotation.x
-  const planePositionX = plane.position.x
-  const planePositionY = plane.position.y
-  const lightPositionX = lightCenter.position.x
-  const lightPositionZ = lightCenter.position.z
-  const noiseDisplacementScale = planeMaterial.displacementScale
-  const noiseFrequencyCoef = dispMat.uniforms.uNoiseCoef.value
+  const planeRotationY = plane.rotation.y,
+    planeRotationX = plane.rotation.x,
+    planePositionX = plane.position.x,
+    planePositionY = plane.position.y,
+    lightPositionX = lightCenter.position.x,
+    lightPositionZ = lightCenter.position.z,
+    noiseDisplacementScale = planeMaterial.displacementScale,
+    noiseFrequencyCoef = dispMat.uniforms.uNoiseCoef.value,
+    noiseTimeCoef = timeCoef
 
   animate({
     from: 0,
-    to: 1,
+    to: 1000,
     type: 'spring',
     mass: 1,
-    damping: 15,
-    stiffness: 160,
+    damping: 100,
+    stiffness: 300,
     onUpdate: (latest) => {
-      plane.rotation.y = mix(planeRotationY, to.planeRotationY ?? 0, latest)
-      plane.rotation.x = mix(planeRotationX, to.planeRotationX ?? 0, latest)
-      plane.position.x = mix(planePositionX, to.planePositionX ?? 0, latest)
-      plane.position.y = mix(planePositionY, to.planePositionY ?? 0, latest)
-      lightCenter.position.x = mix(lightPositionX , to.lightPositionX ?? -30, latest)
-      lightCenter.position.z = mix(lightPositionZ , to.lightPositionZ ?? -30, latest)
-      planeMaterial.displacementScale = mix(noiseDisplacementScale, to.noiseDisplacementScale ?? 0, latest)
-      dispMat.uniforms.uNoiseCoef.value = mix(noiseFrequencyCoef, to.noiseFrequencyCoef ?? 0, latest)
+      const progress = latest / 1000
+      plane.rotation.y = mix(planeRotationY, to.planeRotationY ?? 0, progress)
+      plane.rotation.x = mix(planeRotationX, to.planeRotationX ?? 0, progress)
+      plane.position.x = mix(planePositionX, to.planePositionX ?? 0, progress)
+      plane.position.y = mix(planePositionY, to.planePositionY ?? 0, progress)
+      lightCenter.position.x = mix(lightPositionX , to.lightPositionX ?? -30, progress)
+      lightCenter.position.z = mix(lightPositionZ , to.lightPositionZ ?? -30, progress)
+      planeMaterial.displacementScale = mix(noiseDisplacementScale, to.noiseDisplacementScale ?? 0, progress)
+      dispMat.uniforms.uNoiseCoef.value = mix(noiseFrequencyCoef, to.noiseFrequencyCoef ?? 0, progress)
+      timeCoef = mix(noiseTimeCoef, to.noiseTimeCoef ?? (1 / 4000), progress)
     }
   })
 }
