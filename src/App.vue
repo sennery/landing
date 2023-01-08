@@ -4,6 +4,31 @@ import SectionTitle from '@/components/SectionTitle.vue'
 import SectionAbout from '@/components/SectionAbout.vue'
 import SectionWorks from '@/components/SectionWorks.vue'
 import SectionContacts from '@/components/SectionContacts.vue'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Arsenii Likhachev',
+  link: [
+    {
+      rel: 'icon',
+      sizes: 'any',
+      href: '/favicon.ico'
+    },
+    {
+      rel: 'icon',
+      type: 'image/svg+xml',
+      href: '/icon.svg'
+    },
+    {
+      rel: 'apple-touch-icon',
+      href: '/apple-touch-icon.png'
+    },
+    {
+      rel: 'manifest',
+      href: '/manifest.webmanifest'
+    }
+  ]
+})
 </script>
 
 <template>
