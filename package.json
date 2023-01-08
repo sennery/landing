@@ -1,5 +1,9 @@
 {
-  "name": "vue-project",
+  "name": "sennery",
+  "author": "Arsenii Likhachev",
+  "description": "Personal landing with information about me",
+  "email": "mac452res@gmail.com",
+  "url": "sennery.dev",
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@7.17.1",
