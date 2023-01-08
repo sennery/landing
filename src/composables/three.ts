@@ -108,7 +108,7 @@ export function init ({ container }: initParams = {}) {
   lightCenter.position.set(-30, 0, 20)
   scene.add(lightCenter)
 
-  timeCoef = 1 / 500
+  timeCoef = 1 / 4000
 
   renderer = new THREE.WebGLRenderer({ antialias: true })
   renderer.setPixelRatio(window.devicePixelRatio)
@@ -119,6 +119,7 @@ export function init ({ container }: initParams = {}) {
   window.addEventListener('resize', onWindowResize)
 }
 
+const animationRange = 1000
 let animation: { stop: () => void }
 
 function animateScene (to: animateSceneParams) {
@@ -136,13 +137,14 @@ function animateScene (to: animateSceneParams) {
 
   animate({
     from: 0,
-    to: 1000,
+    to: animationRange,
     type: 'spring',
     mass: 1,
     damping: 100,
     stiffness: 300,
+    velocity: 1000,
     onUpdate: (latest) => {
-      const progress = latest / 1000
+      const progress = latest / animationRange
       plane.rotation.y = mix(planeRotationY, to.planeRotationY ?? 0, progress)
       plane.rotation.x = mix(planeRotationX, to.planeRotationX ?? 0, progress)
       plane.position.x = mix(planePositionX, to.planePositionX ?? 0, progress)
@@ -151,7 +153,7 @@ function animateScene (to: animateSceneParams) {
       lightCenter.position.z = mix(lightPositionZ , to.lightPositionZ ?? -30, progress)
       planeMaterial.displacementScale = mix(noiseDisplacementScale, to.noiseDisplacementScale ?? 0, progress)
       dispMat.uniforms.uNoiseCoef.value = mix(noiseFrequencyCoef, to.noiseFrequencyCoef ?? 0, progress)
-      timeCoef = mix(noiseTimeCoef, to.noiseTimeCoef ?? (1 / 4000), progress)
+      timeCoef = mix(noiseTimeCoef, to.noiseTimeCoef ?? noiseTimeCoef, progress)
     }
   })
 }
