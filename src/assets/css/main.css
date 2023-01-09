@@ -27,6 +27,7 @@ h3, p, ul {
 
 h3 {
   color: var(--color-text-secondary);
+  font-weight: 300;
 }
 
 @media (max-width: 800px) {

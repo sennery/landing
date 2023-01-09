@@ -45,7 +45,10 @@ const techColorsMap: { [key: string]: string } = {
         <a
           target="_blank"
           :href="company.link" 
-          :style="{ color: company.color }"
+          :style="{ 
+            color: company.color,
+            'font-weight': 400
+          }"
           class="link"
         >
           {{ company.name }}
