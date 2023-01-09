@@ -12,7 +12,7 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
 
 const contacts = [
   {
-    name: 'mac452ares@gmail.com',
+    name: 'me@sennery.dev',
     link: 'mailto:me@sennery.dev'
   },
   {
