@@ -48,15 +48,12 @@ function render(time: number) {
 }
 
 function renderDisp() {
-  fsQuad.material = dispMat
   renderer.setRenderTarget(dispRT)
   fsQuad.render(renderer)
   renderer.setRenderTarget(null)
 }
 
 export function init ({ container }: initParams = {}) {
-  fsQuad = new FullScreenQuad()
-
   camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
   camera.position.z = 30
 
@@ -91,6 +88,8 @@ export function init ({ container }: initParams = {}) {
           }
         `
   })
+
+  fsQuad = new FullScreenQuad(dispMat)
 
   planeMaterial.displacementMap = dispRT.texture
   planeMaterial.displacementScale = 0
