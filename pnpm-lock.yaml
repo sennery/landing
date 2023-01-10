@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@rushstack/eslint-patch': ^1.1.4
+  '@sennery/eslint-config': ^0.1.0
   '@types/node': ^18.11.12
   '@types/three': ^0.148.0
   '@vitejs/plugin-vue': ^4.0.0
@@ -12,7 +13,6 @@ specifiers:
   '@vueuse/head': ^1.0.22
   critters: ^0.0.16
   eslint: ^8.22.0
-  eslint-plugin-vue: ^9.3.0
   popmotion: ^11.0.5
   three: ^0.148.0
   typescript: ~4.7.4
@@ -31,14 +31,14 @@ dependencies:
 
 devDependencies:
   '@rushstack/eslint-patch': 1.2.0
+  '@sennery/eslint-config': 0.1.0_eslint@8.30.0
   '@types/node': 18.11.18
   '@types/three': 0.148.0
   '@vitejs/plugin-vue': 4.0.0_vite@4.0.3+vue@3.2.45
-  '@vue/eslint-config-typescript': 11.0.2_adxhicpeghzj7xflzvuh26phpu
+  '@vue/eslint-config-typescript': 11.0.2_7yp3msae2ah6x4svoyguc3s57e
   '@vue/tsconfig': 0.1.3_@types+node@18.11.18
   critters: 0.0.16
   eslint: 8.30.0
-  eslint-plugin-vue: 9.8.0_eslint@8.30.0
   typescript: 4.7.4
   vite: 4.0.3_@types+node@18.11.18
   vite-ssg: 0.22.1_r5xnbs4yttey5ztji7eiviuk4y
@@ -329,6 +329,17 @@ packages:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: true
 
+  /@sennery/eslint-config/0.1.0_eslint@8.30.0:
+    resolution: {integrity: sha512-X+AWgqf5XrRee8WBdz1rqq+XXymB9k+vuL9OWTLuqpTUBKBD/YzkygCbCm1tn99knVMqRQeOPMXIaVEOt7cW7g==}
+    peerDependencies:
+      eslint: '>=7.4.0'
+    dependencies:
+      eslint: 8.30.0
+      eslint-plugin-vue: 9.8.0_eslint@8.30.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
@@ -599,7 +610,7 @@ packages:
       '@vue/compiler-dom': 3.2.45
       '@vue/shared': 3.2.45
 
-  /@vue/eslint-config-typescript/11.0.2_adxhicpeghzj7xflzvuh26phpu:
+  /@vue/eslint-config-typescript/11.0.2_7yp3msae2ah6x4svoyguc3s57e:
     resolution: {integrity: sha512-EiKud1NqlWmSapBFkeSrE994qpKx7/27uCGnhdqzllYDpQZroyX/O6bwjEpeuyKamvLbsGdO6PMR2faIf+zFnw==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -613,7 +624,6 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.47.1_roj7b6spvnndg4va3y4jdei7ru
       '@typescript-eslint/parser': 5.47.1_7yp3msae2ah6x4svoyguc3s57e
       eslint: 8.30.0
-      eslint-plugin-vue: 9.8.0_eslint@8.30.0
       typescript: 4.7.4
       vue-eslint-parser: 9.1.0_eslint@8.30.0
     transitivePeerDependencies:
