@@ -1,6 +1,4 @@
-<p align="center">
-  <img height="200" alt="sennery" src="/docs/text-logo.svg" />
-</p>
+<img height="200" alt="sennery" src="/docs/text-logo.svg" />
 
 ## Project Setup
 
