@@ -1,4 +1,4 @@
-
+- <img height="200" alt="sennery" src="/docs/readme-logo.svg" />
 
 Hi there! This is a repository for my **portfolio** website. It shows info about me and my jobs. I impove it regulary and try new technologies on it. 
 **Current** version built with: 
