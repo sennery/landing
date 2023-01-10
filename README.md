@@ -12,24 +12,30 @@ Hi there! This is a repository for my **portfolio** website. It shows info about
 
 ## Project Setup
 
+If you don't have **pnpm** installed, you need to install it first.
+
 ```sh
 pnpm install
 ```
 
 ### Run development server
 
+Run following command and visit http://localhost:3333
+
 ```sh
 pnpm dev
 ```
 
+... or run this command to share development server across a local network
+
+```sh
+pnpm dev --host
+```
+
 ### SSG build
+
+This will use *vite-ssg* to generate static website
 
 ```sh
 pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
 ```
