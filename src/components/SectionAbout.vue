@@ -85,5 +85,13 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
   .section-about {
     margin-bottom: 10rem;
   }
+
+  .section-about > * {
+    transform: translateY(calc(v-bind(animationTranslateParagraph) * var(--animation-values-coef)));
+  }
+
+  .section-about > h2 {
+    transform: translateY(calc(v-bind(animationTranslateTitle) * var(--animation-values-coef)));
+  }
 }
 </style>

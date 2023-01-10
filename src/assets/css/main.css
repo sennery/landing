@@ -32,6 +32,8 @@ h3 {
 
 @media (max-width: 800px) {
   #app {
+    --animation-values-coef: 0.3;
+
     padding: 0 1rem;
   }
 

@@ -89,4 +89,14 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
 .link:hover .icon, .link:focus .icon {
   transform: rotateZ(45deg) translate(1rem, -1rem);
 }
+
+@media (max-width: 800px) {
+  .section-contacts > * {
+    transform: translateY(calc(v-bind(animationTranslateParagraph) * var(--animation-values-coef)));
+  }
+
+  .section-contacts > h2 {
+    transform: translateY(calc(v-bind(animationTranslateTitle) * var(--animation-values-coef)));
+  }
+}
 </style>

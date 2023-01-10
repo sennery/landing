@@ -123,15 +123,15 @@ const techColorsMap: { [key: string]: string } = {
 @media (max-width: 800px) {
   .article-works h2,
   .article-works h3 {
-    transform: translateY(v-bind(animationTranslateTitle));
+    transform: translateY(calc(v-bind(animationTranslateTitle) * var(--animation-values-coef)));
   }
 
   .article-works p {
-    transform: translateY(v-bind(animationTranslateParagraph));
+    transform: translateY(calc(v-bind(animationTranslateParagraph) * var(--animation-values-coef)));
   }
 
   .article-works .stack {
-    transform: translateY(v-bind(animationTranslateStack));
+    transform: translateY(calc(v-bind(animationTranslateStack) * var(--animation-values-coef)));
   }
 }
 </style>
