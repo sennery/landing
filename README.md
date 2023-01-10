@@ -1,4 +1,4 @@
-<img height="200" alt="sennery" src="/docs/text-logo.svg" />
+<img height="200" alt="sennery" src="/docs/readme-logo.svg" />
 
 ## Project Setup
 
