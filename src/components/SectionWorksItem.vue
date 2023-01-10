@@ -6,8 +6,8 @@ import IconLink from './IconLink.vue'
 
 const { animationProgress, onIntersect } = useIntersectAnimation()
 
-const animationTranslateStack = computed(() => `${animationProgress.value * 15 - 15}rem`)
-const animationTranslateParagraph = computed(() => `${animationProgress.value * 10 - 10}rem`)
+const animationTranslateStack = computed(() => `${animationProgress.value * 10 - 10}rem`)
+const animationTranslateParagraph = computed(() => `${animationProgress.value * 7.5 - 7.5}rem`)
 const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 5}rem`)
 
 defineProps<{
@@ -21,16 +21,6 @@ defineProps<{
   },
   stack: string[],
 }>()
-
-const techColorsMap: { [key: string]: string } = {
-  vue: '#42b883',
-  nuxt: '#00dc82',
-  webpack: '#75aecb',
-  vuetify: '#1697f6',
-  scss: '#cf649a',
-  groovy: '#4298b8',
-  postgresql: '#336791',
-}
 </script>
 
 <template>
@@ -45,10 +35,6 @@ const techColorsMap: { [key: string]: string } = {
         <a
           target="_blank"
           :href="company.link" 
-          :style="{ 
-            color: company.color,
-            'font-weight': 400
-          }"
           class="link"
         >
           {{ company.name }}
@@ -58,19 +44,17 @@ const techColorsMap: { [key: string]: string } = {
     </div>
     <p>{{ description }}</p>
     <p class="stack">
+      <span>[ </span>
       <template      
         v-for="tech in stack"
         :key="tech"
       >
-        <span
-          :style="{
-            color: techColorsMap[tech]
-          }"
-        >
+        <span>
           {{ tech }}
         </span>
         <span>, </span>
       </template>
+      <span> ]</span>
     </p>
   </article>
 </template>
@@ -105,7 +89,12 @@ const techColorsMap: { [key: string]: string } = {
   transform: translateX(v-bind(animationTranslateStack));
 }
 
-.article-works .stack > span:last-child {
+.article-works .stack > span {
+  color: var(--color-text-secondary);
+  font-size: 0.9em;
+}
+
+.article-works .stack > span:nth-last-child(-n + 2):not(:last-child) {
   display: none;
 }
 
@@ -114,6 +103,11 @@ const techColorsMap: { [key: string]: string } = {
   transform-origin: 50% 50%;
   transition: transform 0.6s cubic-bezier(0, 1, 0.18, 1),
     opacity 0.6s cubic-bezier(0, 1, 0.18, 1); 
+}
+
+.link {
+  color: var(--color-text-highlight);
+  font-weight: 400;
 }
 
 .link:hover .icon, .link:focus .icon {
