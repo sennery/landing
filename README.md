@@ -1,4 +1,6 @@
-# sennery
+<p align="center">
+  <img height="200" alt="sennery" src="/docs/text-logo.svg" />
+</p>
 
 ## Project Setup
 
