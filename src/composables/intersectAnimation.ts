@@ -16,14 +16,14 @@ export function useIntersectAnimation ({ stiffness = 160, damping = 15, mass = 1
   function onIntersect ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
     animation?.stop()
     animation = animate({
-      from: animationProgress.value,
-      to: isIntersecting ? 1 : 0,
+      from: animationProgress.value * 100,
+      to: isIntersecting ? 100 : 0,
       type: 'spring',
       stiffness,
       damping,
       mass,
       velocity,
-      onUpdate: latest => animationProgress.value = latest,
+      onUpdate: latest => animationProgress.value = latest / 100,
     })
   }
 

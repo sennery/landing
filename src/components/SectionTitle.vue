@@ -49,10 +49,10 @@ function onBeforeEnter (el: any) {
 function onEnter (el: any, done: () => void) {
   animate({
     from: 0,
-    to: 1,
+    to: 100,
     type: 'spring',
     elapsed: -10 * el.dataset.index,
-    onUpdate: latest => el.style.transform = `rotateY(${latest * 90 - 90}deg)`,
+    onUpdate: latest => el.style.transform = `rotateY(${latest / 100 * 90 - 90}deg)`,
     onComplete: done,
   })
 }
