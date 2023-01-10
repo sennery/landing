@@ -11,7 +11,7 @@ const works = [
     company: {
       name: 'Freught',
       color: '#262c7a',
-      link: 'https://freught.com/'
+      link: 'https://freught.com/',
     },
     stack: ['vue', 'nuxt', 'vuetify', 'scss'],
   },
@@ -22,13 +22,13 @@ const works = [
     company: {
       name: 'Rostelekom IT',
       color: '#7700ff',
-      link: 'https://rtkit.ru/'
+      link: 'https://rtkit.ru/',
     },
     stack: ['vue', 'webpack', 'groovy', 'postgresql'],
-  }
+  },
 ]
 
-function onIntersection([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {  
+function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {  
   if (isIntersecting) {
     animateIntersectWorks()
   }

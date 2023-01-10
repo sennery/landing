@@ -23,7 +23,7 @@ export function useIntersectAnimation ({ stiffness = 160, damping = 15, mass = 1
       damping,
       mass,
       velocity,
-      onUpdate: latest => animationProgress.value = latest
+      onUpdate: latest => animationProgress.value = latest,
     })
   }
 

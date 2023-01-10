@@ -4,7 +4,7 @@ import { animate } from 'popmotion'
 import { vIntersectionObserver } from '@vueuse/components'
 import { animateIntersectTitle } from '@/composables/three'
 
-let isName = ref(false)
+const isName = ref(false)
 
 const NAME = [
   { letter: 'A', id: 7 },
@@ -42,27 +42,27 @@ function switchName (isIntersecting: boolean) {
   name.value = isName.value ? NAME : NICKNAME
 }
 
-function onBeforeEnter(el: any) {
-  el.style.transform = `rotateY(90deg)`
+function onBeforeEnter (el: any) {
+  el.style.transform = 'rotateY(90deg)'
 }
 
-function onEnter(el: any, done: () => void) {
+function onEnter (el: any, done: () => void) {
   animate({
     from: 0,
     to: 1,
     type: 'spring',
     elapsed: -10 * el.dataset.index,
     onUpdate: latest => el.style.transform = `rotateY(${latest * 90 - 90}deg)`,
-    onComplete: done
+    onComplete: done,
   })
 }
 
-function onLeave(el: any, done: () => void) {
+function onLeave (el: any, done: () => void) {
   el.style.opacity = '0'
   done()
 }
 
-function onIntersection([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
+function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
   switchName(isIntersecting)
   
   if (isIntersecting) {

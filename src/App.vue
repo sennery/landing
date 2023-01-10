@@ -14,7 +14,7 @@ useHead({
     { rel: 'icon', sizes: 'any', href: '/favicon.ico' },
     { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' },
     { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-    { rel: 'manifest', href: '/manifest.webmanifest' }
+    { rel: 'manifest', href: '/manifest.webmanifest' },
   ],
   meta: [
     { name: 'description', content: description },
@@ -29,8 +29,8 @@ useHead({
     { name: 'twitter:description', content: description },
     { name: 'twitter:domain', content: 'sennery.dev' },
     { name: 'twitter:url', content: 'https://sennery.dev' },
-    { name: 'twitter:image', content: 'https://sennery.dev/share-image.png' }
-  ]
+    { name: 'twitter:image', content: 'https://sennery.dev/share-image.png' },
+  ],
 })
 </script>
 

@@ -31,14 +31,14 @@ let camera: THREE.PerspectiveCamera,
   fsQuad: FullScreenQuad,
   timeCoef: number
 
-function onWindowResize() {
+function onWindowResize () {
   camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
 
   renderer.setSize(window.innerWidth, window.outerHeight)
 }
 
-function render(time: number) {
+function render (time: number) {
   dispMat.uniforms.uTime.value = time * timeCoef
   renderDisp()
 
@@ -47,7 +47,7 @@ function render(time: number) {
   requestAnimationFrame(render)
 }
 
-function renderDisp() {
+function renderDisp () {
   renderer.setRenderTarget(dispRT)
   fsQuad.render(renderer)
   renderer.setRenderTarget(null)
@@ -67,7 +67,7 @@ export function init ({ container }: initParams = {}) {
   dispMat = new THREE.ShaderMaterial({
     uniforms: {
       uTime: { value: 0 },
-      uNoiseCoef: { value: 0 }
+      uNoiseCoef: { value: 0 },
     },
     vertexShader: `
           varying vec2 vUv;
@@ -86,7 +86,7 @@ export function init ({ container }: initParams = {}) {
             float noise = (snoise(vec3(p.x, p.y, uTime)) + 1.0) / 2.0;
             gl_FragColor = vec4(noise, 0.0, 0.0, 1.0);
           }
-        `
+        `,
   })
 
   fsQuad = new FullScreenQuad(dispMat)
@@ -148,12 +148,12 @@ function animateScene (to: animateSceneParams) {
       plane.rotation.x = mix(planeRotationX, to.planeRotationX ?? 0, progress)
       plane.position.x = mix(planePositionX, to.planePositionX ?? 0, progress)
       plane.position.y = mix(planePositionY, to.planePositionY ?? 0, progress)
-      lightCenter.position.x = mix(lightPositionX , to.lightPositionX ?? -30, progress)
-      lightCenter.position.z = mix(lightPositionZ , to.lightPositionZ ?? -30, progress)
+      lightCenter.position.x = mix(lightPositionX, to.lightPositionX ?? -30, progress)
+      lightCenter.position.z = mix(lightPositionZ, to.lightPositionZ ?? -30, progress)
       planeMaterial.displacementScale = mix(noiseDisplacementScale, to.noiseDisplacementScale ?? 0, progress)
       dispMat.uniforms.uNoiseCoef.value = mix(noiseFrequencyCoef, to.noiseFrequencyCoef ?? 0, progress)
       timeCoef = mix(noiseTimeCoef, to.noiseTimeCoef ?? noiseTimeCoef, progress)
-    }
+    },
   })
 }
 
@@ -162,7 +162,7 @@ export function animateIntersectTitle () {
     planeRotationY: -60 * (Math.PI / 180),
     planePositionX: 20,
     noiseDisplacementScale: 10,
-    noiseFrequencyCoef: 4
+    noiseFrequencyCoef: 4,
   })
 }
 
@@ -170,7 +170,7 @@ export function animateIntersectAbout () {
   animateScene({
     planePositionX: 40,
     noiseDisplacementScale: 5,
-    noiseFrequencyCoef: 5
+    noiseFrequencyCoef: 5,
   })
 }
 
@@ -187,6 +187,6 @@ export function animateIntersectContacts () {
   animateScene({
     lightPositionZ: 25,
     noiseDisplacementScale: 15,
-    noiseFrequencyCoef: 3
+    noiseFrequencyCoef: 3,
   })
 }

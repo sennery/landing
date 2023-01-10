@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
 import { useIntersectAnimation } from '@/composables/intersectAnimation'
 import { useTimePassed } from '@/composables/getTimePassed'
@@ -18,7 +18,7 @@ const { animationProgress, onIntersect } = useIntersectAnimation()
 const animationTranslateParagraph = computed(() => `${10 - animationProgress.value * 10}rem`)
 const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
 
-function onIntersection([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
+function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
   onIntersect([{ isIntersecting }])
 
   if (isIntersecting) {

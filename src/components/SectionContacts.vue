@@ -13,19 +13,19 @@ const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 
 const contacts = [
   {
     name: 'me@sennery.dev',
-    link: 'mailto:me@sennery.dev'
+    link: 'mailto:me@sennery.dev',
   },
   {
     name: 'github',
-    link: 'https://github.com/sennery'
+    link: 'https://github.com/sennery',
   },
   {
     name: 'telegram',
-    link: 'https://t.me/sennery'
+    link: 'https://t.me/sennery',
   },
 ]
 
-function onIntersection([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {  
+function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {  
   onIntersect([{ isIntersecting }])
   
   if (isIntersecting) {
