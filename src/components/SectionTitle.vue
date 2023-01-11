@@ -51,7 +51,7 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
 }
 
 function onBeforeEnter (el: any) {
-  el.style.transform = 'rotateY(90deg)'
+  el.style.transform = 'translateY(1em) translateX(0.5em) rotateX(90deg)'
 }
 
 function onEnter (el: any, done: () => void) {
