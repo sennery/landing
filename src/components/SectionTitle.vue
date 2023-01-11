@@ -42,6 +42,14 @@ function switchName (isIntersecting: boolean) {
   name.value = isName.value ? NAME : NICKNAME
 }
 
+function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
+  switchName(isIntersecting)
+  
+  if (isIntersecting) {
+    animateIntersectTitle()
+  }
+}
+
 function onBeforeEnter (el: any) {
   el.style.transform = 'rotateY(90deg)'
 }
@@ -51,8 +59,10 @@ function onEnter (el: any, done: () => void) {
     from: 0,
     to: 100,
     type: 'spring',
-    elapsed: -10 * el.dataset.index,
-    onUpdate: latest => el.style.transform = `rotateY(${latest / 100 * 90 - 90}deg)`,
+    stiffness: 180,
+    damping: 20,
+    elapsed: -15 * el.dataset.index,
+    onUpdate: latest => el.style.transform = `translateY(${- latest / 100 * 1 + 1}em) translateX(${- latest / 100 * 0.5 + 0.5}em) rotateX(${- latest / 100 * 90 + 90}deg)`,    
     onComplete: done,
   })
 }
@@ -60,14 +70,6 @@ function onEnter (el: any, done: () => void) {
 function onLeave (el: any, done: () => void) {
   el.style.opacity = '0'
   done()
-}
-
-function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
-  switchName(isIntersecting)
-  
-  if (isIntersecting) {
-    animateIntersectTitle()
-  }
 }
 </script>
 
@@ -89,7 +91,8 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
           :key="letter.id"
           :data-index="index"
           :class="{
-            'surname-start': letter.id === 999 
+            'surname-start': letter.id === 999,
+            'sennery': ![0, 1, 2].includes(letter.id) && !isName
           }"
         >
           {{ letter.letter }}
@@ -114,11 +117,18 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
   display: flex;
 }
 
+.section-title > .title > h1 > span {
+  transform-origin: 0% 0%;
+}
+
 .surname-start {
   padding-left: 1.5rem;
 }
+.sennery {
+  color: var(--color-text-highlight);
+}
 
-.name-move, .spec {
+.name-move, .spec.active {
   transition: all 0.6s cubic-bezier(0, 1, 0.18, 1);
 }
 
