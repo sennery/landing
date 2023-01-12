@@ -4,23 +4,23 @@ import { vIntersectionObserver } from '@vueuse/components'
 import { useIntersectAnimation } from '@/composables/intersectAnimation'
 import IconLink from './IconLink.vue'
 
+defineProps<{
+  title: string
+  years: string
+  description: string
+  company: {
+    link: string
+    name: string
+    color: string
+  }
+  stack: string[]
+}>()
+
 const { animationProgress, onIntersect } = useIntersectAnimation()
 
 const animationTranslateStack = computed(() => `${animationProgress.value * 10 - 10}rem`)
 const animationTranslateParagraph = computed(() => `${animationProgress.value * 7.5 - 7.5}rem`)
 const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 5}rem`)
-
-defineProps<{
-  title: string,
-  years: string,
-  description: string,
-  company: {
-    link: string,
-    name: string,
-    color: string,
-  },
-  stack: string[],
-}>()
 </script>
 
 <template>

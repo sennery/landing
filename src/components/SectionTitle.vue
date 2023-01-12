@@ -62,7 +62,7 @@ function onEnter (el: any, done: () => void) {
     stiffness: 180,
     damping: 20,
     elapsed: -15 * el.dataset.index,
-    onUpdate: latest => el.style.transform = `translateY(${- latest / 100 * 1 + 1}em) translateX(${- latest / 100 * 0.5 + 0.5}em) rotateX(${- latest / 100 * 90 + 90}deg)`,    
+    onUpdate: latest => el.style.transform = `translateY(${-latest / 100 * 1 + 1}em) translateX(${-latest / 100 * 0.5 + 0.5}em) rotateX(${-latest / 100 * 90 + 90}deg)`,    
     onComplete: done,
   })
 }
@@ -92,7 +92,7 @@ function onLeave (el: any, done: () => void) {
           :data-index="index"
           :class="{
             'surname-start': letter.id === 999,
-            'sennery': ![0, 1, 2].includes(letter.id) && !isName
+            'sennery': ![0, 1, 2].includes(letter.id) && !isName,
           }"
         >
           {{ letter.letter }}

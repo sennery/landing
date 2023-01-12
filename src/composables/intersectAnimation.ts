@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import { animate } from 'popmotion'
 
 interface IntersectAnimationParams {
-  stiffness?: number 
+  stiffness?: number
   damping?: number
   mass?: number
   velocity?: number

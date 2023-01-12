@@ -9,14 +9,14 @@ interface initParams {
 }
 
 interface animateSceneParams {
-  planeRotationY?: number,
-  planeRotationX?: number,
-  planePositionX?: number,
-  planePositionY?: number,
-  lightPositionX?: number,
-  lightPositionZ?: number,
-  noiseDisplacementScale?: number,
-  noiseFrequencyCoef?: number,
+  planeRotationY?: number
+  planeRotationX?: number
+  planePositionX?: number
+  planePositionY?: number
+  lightPositionX?: number
+  lightPositionZ?: number
+  noiseDisplacementScale?: number
+  noiseFrequencyCoef?: number
   noiseTimeCoef?: number
 }
 
