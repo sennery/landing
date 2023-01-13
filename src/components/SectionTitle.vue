@@ -50,25 +50,28 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
   }
 }
 
-function onBeforeEnter (el: any) {
-  el.style.transform = 'translateY(1em) translateX(0.5em) rotateX(90deg)'
+function onBeforeEnter (el: Element) {
+  const elem = el as HTMLElement
+  elem.style.transform = 'translateY(1em) translateX(0.5em) rotateX(90deg)'
 }
 
-function onEnter (el: any, done: () => void) {
+function onEnter (el: Element, done: () => void) {
+  const elem = el as HTMLElement
   animate({
     from: 0,
     to: 100,
     type: 'spring',
     stiffness: 180,
     damping: 20,
-    elapsed: -15 * el.dataset.index,
-    onUpdate: latest => el.style.transform = `translateY(${-latest / 100 * 1 + 1}em) translateX(${-latest / 100 * 0.5 + 0.5}em) rotateX(${-latest / 100 * 90 + 90}deg)`,    
+    elapsed: -15 * +(elem.dataset.index ?? 0),
+    onUpdate: latest => elem.style.transform = `translateY(${-latest / 100 * 1 + 1}em) translateX(${-latest / 100 * 0.5 + 0.5}em) rotateX(${-latest / 100 * 90 + 90}deg)`,    
     onComplete: done,
   })
 }
 
-function onLeave (el: any, done: () => void) {
-  el.style.opacity = '0'
+function onLeave (el: Element, done: () => void) {
+  const elem = el as HTMLElement
+  elem.style.opacity = '0'
   done()
 }
 </script>

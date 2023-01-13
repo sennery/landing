@@ -1,14 +1,14 @@
 
-import * as THREE from 'three'
 import { animate, mix } from 'popmotion'
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js'
 import snoise3 from '@/glsl/snoise-3.glsl'
+import * as THREE from 'three'
 
-interface initParams {
+interface InitParams {
   container?: HTMLElement
 }
 
-interface animateSceneParams {
+interface AnimateSceneParams {
   planeRotationY?: number
   planeRotationX?: number
   planePositionX?: number
@@ -53,7 +53,7 @@ function renderDisp () {
   renderer.setRenderTarget(null)
 }
 
-export function init ({ container }: initParams = {}) {
+export function init ({ container }: InitParams = {}) {
   camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
   camera.position.z = 30
 
@@ -121,7 +121,7 @@ export function init ({ container }: initParams = {}) {
 const animationRange = 1000
 let animation: { stop: () => void }
 
-function animateScene (to: animateSceneParams) {
+function animateScene (to: AnimateSceneParams) {
   animation?.stop()
 
   const planeRotationY = plane.rotation.y,
@@ -131,8 +131,8 @@ function animateScene (to: animateSceneParams) {
     lightPositionX = lightCenter.position.x,
     lightPositionZ = lightCenter.position.z,
     noiseDisplacementScale = planeMaterial.displacementScale,
-    noiseFrequencyCoef = dispMat.uniforms.uNoiseCoef.value,
-    noiseTimeCoef = timeCoef
+    noiseTimeCoef = timeCoef,
+    noiseFrequencyCoef = dispMat.uniforms.uNoiseCoef.value as number
 
   animate({
     from: 0,
