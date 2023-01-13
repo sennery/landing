@@ -13,7 +13,8 @@
     "preview": "vite preview",
     "build": "vite-ssg build",
     "type-check": "vue-tsc --noEmit",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "release": "pnpm lint && bumpp package.json --commit --push --tag"
   },
   "dependencies": {
     "@vueuse/components": "^9.9.0",
@@ -29,6 +30,7 @@
     "@types/three": "^0.148.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/tsconfig": "^0.1.3",
+    "bumpp": "^8.2.1",
     "critters": "^0.0.16",
     "eslint": "^8.22.0",
     "typescript": "~4.7.4",
