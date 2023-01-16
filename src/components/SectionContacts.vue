@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import IconLink from './IconLink.vue'
+import IconMail from './IconMail.vue'
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
 import { useIntersectAnimation } from '@/composables/intersectAnimation'
@@ -14,6 +15,7 @@ const contacts = [
   {
     name: 'me@sennery.dev',
     link: 'mailto:me@sennery.dev',
+    isMail: true,
   },
   {
     name: 'github',
@@ -51,7 +53,14 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
           class="link"
         >
           {{ contact.name }}
-          <IconLink class="icon" />
+          <IconMail 
+            v-if="contact.isMail"
+            class="icon mail"
+          />
+          <IconLink 
+            v-else
+            class="icon"
+          />
         </a>
       </li>
     </ul>
@@ -88,6 +97,10 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
 
 .link:hover .icon, .link:focus .icon {
   transform: rotateZ(45deg) translate(1rem, -1rem);
+}
+
+.link:hover .icon.mail, .link:focus .icon.mail {
+  transform: rotateZ(15deg) translate(1rem, 0rem);
 }
 
 @media (max-width: 800px) {
