@@ -18,7 +18,7 @@ const works = [
   {
     title: 'fullstack developer',
     years: '2020-2022',
-    description: 'I was developing interface, components and backend for a large CRM B2B system in the telecom market leader company. Communicated and took part in making architectural decisions in a team of 40 people.',
+    description: 'I was developing interface, components and backend for a large CRM B2B system in the telecom market leader company. Integrated in the team of 40 people. Contributed to architecture development.',
     company: {
       name: 'Rostelekom IT',
       color: '#7700ff',
