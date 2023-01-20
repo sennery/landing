@@ -6,7 +6,7 @@ import SectionWorks from '@/components/SectionWorks.vue'
 import SectionContacts from '@/components/SectionContacts.vue'
 import { useHead } from '@vueuse/head'
 
-const description = 'Hi, my name is Arsenii Likhachev. I am a web developer and I make complex and clean web applications. Love to develop and learn new things.' 
+const description = 'Hi, my name is Arsenii Likhachev aka sennery. I am a web developer and I make complex and clean web applications. Love to develop and learn new things.'
 
 useHead({
   title: 'Arsenii Likhachev',
@@ -48,9 +48,9 @@ useHead({
 main > section {
   display: flex;
   flex-direction: column;
-  justify-content: center;  
+  justify-content: center;
   transition: margin 0.6s cubic-bezier(0, 1, 0.18, 1),
-    gap 0.6s cubic-bezier(0, 1, 0.18, 1); 
+    gap 0.6s cubic-bezier(0, 1, 0.18, 1);
 }
 
 main > section > * {
