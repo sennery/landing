@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import PageWorksItem from '@/components/SectionWorksItem.vue'
+import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
 import { animateIntersectWorks } from '@/composables/three'
+import { useIntersectAnimation } from '@/composables/intersectAnimation'
 
 const works = [
   {
@@ -28,41 +30,94 @@ const works = [
   },
 ]
 
-function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {  
-  if (isIntersecting) {
+const { animationProgress, onIntersect } = useIntersectAnimation()
+
+const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
+
+function onIntersection (
+  [{ isIntersecting, intersectionRatio }]:
+    {
+      isIntersecting: boolean
+      intersectionRatio: number
+    }[],
+) {
+  onIntersect([{ isIntersecting }])
+
+  if (isIntersecting && intersectionRatio >= 0.5) {
     animateIntersectWorks()
   }
 }
 </script>
 
 <template>
-  <section 
-    v-intersection-observer="[onIntersection, { threshold: 0.5 }]"
+  <section
+    v-intersection-observer="[onIntersection, { threshold: [0.1, 0.5] }]"
     class="section-works"
   >
-    <PageWorksItem 
-      v-for="(work, index) in works"
-      :key="index"
-      :title="work.title"
-      :years="work.years"
-      :company="work.company"
-      :description="work.description"
-      :stack="work.stack"
-    />
+    <h2 class="title">
+      experience as
+    </h2>
+    <ul class="works-list">
+      <PageWorksItem
+        v-for="(work, index) in works"
+        :key="index"
+        :title="work.title"
+        :years="work.years"
+        :company="work.company"
+        :description="work.description"
+        :stack="work.stack"
+      />
+    </ul>
   </section>
 </template>
 
 <style scoped>
 .section-works {
   align-items: center;
-  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
   gap: 10rem;
   margin: 10rem 0;
 }
 
+.section-works > .works-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+}
+
+.section-works > .title {
+  align-self: flex-end;
+  position: sticky;
+  left: 0;
+  bottom: 50%;
+  margin: 2rem 0;
+  opacity: v-bind(animationProgress);
+  transform: translateY(v-bind(animationTranslateTitle));
+}
+
 @media (max-width: 800px) {
   .section-works {
+    gap: 0;
+  }
+
+  .section-works > .title {
+    transform: translateY(calc(v-bind(animationTranslateTitle) * var(--animation-values-coef)));
+  }
+}
+
+@media (max-width: 1200px) {
+  .section-works {
+    flex-wrap: wrap;
     gap: 5rem;
+  }
+
+  .section-works > .works-list {
+    gap: 5rem;
+  }
+
+  .section-works > .title {
+    position: static;
   }
 }
 </style>
