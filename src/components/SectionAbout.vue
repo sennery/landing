@@ -18,7 +18,7 @@ const { animationProgress, onIntersect } = useIntersectAnimation()
 const animationTranslateParagraph = computed(() => `${10 - animationProgress.value * 10}rem`)
 const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
 
-function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
+function onIntersection ([{ isIntersecting }]: { isIntersecting: boolean }[]) {
   onIntersect([{ isIntersecting }])
 
   if (isIntersecting) {
@@ -28,34 +28,34 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
 </script>
 
 <template>
-  <section 
+  <section
     v-intersection-observer="[onIntersection, { threshold: 0.5 }]"
     class="section-about"
   >
-    <h2>about me</h2>     
+    <h2>about me</h2>
     <p>
-      Hello, my name is Arsenii Likhachev. 
+      Hello, my name is Arsenii Likhachev.
       I am a <span>{{ age }}</span> y.o. web developer. I create complex and clean web applications for
-      <span 
+      <span
         v-if="onlySeconds"
         class="exp-time"
         @click="changeExpTime"
       >
         {{ sumSeconds }} sec.
-      </span> 
+      </span>
       <span
         v-else
         class="exp-time"
         @click="changeExpTime"
       >
-        <span>{{ `${years} ${englishPluralRules.select(years) === 'one' ? 'year' : 'years'} ` }}</span> 
+        <span>{{ `${years} ${englishPluralRules.select(years) === 'one' ? 'year' : 'years'} ` }}</span>
         <span>{{ `${weeks} ${englishPluralRules.select(weeks) === 'one' ? 'week' : 'weeks'} ` }}</span>
         <span>{{ `${days} ${englishPluralRules.select(days) === 'one' ? 'day' : 'days'} ` }}</span>
         <span>{{ `${hours} ${englishPluralRules.select(hours) === 'one' ? 'hour' : 'hours'} ` }}</span>
         <span>{{ `${minutes} ${englishPluralRules.select(minutes) === 'one' ? 'minute' : 'minutes'} ` }}</span>
         <span>{{ `${seconds} ${englishPluralRules.select(seconds) === 'one' ? 'second' : 'seconds'}.` }}</span>
       </span>
-      Love learning and development. 
+      Love learning and development.
     </p>
   </section>
 </template>

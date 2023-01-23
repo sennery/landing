@@ -6,11 +6,6 @@ import { vIntersectionObserver } from '@vueuse/components'
 import { useIntersectAnimation } from '@/composables/intersectAnimation'
 import { animateIntersectContacts } from '@/composables/three'
 
-const { animationProgress, onIntersect } = useIntersectAnimation()
-
-const animationTranslateParagraph = computed(() => `${10 - animationProgress.value * 10}rem`)
-const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
-
 const contacts = [
   {
     name: 'me@sennery.dev',
@@ -27,9 +22,14 @@ const contacts = [
   },
 ]
 
-function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {  
+const { animationProgress, onIntersect } = useIntersectAnimation()
+
+const animationTranslateParagraph = computed(() => `${10 - animationProgress.value * 10}rem`)
+const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
+
+function onIntersection ([{ isIntersecting }]: { isIntersecting: boolean }[]) {
   onIntersect([{ isIntersecting }])
-  
+
   if (isIntersecting) {
     animateIntersectContacts()
   }
@@ -37,8 +37,8 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
 </script>
 
 <template>
-  <section 
-    v-intersection-observer="[onIntersection, { threshold: 1 }]"
+  <section
+    v-intersection-observer="[onIntersection, { threshold: 0.5 }]"
     class="section-contacts"
   >
     <h2>contact me</h2>
@@ -47,17 +47,17 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
         v-for="contact in contacts"
         :key="contact.name"
       >
-        <a 
+        <a
           :href="contact.link"
           target="_blank"
           class="link"
         >
           {{ contact.name }}
-          <IconMail 
+          <IconMail
             v-if="contact.isMail"
             class="icon mail"
           />
-          <IconLink 
+          <IconLink
             v-else
             class="icon"
           />
@@ -68,15 +68,16 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
 </template>
 
 <style scoped>
-.contacts-list {
+.section-contacts {
+  /*margin: 20rem 0;*/
+  height: 100vh;
+}
+
+.section-contacts > .contacts-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
-}
-
-.section-contacts {
-  margin: 20rem 0;
 }
 
 .section-contacts > * {
@@ -92,7 +93,7 @@ function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }
 
 .icon {
   transform-origin: 50% 50%;
-  transition: transform 0.6s cubic-bezier(0, 1, 0.18, 1); 
+  transition: transform 0.6s cubic-bezier(0, 1, 0.18, 1);
 }
 
 .link:hover .icon, .link:focus .icon {

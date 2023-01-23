@@ -12,8 +12,8 @@ export function useIntersectAnimation ({ stiffness = 160, damping = 15, mass = 1
   const animationProgress = ref(0)
 
   let animation: { stop: () => void }
-    
-  function onIntersect ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
+
+  function onIntersect ([{ isIntersecting }]: { isIntersecting: boolean }[]) {
     animation?.stop()
     animation = animate({
       from: animationProgress.value * 100,

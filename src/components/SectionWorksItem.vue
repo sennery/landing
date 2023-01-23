@@ -24,17 +24,17 @@ const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 
 </script>
 
 <template>
-  <article 
+  <article
     v-intersection-observer="[onIntersect, { threshold: 0.5 }]"
     class="article-works"
   >
     <div>
-      <h2>{{ title }}</h2>     
+      <h2>{{ title }}</h2>
       <h3>
-        {{ years }} at 
+        {{ years }} at
         <a
           target="_blank"
-          :href="company.link" 
+          :href="company.link"
           class="link"
         >
           {{ company.name }}
@@ -45,7 +45,7 @@ const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 
     <p>{{ description }}</p>
     <p class="stack">
       <span>[ </span>
-      <template      
+      <template
         v-for="tech in stack"
         :key="tech"
       >
@@ -71,7 +71,7 @@ const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 
 .article-works h2,
 .article-works h3,
 .article-works p {
-  transform-origin: 0% 50%;
+  transform-origin: 0 50%;
   opacity: v-bind(animationProgress);
   transform: translateX(v-bind(animationTranslateTitle));
 }
@@ -102,7 +102,7 @@ const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 
   opacity: 0;
   transform-origin: 50% 50%;
   transition: transform 0.6s cubic-bezier(0, 1, 0.18, 1),
-    opacity 0.6s cubic-bezier(0, 1, 0.18, 1); 
+  opacity 0.6s cubic-bezier(0, 1, 0.18, 1);
 }
 
 .link {
