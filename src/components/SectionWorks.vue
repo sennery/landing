@@ -97,10 +97,6 @@ function onIntersection (
 }
 
 @media (max-width: 800px) {
-  .section-works {
-    gap: 0;
-  }
-
   .section-works > .title {
     transform: translateY(calc(v-bind(animationTranslateTitle) * var(--animation-values-coef)));
   }
@@ -109,7 +105,7 @@ function onIntersection (
 @media (max-width: 1200px) {
   .section-works {
     flex-wrap: wrap;
-    gap: 5rem;
+    gap: 0;
   }
 
   .section-works > .works-list {
@@ -118,6 +114,7 @@ function onIntersection (
 
   .section-works > .title {
     position: static;
+    margin-bottom: 0;
   }
 }
 </style>
