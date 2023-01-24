@@ -34,15 +34,10 @@ const { animationProgress, onIntersect } = useIntersectAnimation()
 
 const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
 
-function onIntersection (
-  [{ isIntersecting, intersectionRatio }]:
-    {
-      isIntersecting: boolean
-      intersectionRatio: number
-    }[],
-) {
-  onIntersect([{ isIntersecting }])
+function onIntersection (entries: IntersectionObserverEntry[]) {
+  onIntersect(entries)
 
+  const [{ isIntersecting, intersectionRatio }] = entries
   if (isIntersecting && intersectionRatio >= 0.5) {
     animateIntersectWorks()
   }
