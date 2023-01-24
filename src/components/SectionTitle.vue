@@ -42,9 +42,9 @@ function switchName (isIntersecting: boolean) {
   name.value = isName.value ? NAME : NICKNAME
 }
 
-function onIntersection ([{ isIntersecting }]: Array<{ isIntersecting: boolean }>) {
+function onIntersection ([{ isIntersecting }]: { isIntersecting: boolean }[]) {
   switchName(isIntersecting)
-  
+
   if (isIntersecting) {
     animateIntersectTitle()
   }
@@ -64,7 +64,7 @@ function onEnter (el: Element, done: () => void) {
     stiffness: 180,
     damping: 20,
     elapsed: -15 * +(elem.dataset.index ?? 0),
-    onUpdate: latest => elem.style.transform = `translateY(${-latest / 100 * 1 + 1}em) translateX(${-latest / 100 * 0.5 + 0.5}em) rotateX(${-latest / 100 * 90 + 90}deg)`,    
+    onUpdate: latest => elem.style.transform = `translateY(${-latest / 100 * 1 + 1}em) translateX(${-latest / 100 * 0.5 + 0.5}em) rotateX(${-latest / 100 * 90 + 90}deg)`,
     onComplete: done,
   })
 }
@@ -78,7 +78,7 @@ function onLeave (el: Element, done: () => void) {
 
 <template>
   <section
-    v-intersection-observer="[onIntersection, { threshold: 0.9 }]" 
+    v-intersection-observer="[onIntersection, { threshold: 0.9 }]"
     class="section-title"
   >
     <div class="title">
@@ -88,8 +88,8 @@ function onLeave (el: Element, done: () => void) {
         @before-enter="onBeforeEnter"
         @enter="onEnter"
         @leave="onLeave"
-      >  
-        <span 
+      >
+        <span
           v-for="(letter, index) in name"
           :key="letter.id"
           :data-index="index"
@@ -99,9 +99,9 @@ function onLeave (el: Element, done: () => void) {
           }"
         >
           {{ letter.letter }}
-        </span>   
+        </span>
       </TransitionGroup>
-      <h3 
+      <h3
         class="spec"
         :class="{ active: isName }"
       >
@@ -121,7 +121,7 @@ function onLeave (el: Element, done: () => void) {
 }
 
 .section-title > .title > h1 > span {
-  transform-origin: 0% 0%;
+  transform-origin: 0 0;
 }
 
 .surname-start {
