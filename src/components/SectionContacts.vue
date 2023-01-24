@@ -27,9 +27,10 @@ const { animationProgress, onIntersect } = useIntersectAnimation()
 const animationTranslateParagraph = computed(() => `${10 - animationProgress.value * 10}rem`)
 const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
 
-function onIntersection ([{ isIntersecting }]: { isIntersecting: boolean }[]) {
-  onIntersect([{ isIntersecting }])
+function onIntersection (entries: IntersectionObserverEntry[]) {
+  onIntersect(entries)
 
+  const [{ isIntersecting }] = entries
   if (isIntersecting) {
     animateIntersectContacts()
   }

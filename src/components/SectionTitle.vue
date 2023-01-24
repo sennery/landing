@@ -42,7 +42,7 @@ function switchName (isIntersecting: boolean) {
   name.value = isName.value ? NAME : NICKNAME
 }
 
-function onIntersection ([{ isIntersecting }]: { isIntersecting: boolean }[]) {
+function onIntersection ([{ isIntersecting }]: IntersectionObserverEntry[]) {
   switchName(isIntersecting)
 
   if (isIntersecting) {
