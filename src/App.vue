@@ -9,7 +9,7 @@ import { useHead } from '@vueuse/head'
 const description = 'Hi, my name is Arsenii Likhachev aka sennery. I am a web developer and I make complex and clean web applications. Love to develop and learn new things.'
 
 useHead({
-  title: 'Arsenii Likhachev',
+  title: 'Arsenii Likhachev · sennery',
   link: [
     { rel: 'icon', sizes: 'any', href: '/favicon.ico' },
     { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' },
