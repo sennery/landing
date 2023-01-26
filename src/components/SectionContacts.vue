@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import IconLink from './IconLink.vue'
-import IconMail from './IconMail.vue'
+import IconLink from '@/components/IconLink.vue'
+import IconMail from '@/components//IconMail.vue'
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
 import { useIntersectionAnimation } from '@/composables/intersectAnimation'

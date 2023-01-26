@@ -4,11 +4,7 @@
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      d="M0 0V12H18V0H0ZM2 3V10H16V3L9 8.25L2 3ZM14 2H4L9 5.75L14 2Z"
-    />
+    <path d="M9 12L18 3L16 1L9.00001 7.99999L1.99999 1L-1.13412e-07 2.99999L9 12Z" />
   </svg>
 </template>
 

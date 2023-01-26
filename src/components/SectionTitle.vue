@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import IconLess from '@/components/IconLess.vue'
 import { ref } from 'vue'
 import { animate } from 'popmotion'
 import { vIntersectionObserver } from '@vueuse/components'
@@ -107,6 +108,14 @@ function onLeave (el: Element, done: () => void) {
       >
         web developer
       </h3>
+
+      <div
+        v-if="isName"
+        class="icon"
+      >
+        <IconLess />
+        <span>scroll down</span>
+      </div>
     </div>
   </section>
 </template>
@@ -143,6 +152,46 @@ function onLeave (el: Element, done: () => void) {
 .spec.active {
   opacity: 1;
   transform: translateX(0);
+}
+
+.icon {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  gap: 0.5rem;
+  bottom: 2rem;
+  color: var(--color-text-secondary);
+  animation: iconFade infinite 3s;
+}
+
+.icon > span {
+  animation: iconText infinite 3s;
+}
+
+.icon > svg {
+  transform: scale(0.5);
+}
+
+@keyframes iconFade {
+  0%, 80%, 100% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
+
+@keyframes iconText {
+  0%, 80%, 100% {
+    transform: translateY(-0.5rem);
+  }
+
+  50% {
+    transform: translateY(0rem);
+  }
 }
 
 @media (max-width: 800px) {
