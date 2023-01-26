@@ -20,6 +20,10 @@ const contacts = [
     name: 'telegram',
     link: 'https://t.me/sennery',
   },
+  {
+    name: 'linkedin',
+    link: 'https://www.linkedin.com/in/sennery/',
+  },
 ]
 
 const { animationProgress, animateIntersection } = useIntersectionAnimation()
@@ -95,6 +99,10 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
 .icon {
   transform-origin: 50% 50%;
   transition: transform 0.6s cubic-bezier(0, 1, 0.18, 1);
+}
+
+.link:hover {
+  color: var(--color-text-highlight);
 }
 
 .link:hover .icon, .link:focus .icon {
