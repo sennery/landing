@@ -34,11 +34,10 @@ const { animationProgress, onIntersect } = useIntersectAnimation()
 
 const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
 
+const animateIntersectWorksThreshold = computed(() => 1 / works.length)
 function onIntersection (entries: IntersectionObserverEntry[]) {
-  onIntersect(entries)
-
-  const [{ isIntersecting, intersectionRatio }] = entries
-  if (isIntersecting && intersectionRatio >= 0.5) {
+  const [{ isIntersecting }] = entries
+  if (isIntersecting) {
     animateIntersectWorks()
   }
 }
@@ -46,10 +45,13 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
 
 <template>
   <section
-    v-intersection-observer="[onIntersection, { threshold: [0.1, 0.5] }]"
+    v-intersection-observer="[onIntersection, { threshold: animateIntersectWorksThreshold }]"
     class="section-works"
   >
-    <h2 class="title">
+    <h2
+      v-intersection-observer="[onIntersect, { threshold: 1 }]"
+      class="title"
+    >
       experience as
     </h2>
     <ul class="works-list">
