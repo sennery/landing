@@ -2,8 +2,8 @@
 import PageWorksItem from '@/components/SectionWorksItem.vue'
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
-import { animateIntersectWorks } from '@/composables/three'
-import { useIntersectAnimation } from '@/composables/intersectAnimation'
+import { animateBackgroundIntersectionWorks } from '@/composables/three'
+import { useIntersectionAnimation } from '@/composables/intersectAnimation'
 
 const works = [
   {
@@ -30,26 +30,26 @@ const works = [
   },
 ]
 
-const { animationProgress, onIntersect } = useIntersectAnimation()
+const { animationProgress, animateIntersection: onIntersectionTitle } = useIntersectionAnimation()
 
 const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
 
-const animateIntersectWorksThreshold = computed(() => 1 / works.length)
+const animationIntersectWorksThreshold = computed(() => 1 / works.length)
 function onIntersection (entries: IntersectionObserverEntry[]) {
   const [{ isIntersecting }] = entries
   if (isIntersecting) {
-    animateIntersectWorks()
+    animateBackgroundIntersectionWorks()
   }
 }
 </script>
 
 <template>
   <section
-    v-intersection-observer="[onIntersection, { threshold: animateIntersectWorksThreshold }]"
+    v-intersection-observer="[onIntersection, { threshold: animationIntersectWorksThreshold }]"
     class="section-works"
   >
     <h2
-      v-intersection-observer="[onIntersect, { threshold: 1 }]"
+      v-intersection-observer="[onIntersectionTitle, { threshold: 1 }]"
       class="title"
     >
       experience as

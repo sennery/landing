@@ -20,12 +20,12 @@ interface AnimateSceneParams {
   noiseTimeCoef?: number
 }
 
-let camera: THREE.PerspectiveCamera, 
+let camera: THREE.PerspectiveCamera,
   scene: THREE.Scene,
-  plane: THREE.Mesh, 
+  plane: THREE.Mesh,
   planeMaterial: THREE.MeshStandardMaterial,
   lightCenter: THREE.PointLight,
-  renderer: THREE.WebGLRenderer, 
+  renderer: THREE.WebGLRenderer,
   dispRT: THREE.WebGLRenderTarget,
   dispMat: THREE.ShaderMaterial,
   fsQuad: FullScreenQuad,
@@ -95,8 +95,8 @@ export function init ({ container }: InitParams = {}) {
   planeMaterial.displacementScale = 0
 
   plane = new THREE.Mesh(planeGeometry, planeMaterial)
-  plane.rotation.y = -90 * (Math.PI / 180) 
-  plane.position.x = 50  
+  plane.rotation.y = -90 * (Math.PI / 180)
+  plane.position.x = 50
   plane.name = 'mesh'
   scene.add(plane)
 
@@ -157,7 +157,7 @@ function animateScene (to: AnimateSceneParams) {
   })
 }
 
-export function animateIntersectTitle () {
+export function animateBackgroundIntersectionTitle () {
   animateScene({
     planeRotationY: -60 * (Math.PI / 180),
     planePositionX: 20,
@@ -166,7 +166,7 @@ export function animateIntersectTitle () {
   })
 }
 
-export function animateIntersectAbout () {
+export function animateBackgroundIntersectionAbout () {
   animateScene({
     planePositionX: 40,
     noiseDisplacementScale: 5,
@@ -174,14 +174,14 @@ export function animateIntersectAbout () {
   })
 }
 
-export function animateIntersectWorks () {
+export function animateBackgroundIntersectionWorks () {
   animateScene({
     planePositionX: 50,
     lightPositionZ: 0,
   })
 }
 
-export function animateIntersectContacts () {
+export function animateBackgroundIntersectionContacts () {
   lightCenter.position.x = -40
   lightCenter.position.z = 20
   animateScene({

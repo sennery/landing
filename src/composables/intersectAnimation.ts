@@ -8,12 +8,12 @@ interface IntersectAnimationParams {
   velocity?: number
 }
 
-export function useIntersectAnimation ({ stiffness = 160, damping = 15, mass = 1, velocity = 0 }: IntersectAnimationParams = {}) {
+export function useIntersectionAnimation ({ stiffness = 160, damping = 15, mass = 1, velocity = 0 }: IntersectAnimationParams = {}) {
   const animationProgress = ref(0)
 
   let animation: { stop: () => void }
 
-  function onIntersect ([{ isIntersecting }]: IntersectionObserverEntry[]) {
+  function animateIntersection ([{ isIntersecting }]: IntersectionObserverEntry[]) {
     animation?.stop()
     animation = animate({
       from: animationProgress.value * 100,
@@ -27,5 +27,5 @@ export function useIntersectAnimation ({ stiffness = 160, damping = 15, mass = 1
     })
   }
 
-  return { animationProgress, onIntersect }
+  return { animationProgress, animateIntersection }
 }

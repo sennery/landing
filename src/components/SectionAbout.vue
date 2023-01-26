@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
-import { useIntersectAnimation } from '@/composables/intersectAnimation'
+import { useIntersectionAnimation } from '@/composables/intersectAnimation'
 import { useTimePassed } from '@/composables/getTimePassed'
-import { animateIntersectAbout } from '@/composables/three'
+import { animateBackgroundIntersectionAbout } from '@/composables/three'
 
 const { years: age } = useTimePassed('1999-03-18T05:00:00+0500')
 const { years, weeks, days, hours, minutes, seconds, sumSeconds } = useTimePassed('2020-06-16T05:00:00+0500')
@@ -13,17 +13,17 @@ const changeExpTime = () => onlySeconds.value = !onlySeconds.value
 
 const englishPluralRules = new Intl.PluralRules('en')
 
-const { animationProgress, onIntersect } = useIntersectAnimation()
+const { animationProgress, animateIntersection } = useIntersectionAnimation()
 
 const animationTranslateParagraph = computed(() => `${10 - animationProgress.value * 10}rem`)
 const animationTranslateTitle = computed(() => `${5 - animationProgress.value * 5}rem`)
 
 function onIntersection (entries: IntersectionObserverEntry[]) {
-  onIntersect(entries)
+  animateIntersection(entries)
 
   const [{ isIntersecting }] = entries
   if (isIntersecting) {
-    animateIntersectAbout()
+    animateBackgroundIntersectionAbout()
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
-import { useIntersectAnimation } from '@/composables/intersectAnimation'
+import { useIntersectionAnimation } from '@/composables/intersectAnimation'
 import IconLink from './IconLink.vue'
 
 defineProps<{
@@ -16,7 +16,7 @@ defineProps<{
   stack: string[]
 }>()
 
-const { animationProgress, onIntersect } = useIntersectAnimation()
+const { animationProgress, animateIntersection: onIntersection } = useIntersectionAnimation()
 
 const animationTranslateStack = computed(() => `${animationProgress.value * 10 - 10}rem`)
 const animationTranslateParagraph = computed(() => `${animationProgress.value * 7.5 - 7.5}rem`)
@@ -25,7 +25,7 @@ const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 
 
 <template>
   <article
-    v-intersection-observer="[onIntersect, { threshold: 0.5 }]"
+    v-intersection-observer="[onIntersection, { threshold: 0.5 }]"
     class="article-works"
   >
     <div>

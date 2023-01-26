@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { animate } from 'popmotion'
 import { vIntersectionObserver } from '@vueuse/components'
-import { animateIntersectTitle } from '@/composables/three'
+import { animateBackgroundIntersectionTitle } from '@/composables/three'
 
 const isName = ref(false)
 
@@ -46,7 +46,7 @@ function onIntersection ([{ isIntersecting }]: IntersectionObserverEntry[]) {
   switchName(isIntersecting)
 
   if (isIntersecting) {
-    animateIntersectTitle()
+    animateBackgroundIntersectionTitle()
   }
 }
 
