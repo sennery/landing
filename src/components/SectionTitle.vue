@@ -161,7 +161,7 @@ function onLeave (el: Element, done: () => void) {
   gap: 0.5rem;
   bottom: 2rem;
   color: var(--color-text-secondary);
-  animation: iconFade infinite 3s;
+  animation: iconFade infinite 3s cubic-bezier(0, 1, 0.18, 1);
 }
 
 .icon > span {
@@ -173,23 +173,27 @@ function onLeave (el: Element, done: () => void) {
 }
 
 @keyframes iconFade {
-  0%, 80%, 100% {
+  0%, 100% {
     opacity: 0;
     transform: translateY(-1rem);
   }
 
-  50% {
+  40% {
     opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
     transform: translateY(0rem);
   }
 }
 
 @keyframes iconText {
-  0%, 80%, 100% {
+  0%, 100% {
     transform: translateY(-0.5rem);
   }
 
-  50% {
+  80% {
     transform: translateY(0rem);
   }
 }
