@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { init } from '@/composables/three'
 
-const webgl = ref<HTMLElement | undefined>(undefined)
+const webgl = ref<HTMLElement | null>(null)
 
 onMounted(() => init({ container: webgl.value }))
 </script>

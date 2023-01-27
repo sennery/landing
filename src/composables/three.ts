@@ -5,7 +5,7 @@ import snoise3 from '@/glsl/snoise-3.glsl'
 import * as THREE from 'three'
 
 interface InitParams {
-  container?: HTMLElement
+  container: HTMLElement | null
 }
 
 interface AnimateSceneParams {
@@ -53,7 +53,7 @@ function renderDisp () {
   renderer.setRenderTarget(null)
 }
 
-export function init ({ container }: InitParams = {}) {
+export function init ({ container }: InitParams) {
   camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
   camera.position.z = 30
 
