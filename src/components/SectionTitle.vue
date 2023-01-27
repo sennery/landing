@@ -111,10 +111,11 @@ function onLeave (el: Element, done: () => void) {
 
       <div
         v-if="isName"
-        class="icon"
+        class="hint"
       >
         <IconLess />
-        <span>scroll down</span>
+        <span class="scroll-text">scroll down</span>
+        <span class="swipe-text">swipe up</span>
       </div>
     </div>
   </section>
@@ -154,28 +155,35 @@ function onLeave (el: Element, done: () => void) {
   transform: translateX(0);
 }
 
-.icon {
+.hint {
   display: flex;
   position: fixed;
   align-items: center;
   gap: 0.5rem;
   bottom: 2rem;
   color: var(--color-text-secondary);
-  animation: iconFade infinite 3s cubic-bezier(0, 1, 0.18, 1);
+  animation: hintFade infinite 3s cubic-bezier(0, 1, 0.18, 1);
+
+  --hint-fade-y-offset: -1rem;
+  --hint-text-y-offset: -0.5rem;
 }
 
-.icon > span {
-  animation: iconText infinite 3s;
+.hint > .swipe-text {
+  display: none;
 }
 
-.icon > svg {
+.hint > span {
+  animation: hintText infinite 3s;
+}
+
+.hint > svg {
   transform: scale(0.5);
 }
 
-@keyframes iconFade {
+@keyframes hintFade {
   0%, 100% {
     opacity: 0;
-    transform: translateY(-1rem);
+    transform: translateY(var(--hint-fade-y-offset));
   }
 
   40% {
@@ -188,9 +196,9 @@ function onLeave (el: Element, done: () => void) {
   }
 }
 
-@keyframes iconText {
+@keyframes hintText {
   0%, 100% {
-    transform: translateY(-0.5rem);
+    transform: translateY(var(--hint-text-y-offset));
   }
 
   80% {
@@ -201,6 +209,23 @@ function onLeave (el: Element, done: () => void) {
 @media (max-width: 800px) {
   .surname-start {
     padding-left: 0.5rem;
+  }
+
+  .hint {
+    --hint-fade-y-offset: 1rem;
+    --hint-text-y-offset: 0.5rem;
+  }
+
+  .hint > .swipe-text {
+    display: initial;
+  }
+
+  .hint > .scroll-text {
+    display: none;
+  }
+
+  .hint > svg {
+    transform: scale(0.5) rotateZ(180deg);
   }
 }
 </style>
