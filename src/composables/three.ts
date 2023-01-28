@@ -58,10 +58,9 @@ export function init ({ container }: InitParams) {
   camera.position.z = 30
 
   scene = new THREE.Scene()
-  scene.background = new THREE.Color('#fff')
 
-  const planeGeometry = new THREE.PlaneGeometry(50, 50, 100, 100)
-  planeMaterial = new THREE.MeshStandardMaterial({ color: '#fff' })
+  const planeGeometry = new THREE.PlaneGeometry(50, 50, 512, 512)
+  planeMaterial = new THREE.MeshStandardMaterial({ color: '#f7c5cc' })
 
   dispRT = new THREE.WebGLRenderTarget(512, 512, { depthBuffer: false, stencilBuffer: false })
   dispMat = new THREE.ShaderMaterial({
@@ -100,16 +99,16 @@ export function init ({ container }: InitParams) {
   plane.name = 'mesh'
   scene.add(plane)
 
-  const ambienLight = new THREE.AmbientLight(0xf7c5cc)
+  const ambienLight = new THREE.AmbientLight(0xffffff)
   scene.add(ambienLight)
 
-  lightCenter = new THREE.PointLight('#fff', 0.5, 100)
+  lightCenter = new THREE.PointLight('#fff', 0.6, 100)
   lightCenter.position.set(-30, 0, 20)
   scene.add(lightCenter)
 
   timeCoef = 1 / 4000
 
-  renderer = new THREE.WebGLRenderer({ antialias: true })
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
   renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(window.innerWidth, window.innerHeight)
   container ? container.appendChild(renderer.domElement) : document.body.appendChild(renderer.domElement)
