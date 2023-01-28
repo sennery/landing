@@ -85,6 +85,7 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
 
 .section-works > .title {
   align-self: flex-end;
+  flex-shrink: 0;
   position: sticky;
   left: 0;
   bottom: 50%;
