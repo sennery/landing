@@ -15,6 +15,7 @@ interface AnimateSceneParams {
   planePositionY?: number
   lightPositionX?: number
   lightPositionZ?: number
+  lightDistance?: number
   noiseDisplacementScale?: number
   noiseFrequencyCoef?: number
   noiseTimeCoef?: number
@@ -129,6 +130,7 @@ function animateScene (to: AnimateSceneParams) {
     planePositionY = plane.position.y,
     lightPositionX = lightCenter.position.x,
     lightPositionZ = lightCenter.position.z,
+    lightDistance = lightCenter.distance,
     noiseDisplacementScale = planeMaterial.displacementScale,
     noiseTimeCoef = timeCoef,
     noiseFrequencyCoef = dispMat.uniforms.uNoiseCoef.value as number
@@ -149,6 +151,7 @@ function animateScene (to: AnimateSceneParams) {
       plane.position.y = mix(planePositionY, to.planePositionY ?? 0, progress)
       lightCenter.position.x = mix(lightPositionX, to.lightPositionX ?? -30, progress)
       lightCenter.position.z = mix(lightPositionZ, to.lightPositionZ ?? -30, progress)
+      lightCenter.distance = mix(lightDistance, to.lightDistance ?? 100, progress)
       planeMaterial.displacementScale = mix(noiseDisplacementScale, to.noiseDisplacementScale ?? 0, progress)
       dispMat.uniforms.uNoiseCoef.value = mix(noiseFrequencyCoef, to.noiseFrequencyCoef ?? 0, progress)
       timeCoef = mix(noiseTimeCoef, to.noiseTimeCoef ?? noiseTimeCoef, progress)
