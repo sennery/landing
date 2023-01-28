@@ -56,7 +56,7 @@ function renderDisp () {
 
 export function init ({ container }: InitParams) {
   camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
-  camera.position.z = 30
+  camera.position.set(0, 0, 30)
 
   scene = new THREE.Scene()
 
@@ -95,8 +95,7 @@ export function init ({ container }: InitParams) {
   planeMaterial.displacementScale = 0
 
   plane = new THREE.Mesh(planeGeometry, planeMaterial)
-  plane.rotation.y = -90 * (Math.PI / 180)
-  plane.position.x = 50
+  plane.position.set(50, 0, 0)
   plane.name = 'mesh'
   scene.add(plane)
 
@@ -104,7 +103,7 @@ export function init ({ container }: InitParams) {
   scene.add(ambienLight)
 
   lightCenter = new THREE.PointLight('#fff', 0.6, 100)
-  lightCenter.position.set(-30, 0, 20)
+  lightCenter.position.set(0, 0, 20)
   scene.add(lightCenter)
 
   timeCoef = 1 / 4000
@@ -161,34 +160,38 @@ function animateScene (to: AnimateSceneParams) {
 
 export function animateBackgroundIntersectionTitle () {
   animateScene({
-    planeRotationY: -60 * (Math.PI / 180),
-    planePositionX: 20,
-    noiseDisplacementScale: 10,
-    noiseFrequencyCoef: 4,
+    lightPositionX: -10,
+    lightPositionZ: 18,
+    lightDistance: 50,
+    noiseDisplacementScale: 20,
+    noiseFrequencyCoef: 3,
   })
 }
 
 export function animateBackgroundIntersectionAbout () {
   animateScene({
-    planePositionX: 40,
-    noiseDisplacementScale: 5,
-    noiseFrequencyCoef: 5,
+    lightPositionX: -20,
+    lightPositionZ: 20,
+    noiseDisplacementScale: 15,
+    noiseFrequencyCoef: 2,
   })
 }
 
 export function animateBackgroundIntersectionWorks () {
   animateScene({
-    planePositionX: 50,
-    lightPositionZ: 0,
+    lightPositionX: 0,
+    lightPositionZ: 50,
+    lightDistance: 200,
+    noiseDisplacementScale: 20,
+    noiseFrequencyCoef: 2,
   })
 }
 
 export function animateBackgroundIntersectionContacts () {
-  lightCenter.position.x = -40
-  lightCenter.position.z = 20
   animateScene({
-    lightPositionZ: 25,
-    noiseDisplacementScale: 15,
-    noiseFrequencyCoef: 3,
+    lightPositionX: -15,
+    lightPositionZ: 15,
+    noiseDisplacementScale: 25,
+    noiseFrequencyCoef: 2,
   })
 }
