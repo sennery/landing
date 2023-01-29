@@ -148,8 +148,8 @@ function animateScene (to: AnimateSceneParams) {
       plane.rotation.x = mix(planeRotationX, to.planeRotationX ?? 0, progress)
       plane.position.x = mix(planePositionX, to.planePositionX ?? 0, progress)
       plane.position.y = mix(planePositionY, to.planePositionY ?? 0, progress)
-      lightCenter.position.x = mix(lightPositionX, to.lightPositionX ?? -30, progress)
-      lightCenter.position.z = mix(lightPositionZ, to.lightPositionZ ?? -30, progress)
+      lightCenter.position.x = mix(lightPositionX, to.lightPositionX ?? 0, progress)
+      lightCenter.position.z = mix(lightPositionZ, to.lightPositionZ ?? 20, progress)
       lightCenter.distance = mix(lightDistance, to.lightDistance ?? 100, progress)
       planeMaterial.displacementScale = mix(noiseDisplacementScale, to.noiseDisplacementScale ?? 0, progress)
       dispMat.uniforms.uNoiseCoef.value = mix(noiseFrequencyCoef, to.noiseFrequencyCoef ?? 0, progress)
@@ -171,7 +171,6 @@ export function animateBackgroundIntersectionTitle () {
 export function animateBackgroundIntersectionAbout () {
   animateScene({
     lightPositionX: -20,
-    lightPositionZ: 20,
     noiseDisplacementScale: 15,
     noiseFrequencyCoef: 2,
   })
@@ -179,11 +178,8 @@ export function animateBackgroundIntersectionAbout () {
 
 export function animateBackgroundIntersectionWorks () {
   animateScene({
-    lightPositionX: 0,
     lightPositionZ: 50,
     lightDistance: 200,
-    noiseDisplacementScale: 20,
-    noiseFrequencyCoef: 2,
   })
 }
 
