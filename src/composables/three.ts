@@ -60,10 +60,10 @@ export function init ({ container }: InitParams) {
 
   scene = new THREE.Scene()
 
-  const planeGeometry = new THREE.PlaneGeometry(50, 50, 512, 512)
+  const planeGeometry = new THREE.PlaneGeometry(50, 50, 100, 100)
   planeMaterial = new THREE.MeshStandardMaterial({ color: '#f7c5cc' })
 
-  dispRT = new THREE.WebGLRenderTarget(512, 512, { depthBuffer: false, stencilBuffer: false })
+  dispRT = new THREE.WebGLRenderTarget(100, 100, { depthBuffer: false, stencilBuffer: false })
   dispMat = new THREE.ShaderMaterial({
     uniforms: {
       uTime: { value: 0 },
