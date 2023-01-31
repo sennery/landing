@@ -6,7 +6,7 @@ import SectionWorks from '@/components/SectionWorks.vue'
 import SectionContacts from '@/components/SectionContacts.vue'
 import { useHead } from '@vueuse/head'
 
-const description = 'Hi, my name is Arsenii Likhachev aka sennery. I am a web developer and I make complex and clean web applications. Love to develop and learn new things.'
+const description = 'Hi, my name is Arsenii Likhachev aka sennery. I am a web developer and I build complex web applications with intuitive design. Love to develop and learn new things.'
 
 useHead({
   title: 'Arsenii Likhachev · sennery',
