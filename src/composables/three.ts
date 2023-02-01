@@ -160,11 +160,12 @@ function animateScene (to: AnimateSceneParams) {
 
 export function animateBackgroundIntersectionTitle () {
   animateScene({
-    lightPositionX: -10,
-    lightPositionZ: 18,
-    lightDistance: 50,
-    noiseDisplacementScale: 20,
-    noiseFrequencyCoef: 3,
+    lightPositionX: -30,
+    lightPositionZ: -30,
+    planeRotationY: -60 * (Math.PI / 180),
+    planePositionX: 20,
+    noiseDisplacementScale: 10,
+    noiseFrequencyCoef: 4,
   })
 }
 
