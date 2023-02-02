@@ -54,7 +54,7 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
     >
       experience as
     </h2>
-    <ul class="works-list">
+    <div class="works-list">
       <PageWorksItem
         v-for="(work, index) in works"
         :key="index"
@@ -64,7 +64,7 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
         :description="work.description"
         :stack="work.stack"
       />
-    </ul>
+    </div>
   </section>
 </template>
 

@@ -102,12 +102,12 @@ function onLeave (el: Element, done: () => void) {
           {{ letter.letter }}
         </span>
       </TransitionGroup>
-      <h3
+      <span
         class="spec"
         :class="{ active: isName }"
       >
         web developer
-      </h3>
+      </span>
 
       <div
         v-if="isName"
@@ -146,6 +146,10 @@ function onLeave (el: Element, done: () => void) {
 }
 
 .spec {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-text-secondary);
   opacity: 0;
   transform: translateX(2em);
 }
