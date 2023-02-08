@@ -19,6 +19,7 @@ interface AnimateSceneParams {
   noiseDisplacementScale?: number
   noiseFrequencyCoef?: number
   noiseTimeCoef?: number
+  cameraFov?: number
 }
 
 let camera: THREE.PerspectiveCamera,
@@ -132,7 +133,8 @@ function animateScene (to: AnimateSceneParams) {
     lightDistance = lightCenter.distance,
     noiseDisplacementScale = planeMaterial.displacementScale,
     noiseTimeCoef = timeCoef,
-    noiseFrequencyCoef = dispMat.uniforms.uNoiseCoef.value as number
+    noiseFrequencyCoef = dispMat.uniforms.uNoiseCoef.value as number,
+    cameraFov = camera.fov
 
   animate({
     from: 0,
@@ -154,6 +156,8 @@ function animateScene (to: AnimateSceneParams) {
       planeMaterial.displacementScale = mix(noiseDisplacementScale, to.noiseDisplacementScale ?? 0, progress)
       dispMat.uniforms.uNoiseCoef.value = mix(noiseFrequencyCoef, to.noiseFrequencyCoef ?? 0, progress)
       timeCoef = mix(noiseTimeCoef, to.noiseTimeCoef ?? noiseTimeCoef, progress)
+      camera.fov = mix(cameraFov, to.cameraFov ?? 45, progress)
+      camera.updateProjectionMatrix()
     },
   })
 }
@@ -181,6 +185,8 @@ export function animateBackgroundIntersectionWorks () {
   animateScene({
     lightPositionZ: 50,
     lightDistance: 200,
+    planePositionX: -12.5,
+    cameraFov: 90,
   })
 }
 
