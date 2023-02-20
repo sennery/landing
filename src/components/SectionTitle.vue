@@ -79,7 +79,7 @@ function onLeave (el: Element, done: () => void) {
 
 <template>
   <section
-    v-intersection-observer="[onIntersection, { threshold: 0.9 }]"
+    v-intersection-observer="[onIntersection, { threshold: 0.8 }]"
     class="section-title"
   >
     <div class="title">
