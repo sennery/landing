@@ -3,7 +3,7 @@ import IconLink from '@/components/IconLink.vue'
 import IconMail from '@/components//IconMail.vue'
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
-import { useIntersectionAnimation } from '@/composables/intersectAnimation'
+import { useIntersectionAnimation } from '@/composables/useIntersectAnimation'
 import { animateBackgroundIntersectionContacts } from '@/composables/three'
 
 const contacts = [

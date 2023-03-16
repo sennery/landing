@@ -3,7 +3,7 @@ import PageWorksItem from '@/components/SectionWorksItem.vue'
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
 import { animateBackgroundIntersectionWorks } from '@/composables/three'
-import { useIntersectionAnimation } from '@/composables/intersectAnimation'
+import { useIntersectionAnimation } from '@/composables/useIntersectAnimation'
 
 const works = [
   {

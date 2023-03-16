@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
-import { useIntersectionAnimation } from '@/composables/intersectAnimation'
-import { useTimePassed } from '@/composables/getTimePassed'
+import { useIntersectionAnimation } from '@/composables/useIntersectAnimation'
+import { useTimePassed } from '@/composables/useTimePassed'
 import { animateBackgroundIntersectionAbout } from '@/composables/three'
 
 const { years: age } = useTimePassed('1999-03-18T05:00:00+0500')
