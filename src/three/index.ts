@@ -1,28 +1,7 @@
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js'
 import snoise3 from '@/glsl/snoise-3.glsl'
 import * as THREE from 'three'
-
-interface InitSceneParams {
-  container: HTMLElement | null
-}
-
-export interface ChangingSceneParams {
-  planeRotationY: number
-  planeRotationX: number
-  planePositionX: number
-  planePositionY: number
-  lightPositionX: number
-  lightPositionZ: number
-  lightDistance: number
-  noiseDisplacementScale: number
-  noiseFrequencyCoef: number
-  noiseTimeCoef: number
-  cameraFov: number
-}
-  
-type ChangingSceneHandlers<Type> = {
-  [Property in keyof Type]: (val: Type[Property]) => void
-}
+import type { ChangingSceneHandlers, ChangingSceneParams, InitSceneParams } from './types'
 
 let camera: THREE.PerspectiveCamera,
   scene: THREE.Scene,

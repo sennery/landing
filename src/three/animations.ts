@@ -1,6 +1,6 @@
 import { animate, mix } from 'popmotion'
 import { changingSceneParamHandlers, getCurrentSceneParams } from '@/three'
-import type { ChangingSceneParams } from '@/three'
+import type { ChangingSceneParams } from './types'
 
 let animation: { stop: () => void }
 const animationRange = 1000
