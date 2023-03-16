@@ -1,24 +1,27 @@
-import { animate, mix } from 'popmotion'
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js'
 import snoise3 from '@/glsl/snoise-3.glsl'
 import * as THREE from 'three'
 
-interface InitParams {
+interface InitSceneParams {
   container: HTMLElement | null
 }
 
-interface AnimateSceneParams {
-  planeRotationY?: number
-  planeRotationX?: number
-  planePositionX?: number
-  planePositionY?: number
-  lightPositionX?: number
-  lightPositionZ?: number
-  lightDistance?: number
-  noiseDisplacementScale?: number
-  noiseFrequencyCoef?: number
-  noiseTimeCoef?: number
-  cameraFov?: number
+export interface ChangingSceneParams {
+  planeRotationY: number
+  planeRotationX: number
+  planePositionX: number
+  planePositionY: number
+  lightPositionX: number
+  lightPositionZ: number
+  lightDistance: number
+  noiseDisplacementScale: number
+  noiseFrequencyCoef: number
+  noiseTimeCoef: number
+  cameraFov: number
+}
+  
+type ChangingSceneHandlers<Type> = {
+  [Property in keyof Type]: (val: Type[Property]) => void
 }
 
 let camera: THREE.PerspectiveCamera,
@@ -54,7 +57,7 @@ function renderDisp () {
   renderer.setRenderTarget(null)
 }
 
-export function init ({ container }: InitParams) {
+export function init ({ container }: InitSceneParams) {
   camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
   camera.position.set(0, 0, 30)
 
@@ -117,46 +120,35 @@ export function init ({ container }: InitParams) {
   window.addEventListener('resize', onWindowResize)
 }
 
-const animationRange = 1000
-let animation: { stop: () => void }
+export function getCurrentSceneParams (): ChangingSceneParams {
+  return {
+    planeRotationY: plane.rotation.y,
+    planeRotationX: plane.rotation.x,
+    planePositionX: plane.position.x,
+    planePositionY: plane.position.y,
+    lightPositionX: lightCenter.position.x,
+    lightPositionZ: lightCenter.position.z,
+    lightDistance: lightCenter.distance,
+    noiseDisplacementScale: planeMaterial.displacementScale,
+    noiseTimeCoef: timeCoef,
+    noiseFrequencyCoef: dispMat.uniforms.uNoiseCoef.value as number,
+    cameraFov: camera.fov,
+  }
+}
 
-function animateScene (to: AnimateSceneParams) {
-  animation?.stop()
-
-  const planeRotationY = plane.rotation.y,
-    planeRotationX = plane.rotation.x,
-    planePositionX = plane.position.x,
-    planePositionY = plane.position.y,
-    lightPositionX = lightCenter.position.x,
-    lightPositionZ = lightCenter.position.z,
-    lightDistance = lightCenter.distance,
-    noiseDisplacementScale = planeMaterial.displacementScale,
-    noiseTimeCoef = timeCoef,
-    noiseFrequencyCoef = dispMat.uniforms.uNoiseCoef.value as number,
-    cameraFov = camera.fov
-
-  animate({
-    from: 0,
-    to: animationRange,
-    type: 'spring',
-    mass: 1,
-    damping: 100,
-    stiffness: 300,
-    velocity: 1000,
-    onUpdate: (latest) => {
-      const progress = latest / animationRange
-      plane.rotation.y = mix(planeRotationY, to.planeRotationY ?? 0, progress)
-      plane.rotation.x = mix(planeRotationX, to.planeRotationX ?? 0, progress)
-      plane.position.x = mix(planePositionX, to.planePositionX ?? 0, progress)
-      plane.position.y = mix(planePositionY, to.planePositionY ?? 0, progress)
-      lightCenter.position.x = mix(lightPositionX, to.lightPositionX ?? 0, progress)
-      lightCenter.position.z = mix(lightPositionZ, to.lightPositionZ ?? 20, progress)
-      lightCenter.distance = mix(lightDistance, to.lightDistance ?? 100, progress)
-      planeMaterial.displacementScale = mix(noiseDisplacementScale, to.noiseDisplacementScale ?? 0, progress)
-      dispMat.uniforms.uNoiseCoef.value = mix(noiseFrequencyCoef, to.noiseFrequencyCoef ?? 0, progress)
-      timeCoef = mix(noiseTimeCoef, to.noiseTimeCoef ?? noiseTimeCoef, progress)
-      camera.fov = mix(cameraFov, to.cameraFov ?? 45, progress)
-      camera.updateProjectionMatrix()
-    },
-  })
+export const changingSceneParamHandlers: ChangingSceneHandlers<ChangingSceneParams> = {  
+  planeRotationY (val) { plane.rotation.y = val },
+  planeRotationX (val) { plane.rotation.x = val },
+  planePositionX (val) { plane.position.x = val },
+  planePositionY (val) { plane.position.y = val },
+  lightPositionX (val) { lightCenter.position.x = val },
+  lightPositionZ (val) { lightCenter.position.z = val },
+  lightDistance (val) { lightCenter.distance = val },
+  noiseDisplacementScale (val) { planeMaterial.displacementScale = val },
+  noiseTimeCoef (val) { timeCoef = val },
+  noiseFrequencyCoef (val) { dispMat.uniforms.uNoiseCoef.value = val },
+  cameraFov (val) { 
+    camera.fov = val     
+    camera.updateProjectionMatrix()
+  },
 }
