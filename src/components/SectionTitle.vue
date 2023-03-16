@@ -3,7 +3,7 @@ import IconLess from '@/components/IconLess.vue'
 import { ref } from 'vue'
 import { animate } from 'popmotion'
 import { vIntersectionObserver } from '@vueuse/components'
-import { animateBackgroundIntersectionTitle } from '@/composables/three'
+import { animateBackgroundIntersectionTitle } from '@/three/animations'
 
 const isName = ref(false)
 

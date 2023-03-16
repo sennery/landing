@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { init } from '@/composables/three'
+import { init } from '@/three'
 
 const webgl = ref<HTMLElement | null>(null)
 
