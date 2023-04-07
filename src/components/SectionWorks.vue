@@ -7,7 +7,7 @@ import { useIntersectionAnimation } from '@/composables/useIntersectAnimation'
 
 const works = [
   {
-    title: 'frontend architect',
+    title: 'senior frontend developer',
     years: '2022-nowadays',
     description: 'I built a frontend architecture and design from scratch for the dynamically growing startup. I implemented them with further scaling of the app and development of new features. Established the working process in the team and mentored junior staff.',
     company: {

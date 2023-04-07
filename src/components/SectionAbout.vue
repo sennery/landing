@@ -36,7 +36,9 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
     <h2>about me</h2>
     <p>
       Hello, my name is Arsenii Likhachev.
-      I am a <span>{{ age }}</span> y.o. web developer. I build complex web apps with intuitive design for
+      I am a <span>{{ age }}</span> y.o. software engineer. 
+      Love to learn and create. 
+      I build complex web applications with intuitive design for
       <span
         v-if="onlySeconds"
         class="exp-time"
@@ -56,7 +58,6 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
         <span>{{ `${minutes} ${englishPluralRules.select(minutes) === 'one' ? 'minute' : 'minutes'} ` }}</span>
         <span>{{ `${seconds} ${englishPluralRules.select(seconds) === 'one' ? 'second' : 'seconds'}.` }}</span>
       </span>
-      Love to learn and create.
     </p>
   </section>
 </template>
