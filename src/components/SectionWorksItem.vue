@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { vIntersectionObserver } from '@vueuse/components'
-import { useIntersectionAnimation } from '@/composables/useIntersectAnimation'
+import { useIntersectionAnimation } from '@/composables/intersectAnimation'
 import IconLink from './IconLink.vue'
 
 defineProps<{
