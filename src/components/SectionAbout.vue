@@ -66,13 +66,11 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
 .section-about {
   margin-bottom: 20rem;
 }
-
 .section-about > * {
   opacity: v-bind(animationProgress);
   transform: translateY(v-bind(animationTranslateParagraph));
   max-width: 40rem;
 }
-
 .section-about > h2 {
   transform: translateY(v-bind(animationTranslateTitle));
   margin: 2rem 0;
@@ -87,11 +85,9 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
   .section-about {
     margin-bottom: 10rem;
   }
-
   .section-about > * {
     transform: translateY(calc(v-bind(animationTranslateParagraph) * var(--animation-values-coef)));
   }
-
   .section-about > h2 {
     transform: translateY(calc(v-bind(animationTranslateTitle) * var(--animation-values-coef)));
   }

@@ -67,34 +67,25 @@ const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 
   scroll-snap-align: center;
   max-width: 50rem;
 }
-
-.article-works h2,
-.article-works h3,
-.article-works p {
+.article-works :is(h2, h3, p) {
   transform-origin: 0 50%;
   opacity: v-bind(animationProgress);
   transform: translateX(v-bind(animationTranslateTitle));
 }
-
-.article-works p {
+.article-works > p {
   transform: translateX(v-bind(animationTranslateParagraph));
 }
-
-.article-works div {
+.article-works > :is(div, .stack) {
   margin: 2rem 0;
 }
-
-.article-works .stack {
-  margin: 2rem 0;
+.article-works > .stack {
   transform: translateX(v-bind(animationTranslateStack));
 }
-
-.article-works .stack > span {
+.article-works > .stack > span {
   color: var(--color-text-secondary);
   font-size: 0.9em;
 }
-
-.article-works .stack > span:nth-last-child(-n + 2):not(:last-child) {
+.article-works > .stack > span:nth-last-child(-n + 2):not(:last-child) {
   display: none;
 }
 
@@ -109,22 +100,18 @@ const animationTranslateTitle = computed(() => `${animationProgress.value * 5 - 
   color: var(--color-text-highlight);
   font-weight: 400;
 }
-
-.link:hover .icon, .link:focus .icon {
+.link:is(:hover, :focus) .icon {
   opacity: 1;
 }
 
 @media (max-width: 800px) {
-  .article-works h2,
-  .article-works h3 {
+  .article-works :is(h2, h3) {
     transform: translateY(calc(v-bind(animationTranslateTitle) * var(--animation-values-coef)));
   }
-
-  .article-works p {
+  .article-works > p {
     transform: translateY(calc(v-bind(animationTranslateParagraph) * var(--animation-values-coef)));
   }
-
-  .article-works .stack {
+  .article-works > .stack {
     transform: translateY(calc(v-bind(animationTranslateStack) * var(--animation-values-coef)));
   }
 }

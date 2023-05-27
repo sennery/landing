@@ -16,6 +16,7 @@ onMounted(() => init({ container: webgl.value }))
 
 <style>
 .webgl {
+  position: relative;
   z-index: -999;
 }
 
@@ -23,6 +24,6 @@ onMounted(() => init({ container: webgl.value }))
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 100vh !important;
+  height: 100lvh !important;
 }
 </style>

@@ -77,20 +77,17 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
   /*margin: 20rem 0;*/
   height: 100vh;
 }
-
 .section-contacts > .contacts-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
 }
-
 .section-contacts > * {
   opacity: v-bind(animationProgress);
   transform: translateY(v-bind(animationTranslateParagraph));
   max-width: 40rem;
 }
-
 .section-contacts > h2 {
   transform: translateY(v-bind(animationTranslateTitle));
   margin: 2rem 0;
@@ -104,11 +101,9 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
 .link:hover {
   color: var(--color-text-highlight);
 }
-
 .link:hover .icon, .link:focus .icon {
   transform: rotateZ(45deg) translate(1rem, -1rem);
 }
-
 .link:hover .icon.mail, .link:focus .icon.mail {
   transform: rotateZ(15deg) translate(1rem, 0rem);
 }
@@ -117,7 +112,6 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
   .section-contacts > * {
     transform: translateY(calc(v-bind(animationTranslateParagraph) * var(--animation-values-coef)));
   }
-
   .section-contacts > h2 {
     transform: translateY(calc(v-bind(animationTranslateTitle) * var(--animation-values-coef)));
   }

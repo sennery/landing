@@ -76,13 +76,11 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
   gap: 10rem;
   margin: 10rem 0;
 }
-
 .section-works > .works-list {
   display: flex;
   flex-direction: column;
   gap: 10rem;
 }
-
 .section-works > .title {
   align-self: flex-end;
   flex-shrink: 0;
@@ -105,11 +103,9 @@ function onIntersection (entries: IntersectionObserverEntry[]) {
     flex-wrap: wrap;
     gap: 0;
   }
-
   .section-works > .works-list {
     gap: 5rem;
   }
-
   .section-works > .title {
     position: static;
     margin-bottom: 0;

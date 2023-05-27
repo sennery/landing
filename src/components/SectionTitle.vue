@@ -5,8 +5,6 @@ import { animate } from 'popmotion'
 import { vIntersectionObserver } from '@vueuse/components'
 import { animateBackgroundIntersectionTitle } from '@/three/animations'
 
-const isName = ref(false)
-
 const NAME = [
   { letter: 'A', id: 7 },
   { letter: 'r', id: 8 },
@@ -36,6 +34,7 @@ const NICKNAME = [
   { letter: 'y', id: 6 },
 ]
 
+const isName = ref(false)
 const name = ref(NICKNAME)
 
 function switchName (isIntersecting: boolean) {
@@ -65,7 +64,10 @@ function onEnter (el: Element, done: () => void) {
     stiffness: 180,
     damping: 20,
     elapsed: -15 * +(elem.dataset.index ?? 0),
-    onUpdate: latest => elem.style.transform = `translateY(${-latest / 100 * 1 + 1}em) translateX(${-latest / 100 * 0.5 + 0.5}em) rotateX(${-latest / 100 * 90 + 90}deg)`,
+    onUpdate: latest => elem.style.transform = `
+      translateY(${-latest / 100 * 1 + 1}em) 
+      translateX(${-latest / 100 * 0.5 + 0.5}em) 
+      rotateX(${-latest / 100 * 90 + 90}deg)`,
     onComplete: done,
   })
 }
@@ -125,11 +127,9 @@ function onLeave (el: Element, done: () => void) {
 .section-title {
   height: 100vh;
 }
-
 .section-title > .title > h1 {
   display: flex;
 }
-
 .section-title > .title > h1 > span {
   transform-origin: 0 0;
 }
@@ -144,7 +144,6 @@ function onLeave (el: Element, done: () => void) {
 .name-move, .spec.active {
   transition: all 0.6s cubic-bezier(0, 1, 0.18, 1);
 }
-
 .spec {
   display: inline-block;
   font-size: 2rem;
@@ -153,7 +152,6 @@ function onLeave (el: Element, done: () => void) {
   opacity: 0;
   transform: translateX(2em);
 }
-
 .spec.active {
   opacity: 1;
   transform: translateX(0);
@@ -166,22 +164,39 @@ function onLeave (el: Element, done: () => void) {
   gap: 0.5rem;
   bottom: 2rem;
   color: var(--color-text-secondary);
+
+--hint-fade-y-offset: -1rem;
+--hint-text-y-offset: -0.5rem;
   animation: hintFade infinite 3s cubic-bezier(0, 1, 0.18, 1);
-
-  --hint-fade-y-offset: -1rem;
-  --hint-text-y-offset: -0.5rem;
 }
-
 .hint > .swipe-text {
   display: none;
 }
-
 .hint > span {
   animation: hintText infinite 3s;
 }
-
 .hint > svg {
   transform: scale(0.5);
+}
+
+@media (max-width: 800px) {
+  .surname-start {
+    padding-left: 0.5rem;
+  }
+
+  .hint {
+    --hint-fade-y-offset: 1rem;
+    --hint-text-y-offset: 0.5rem;
+  }
+  .hint > .swipe-text {
+    display: initial;
+  }
+  .hint > .scroll-text {
+    display: none;
+  }
+  .hint > svg {
+    transform: scale(0.5) rotateZ(180deg);
+  }
 }
 
 @keyframes hintFade {
@@ -207,29 +222,6 @@ function onLeave (el: Element, done: () => void) {
 
   80% {
     transform: translateY(0rem);
-  }
-}
-
-@media (max-width: 800px) {
-  .surname-start {
-    padding-left: 0.5rem;
-  }
-
-  .hint {
-    --hint-fade-y-offset: 1rem;
-    --hint-text-y-offset: 0.5rem;
-  }
-
-  .hint > .swipe-text {
-    display: initial;
-  }
-
-  .hint > .scroll-text {
-    display: none;
-  }
-
-  .hint > svg {
-    transform: scale(0.5) rotateZ(180deg);
   }
 }
 </style>
