@@ -1,5 +1,5 @@
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js'
-import snoise3 from '@/glsl/snoise-3.glsl'
+import snoise3 from './glsl/snoise-3.glsl'
 import * as THREE from 'three'
 import type { ChangingSceneHandlers, ChangingSceneParams, InitSceneParams } from './types'
 
