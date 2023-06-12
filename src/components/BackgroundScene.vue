@@ -2,16 +2,14 @@
 import { onMounted, ref } from 'vue'
 import { init } from '@/three'
 
-const webgl = ref<HTMLElement | null>(null)
-
-onMounted(() => init({ container: webgl.value }))
+const canvas = ref<HTMLCanvasElement | null>(null)
+onMounted(() => init({ canvas: canvas.value }))
 </script>
 
 <template>
-  <div
-    ref="webgl"
-    class="webgl"
-  />
+  <div class="webgl">
+    <canvas ref="canvas" />
+  </div>
 </template>
 
 <style>
