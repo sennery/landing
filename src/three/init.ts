@@ -1,10 +1,12 @@
-import MyWorker from './worker?worker'
 import type { InitSceneParams } from './types'
 
 export let worker: Worker
 
 export function init ({ canvas }: InitSceneParams) {
-  worker = new MyWorker()
+  worker = new Worker(new URL('./worker', import.meta.url), {
+    type: 'module',
+  })
+
   const offscreenCanvas = canvas?.transferControlToOffscreen()
   worker.postMessage({
     type: 'init',
