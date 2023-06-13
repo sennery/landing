@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import IconLess from '@/components/IconLess.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { animate } from 'popmotion'
 import { vIntersectionObserver } from '@vueuse/components'
 import { animateBackgroundIntersectionTitle } from '@/three/animations'
@@ -35,15 +35,10 @@ const NICKNAME = [
 ]
 
 const isName = ref(false)
-const name = ref(NICKNAME)
-
-function switchName (isIntersecting: boolean) {
-  isName.value = isIntersecting
-  name.value = isName.value ? NAME : NICKNAME
-}
+const name = computed(() => isName.value ? NAME : NICKNAME)
 
 function onIntersection ([{ isIntersecting }]: IntersectionObserverEntry[]) {
-  switchName(isIntersecting)
+  isName.value = isIntersecting
 
   if (isIntersecting) {
     animateBackgroundIntersectionTitle()
