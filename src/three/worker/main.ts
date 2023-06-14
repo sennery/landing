@@ -88,7 +88,7 @@ export function init ({ canvas, width, height, ratio }: InitSceneParamsWorker) {
   renderer = new THREE.WebGLRenderer({ alpha: true, canvas })
   renderer.setPixelRatio(ratio)
   renderer.setSize(width, height, false)
-  render(Date.now())
+  render(performance.now())
 }
 
 export function onWindowResize ({ width, height }: WindowResizeParams) {
