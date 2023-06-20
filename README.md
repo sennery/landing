@@ -1,5 +1,7 @@
 <p align="center">
-  <img height="300" width="500" alt="sennery" src="/docs/readme-logo.svg" />
+  <a href="https://sennery.dev" align="center">
+    <img height="300" width="500" alt="sennery" src="/docs/readme-logo.svg" />
+  </a>
 </p>
 
 Hi there! This is a repository for my **portfolio** website. It shows info about me and my jobs. I impove it regulary and try new technologies on it. 
