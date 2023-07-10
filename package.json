@@ -1,9 +1,9 @@
 {
   "name": "sennery",
-  "author": "Arsenii Likhachev",
+  "author": "Arsenii Likhachev <me@sennery.dev> (https://sennery.dev)",
   "description": "Personal landing with information about me",
-  "email": "mac452res@gmail.com",
-  "url": "sennery.dev",
+  "homepage": "https://sennery.dev",
+  "repository": "github:sennery/landing",
   "version": "0.4.0",
   "private": true,
   "packageManager": "pnpm@7.17.1",
